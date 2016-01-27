@@ -1,0 +1,8 @@
+{
+  "name": "azuweb",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.6",
+    "jquery.transit": "~0.9.12"
+  }
+}
