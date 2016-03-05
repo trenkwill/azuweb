@@ -1,25 +1,14 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2016-01-22 13:10:05 +0100
-categories: jekyll update
+title:  "Bienvenue"
+date:   2016-01-29 13:10:05 +0100
+categories: azuweb
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Vous trouverez dans ce blog les méthodes qu nous utilisons pour un produit à fort potentiel de vente sur Amazon, trouver une usine en Chine qui le fabrique, l'importer et le vendre sur la place de marché Amazon.
 
-Jekyll also offers powerful support for code snippets:
+Le monde du marketing web américain est en pleine ébullition sur la vente de produits physique sur Amazon. Il y a des dizaines de cours en ligne qui explique la mécanique de ce business model. Nous reviendrons en détail sur chaque point dans d'autres articles à l'avenir.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+Nous partagerons aussi des *cases studies* de projets sur lequel nous avons travaillé et William partagera des astuces et autres sur le web design et le code. 
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+Bonne lecture !

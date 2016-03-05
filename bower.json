@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "bootstrap-sass": "bootstrap-sass-official#~3.3.6",
-    "jquery.transit": "~0.9.12"
+    "jquery.transit": "~0.9.12",
+    "skrollr": "^0.6.30",
+    "typesettings": "^3.0.1"
   }
 }

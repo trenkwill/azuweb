@@ -2,22 +2,311 @@
 layout: default
 ---
 
-<div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  {% include _header.html %}
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <section class="section intro">
+      <h2 class="">Bonjour! Nous sommes Azuweb, une petite équipe de <span class="highlight">professionnels du web</span> et du ecommerce</h2>
+      <h3 class=" mb+">Nous sommes votre partenaire web pour vous aider à développer votre présence sur le web et atteindre de nouveaux marchés.</h3>
+      <figure class="figure">
+        <img src="/img/emilie-william.jpg" alt="emilie-william" class="margin-auto figure-img img-fluid img-rounded">
+        <!-- <img data-src="/img/emilie-william.jpg" class="figure-img img-fluid img-rounded" alt="emilie-william"> -->
+        <figcaption class="figure-caption">William Hutter &amp; Emilie Dupré</figcaption>
+      </figure>
+      <br>
+      <!-- <a href="#" class="btn btn-default btn-xlarge">Contactez-nous</a> -->
+    </section>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+
+<section class="section section--import" id="ecommerce">
+    <h1 class="section__title">Ecommerce</h1>
+    <div class="bcg"
+            data-center="background-position: 50% 0px;"
+            data-top-bottom="background-position: 50% -100px;"
+            data-anchor-target="#ecommerce"
+        >
+            <div class="hsContainer">
+                <div class="hsContent">
+                    <div class="section__text">
+                      <h3>Trouver le bon produit et l'importer</h3>
+                      
+                      <p>Véritable partenaire de votre entreprise, Azuweb vous accompagne lors de la recherche d'un produit que vous souhaitez commercialiser. Si vous n'avez pas de fournisseur, nous nous occupons d'en trouver un de confiance à travers notre réseau d'usines en Chine. Les produits, une fois fabriqués, seront importés, etiquettés et envoyés vers les entrepôts des places de marché en ligne comme Amazon ou Cdiscount.
+                          </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="section section--analytics" id="marketing">
+    <h1 class="section__title">Marketing</h1>
+    <div class="bcg"
+            data-center="background-position: 50% 0px;"
+            data-top-bottom="background-position: 50% -100px;"
+            data-anchor-target="#ecommerce"
+        >
+            <div class="hsContainer">
+                <div class="hsContent">
+                  <div class="section__text">
+                    <h3>Analyse de votre niche</h3>
+
+                    <p>Nous analysons en profondeur votre niche et les mots-clés recherchés dans celle-ci par vos prospects. Cette étape est cruciale car c'est sur elle que nous construisons tout le reste : le produit, une fois dans les entrepôts, devra gagner des positions dans le moteur de recherche d'Amazon et Cdiscount (et votre futur site dans celui de Goggle).</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    
+
+</section>
+
+<section class="section section--writing" id="redaction">
+    <h1 class="section__title">Rédaction</h1>
+    <div class="bcg"
+            data-center="background-position: 50% 0px;"
+            data-top-bottom="background-position: 50% -100px;"
+            data-anchor-target="#ecommerce"
+        >
+            <div class="hsContainer">
+                <div class="hsContent">
+                  <div class="section__text">
+
+                    <h3>Contenu et Amazon SEO</h3>
+                            
+                    <p>Les rédacteurs de notre équipe de création de contenu sont des spécialistes de la rédaction ecommerce. Nous les renseignons sur les caractéristique de votre produit et de sa niche afin qu'ils puissent les décrire de façon attractives.</p>
+
+                    <p>Grâce à l'analyse de l'étape 1, les mots-clés utilisés dans le contenu permettront à <em>la page produit</em> de monter progressivement dans Amazon et Cdiscount.</p>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    
+
+</section>
+
+<section class="section section--webdev" id="code">
+    <h1 class="section__title">Code</h1>
+    <div class="bcg"
+            data-center="background-position: 50% 0px;"
+            data-top-bottom="background-position: 50% -100px;"
+            data-anchor-target="#ecommerce"
+        >
+            <div class="hsContainer">
+                <div class="hsContent">
+                  <div class="section__text">
+
+                    <h3>Création de votre site web</h3>
+
+                    <p>Amazon et Cdiscount sont les outils qui permettrons de faire décoller rapidement votre business. Mais la véritable croissance de votre entreprise se trouve dans la promotion de son propre site web.</p>
+
+                    <p>Conçu avec un objectif en tête : le site sera optimisé pour pousser les visteurs à cliquer et acheter, à s'inscrire à votre newsletter et s'engager un maximum avec vous.</p>
+                    
+                  </div>
+                </div>
+            </div>
+        </div>
+    
+
+</section>
+
+      <section class="section" id="portfolio">
+        <h1 class="section__title">Portfolio</h1>
+        
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>Buildin</h3>
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/buildin.png);"></div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>La Forêt, Le Bois et Moi</h3>
+                  <ul>
+                    <li>Proposition de logo pour une campagne de l'ONF</li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/laforet-lebois.png);"></div>
+              </div>
+            </div>
+         
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>Nugget</h3>
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/nugget.png);"></div>
+              </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>Nextly (iOS)</h3>
+                  <ul>
+                    <li>Design pour mobile iOS</li>
+                    <li>Design interactif (framerJS, Paper)</li>
+                    <li>Zoning, wireframe et UX Design</li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/nextly-mobile.png);"></div>
+              </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>Road Inc</h3>
+                  <ul>
+                    <li>UI Design</li>
+                    <li>Intégration HTML / CSS / Jquery</li>
+                    <li>Développement Expression Engine</li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/roadinc.png);"></div>
+              </div>
+            </div>
+            
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="portfolio">
+                <div class="portfolio__description">
+                  <h3>Buyosphere</h3>
+                  <ul>
+                    <li>UX Design</li>
+                    <li>UI Design</li>
+                    <li>Développement front-end</li>
+                  </ul>
+                </div>
+                <div class="portfolio__item" style="background-image: url(img/buyosphere.png);"></div>
+              </div>
+            </div>
+            
+          </div>
+      </section>
+    
+    <section class="section">
+      <h2 class="section__title">Notre démarche</h2>
+      
+      <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="icon-circle fl mr icon-analyse"></div>
+              <h3>Ecoute et Analyse</h3>
+              <p>Nous vous accompagnons lors du lancement pour vous aider à atteindre votre audience sur n’importe quel type d’appareil (PC, mobiles, tablettes). Nous collaborons ensemble pour analyser et mesurer votre succès. </p>
+              
+      
+          </div>
+      
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="icon-circle fl mr icon-collaborer"></div>
+              <h3>Collaboration & conception</h3>
+      
+              <p>Tout au long de la conception, nous vous intégrons à notre processus de création pour que notre collaboration donne naissance à un projet réussi.</p>
+      
+          </div>
+      </div>
+      
+      <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="icon-circle fl mr icon-lancement"></div>
+                <h3>Lancement</h3>
+      
+                <p>Nous vous accompagnons lors du lancement pour vous aider à atteindre votre audience sur n’importe quel type d’appareil (PC, mobiles, tablettes). Nous collaborons ensemble pour analyser et mesurer votre succès. </p>
+      
+            </div>
+      
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="icon-circle fl mr icon-maintenance"></div>
+                <h3>Suivi &amp; Maintenance</h3>
+      
+                <p>Après le lancement, nous sommes à vos côtés pour vous assister afin que notre travail commun soit un succès et que l’on puisse continuer à vous accompagner en toute sérénité. </p>
+      
+            </div>
+      </div>
+    </section>
+
+    <section class="section mt+">
+
+    <h2 class="section__title">Liste de nos services</h2>
+
+    <div class="row">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <h3>Design</h3>
+
+          <ul>
+              <li>Création et refonte de sites webs</li>
+              <li>Design d’interface</li>
+              <li>User-experience (UX) design</li>
+              <li>E-Commerce design</li>
+              <li>Creative direction & design</li>
+              <li>Information architecture</li>
+              <li>Création logo et charte graphique sur tout type de support</li>
+              <li>Gestion de l’impression avec nos imprimeurs partenaires</li>
+          </ul>
+
+      </div>
+
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+            <h3>Développement </h3>
+
+            <ul>
+              <li>Responsive design</li>
+              <li>Développement web et mobile</li>
+              <li>WordPress Development</li>
+              <li>Shopify e-commerce</li>
+            </ul>
+
+      </div>
+
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <h3>Marketing digital</h3>
+
+            <ul>
+              <li>Campagnes SEO</li>
+              <li>Audit SEO</li>
+              <li>Campagnes emailing & newsletter</li>
+              <li>Etude stratégique sur les réseaux sociaux</li>
+              <li>Création de contenu en français et en anglais :</li>
+              <li>Articles de blog</li>
+              <li>eBooks</li>
+              <li>Livres blancs</li>
+              <li>Séquences d’emails</li>
+            </ul>
+      </div>
+
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <h3>eCommerce</h3>
+
+          <ul>
+            <li>Création de site ecommerce : Shopify, Woo Commerce</li>
+            <li>Accompagnement personnalisé et formation à la vente sur Amazon, eBay,  CDiscount et Etsy</li>
+            <li>Conseils stratégiques sur la vente sur Amazon aux Etats-Unis et en Europe</li>
+            <li>Analyse SEO et écriture de vos descriptions produits</li>
+          </ul>
+
+      </div>
+    </div>
+    </section>
+
 
 </div>
+

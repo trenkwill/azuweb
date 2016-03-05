@@ -222,6 +222,20 @@ module.exports = function (grunt) {
         }]
       }
     },
+    grunticon: {
+        myIcons: {
+            files: [{
+                expand: true,
+                cwd: '<%= yeoman.app %>/img',
+                src: '**/*.svg',
+                dest: '<%= yeoman.app %>/img'
+            }],
+            options: {
+                enhanceSVG: true,
+                loadersnippet: "grunticon.loader.js"
+            }
+        }
+    },
     svgmin: {
       dist: {
         files: [{
@@ -356,6 +370,10 @@ module.exports = function (grunt) {
   //   'clean:server',
   //   'concurrent:test',
   //   'browserSync:test'
+  ]);
+
+  grunt.registerTask('icons', [
+    'grunticon:myIcons'
   ]);
 
   grunt.registerTask('check', [

@@ -1,10 +1,8 @@
 @charset "utf-8";
 
-
-
 // Our variables
-$base-font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-family: 'Lato', Helvetica, Arial, sans-serif;
+$base-font-size:   18px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -13,7 +11,8 @@ $spacing-unit:     30px;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color:      #44B1BE;
+$brand-color2:     #FF3B6B;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -25,6 +24,18 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+ // Your settings for Typesettings :)
+ $font-sans: 'Lato', Helvetica, Arial, sans-serif;
+ $font-serif: 'Lato', Helvetica, Arial, sans-serif;
+ $font-mono: 'Lucida Console', Monaco, monospace;
+ $text-color: #000;
+ $base-vertical-unit: 6px;
+ $base-line-multi: 4;
+ $base-font-size: 14px;
+ $ms-ratio: 1.414;
+ $paragraph-indent: true;
+ $paragraph-justify: true;
+ $load-typesetted: true;
 
 
 // Use media queries like this:
@@ -44,7 +55,14 @@ $on-laptop:        800px;
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "bootstrap",
+        "../_bower_components/typesettings/_typesettings",
         "base",
         "header",
-        "nav"
+        "intro",
+        "portfolio",
+        "blog",
+        "nav",
+        "section"
 ;
+
+
