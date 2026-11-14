@@ -2,9 +2,9 @@
    un surligneur jaune et des annotations au stylo. Deux moments sortent de la colonne :
    la machine à remonter le temps du web et les formes en pointillé des métiers. */
 @font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("bricolage.woff2") format("woff2");
-  font-weight: 200 800; font-stretch: 75% 100%; font-display: swap;
+  font-family: "Inter";
+  src: url("inter.woff2") format("woff2");
+  font-weight: 100 900; font-display: swap;
 }
 @font-face {
   font-family: "Caveat";
@@ -21,11 +21,11 @@
   --rule: #d9dee7;        /* filets */
   --azur: #1456d9;        /* le bleu du stylo et des liens */
   --marker: #ffe45c;      /* surligneur */
-  --text: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --text: "Inter", "Helvetica Neue", Arial, sans-serif;
   --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
-  --t-sm: 0.95rem; --t-base: 1.19rem; --t-lg: 1.42rem;
+  --t-sm: 0.92rem; --t-base: 1.12rem; --t-lg: 1.34rem;
   --t-h3: clamp(1.45rem, 2.2vw, 1.85rem);
-  --t-h2: clamp(2rem, 4.4vw, 3.4rem);
+  --t-h2: clamp(1.9rem, 4vw, 3.1rem);
   --t-h1: clamp(2.7rem, 8vw, 6.6rem);
   --gutter: clamp(16px, 5vw, 80px);
   --col: 41rem;
@@ -36,7 +36,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   font-family: var(--text); font-size: var(--t-base); line-height: 1.55;
-  font-variation-settings: "opsz" 18; -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto; font-feature-settings: "ss03", "cv11"; -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
@@ -53,10 +53,10 @@ code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-si
   padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
 }
 
-h1, h2 { font-weight: 760; font-stretch: 88%; letter-spacing: -0.028em; line-height: 1.02; font-variation-settings: "opsz" 96; text-wrap: balance; }
+h1, h2 { font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; text-wrap: balance; }
 h1 { font-size: var(--t-h1); line-height: 0.96; }
 h2 { font-size: var(--t-h2); }
-h3 { font-size: var(--t-h3); font-weight: 720; font-stretch: 92%; letter-spacing: -0.02em; line-height: 1.12; text-wrap: balance; }
+h3 { font-size: var(--t-h3); font-weight: 720; letter-spacing: -0.028em; line-height: 1.12; text-wrap: balance; }
 .prose { max-width: var(--col); display: grid; gap: 1.05em; }
 .prose h2 { margin-bottom: 0.15em; }
 
@@ -99,7 +99,7 @@ mark {
 .hero { padding-block: clamp(40px, 8vh, 96px) clamp(56px, 10vh, 120px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: clamp(16px, 3vw, 48px); align-items: center; }
 .hero__text { display: grid; gap: clamp(22px, 4vh, 40px); min-width: 0; }
 .kicker { font-size: var(--t-sm); font-weight: 600; color: var(--ink-2); }
-.hero h1 { font-size: clamp(2.7rem, 6.4vw, 5.6rem); }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 5rem); }
 .hero__letter { max-width: 35rem; display: grid; gap: 1em; font-size: var(--t-lg); line-height: 1.45; }
 .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 0.5em; font-size: var(--t-base); }
 .note--cta { margin-left: 46px; }
@@ -183,14 +183,14 @@ mark {
 /* Aujourd'hui — cette page, en petit. */
 .era--now { padding: clamp(20px, 4vw, 44px); display: grid; align-content: center; justify-items: start; gap: 14px; }
 .era--now .n-kicker { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); }
-.era--now .n-title { font-size: clamp(1.7rem, 4.6vw, 3.1rem); font-weight: 760; font-stretch: 88%; letter-spacing: -0.028em; line-height: 0.98; max-width: 11em; }
+.era--now .n-title { font-size: clamp(1.7rem, 4.6vw, 3.1rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; max-width: 11em; }
 .era--now .n-btn { font-size: 0.85rem; font-weight: 680; padding: 0.8em 1.1em; border-radius: 8px; background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--marker); }
 
 /* ---------- Métiers : une icône en points devant chaque bloc ---------- */
 .metiers__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(40px, 7vh, 80px) clamp(32px, 6vw, 96px); margin-top: clamp(32px, 6vh, 64px); }
 .metier { display: grid; gap: 0.9em; align-content: start; max-width: 34rem; min-width: 0; }
 .metier__icon { width: 140px; height: 140px; margin: 0 0 -8px -18px; }
-.metier__tag { display: block; font-size: var(--t-sm); font-weight: 640; font-stretch: 100%; letter-spacing: 0; color: var(--azur); margin-bottom: 0.5em; }
+.metier__tag { display: block; font-size: var(--t-sm); font-weight: 640; letter-spacing: 0; color: var(--azur); margin-bottom: 0.5em; }
 .metier ul { display: grid; gap: 0.45em; font-size: 1.05rem; color: var(--ink-2); }
 .metier li { padding-left: 1.4em; position: relative; }
 .metier li::before { content: "—"; position: absolute; left: 0; color: var(--ink); }
@@ -218,7 +218,7 @@ mark {
 
 .work { margin-top: clamp(24px, 4vh, 44px); border-top: 2px solid var(--ink); }
 .work li { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) minmax(0, 1.5fr); gap: 6px 28px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.work__name { font-size: var(--t-h3); font-weight: 740; font-stretch: 90%; letter-spacing: -0.025em; line-height: 1.08; justify-self: start; }
+.work__name { font-size: var(--t-h3); font-weight: 740; letter-spacing: -0.03em; line-height: 1.08; justify-self: start; }
 .work li:hover .work__name { background: linear-gradient(var(--marker), var(--marker)) 0 80% / 100% 55% no-repeat; }
 .work__kind { color: var(--ink); }
 .work__what { color: var(--ink-2); font-size: 1.05rem; }
@@ -297,6 +297,6 @@ mark {
 .review { border: 2px dashed var(--azur); border-radius: 10px; padding: 18px 20px; font-size: 1rem; max-width: 52rem; display: grid; gap: 0.6em; }
 .review ul { list-style: disc; padding-left: 1.2em; display: grid; gap: 0.3em; }
 .review p { color: var(--ink-2); font-size: 0.9rem; overflow-wrap: anywhere; }
-.review-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1.5px solid var(--ink); vertical-align: middle; font-stretch: 100%; }
+.review-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1.5px solid var(--ink); vertical-align: middle; }
 .review-tag--haute { background: var(--marker); }
 .review-tag--faible { border-style: dashed; color: var(--ink-2); }

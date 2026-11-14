@@ -170,7 +170,7 @@ fs.rmSync(out, { recursive: true, force: true });
 for (const d of ['layout', 'templates', 'sections', 'assets', 'config', 'locales']) fs.mkdirSync(path.join(out, d), { recursive: true });
 const copy = (from, to) => fs.copyFileSync(from, path.join(out, 'assets', to)); // Shopify range tout à plat dans assets/
 copy('assets/vendor/three.module.min.js', 'three.module.min.js');
-copy('assets/fonts/bricolage.woff2', 'bricolage.woff2');
+copy('assets/fonts/inter.woff2', 'inter.woff2');
 copy('assets/fonts/caveat.woff2', 'caveat.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
 copy('favicon.svg', 'favicon.svg');
@@ -190,7 +190,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" href="{{ 'favicon.svg' | asset_url }}" type="image/svg+xml">
-<link rel="preload" href="{{ 'bricolage.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ 'inter.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
 {{ 'azuweb-site.css' | asset_url | stylesheet_tag }}
 {% if template.name == 'index' %}{% raw %}${head}{% endraw %}{% endif %}
 {{ content_for_header }}
