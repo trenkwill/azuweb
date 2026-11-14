@@ -361,7 +361,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
 <meta name="description" content="{{ page_description | default: ${JSON.stringify(description)} | escape }}">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#fffbf8">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" href="{{ 'favicon.svg' | asset_url }}" type="image/svg+xml">
 <link rel="preload" href="{{ 'inter.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>

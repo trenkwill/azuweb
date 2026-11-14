@@ -72,7 +72,7 @@
     function draw(t, col, real) {
       g.clearRect(0, 0, w, h);
       g.globalAlpha = real ? 1 : Math.min(1, t * 1.6);
-      g.fillStyle = '#f4f6f9'; g.fillRect(0, 0, w, h);
+      g.fillStyle = '#fffbf8'; g.fillRect(0, 0, w, h);
       g.globalAlpha = 1;
       for (var k = 0; k < n; k++) {
         var e = Math.min(1, Math.max(0, (t - delay[k]) / (1 - 0.35))); e = e * e * (3 - 2 * e);

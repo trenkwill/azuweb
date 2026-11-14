@@ -14,11 +14,12 @@
 
 :root {
   color-scheme: light;
-  --paper: #ffffff;
-  --paper-2: #f4f6f9;     /* bandes : un gris à peine bleuté */
+  --paper: #fffbf8;       /* le fond de la charte : un blanc chaud */
+  --paper-2: #f6efe8;     /* bandes : le même, un ton plus soutenu */
+  --card: #ffffff;        /* cartes et champs, pour qu'ils se détachent du fond */
   --ink: #10151f;         /* encre */
   --ink-2: #4a5263;       /* texte secondaire */
-  --rule: #d9dee7;        /* filets */
+  --rule: #e4dad0;        /* filets */
   --bleu: #007bf7;        /* le bleu du logo : curseur, traits, points */
   --rose: #fdafbd;        /* le rose du logo : ombres des boutons, surligneur */
   --azur: #0067de;        /* le même bleu, un cran plus dense, pour le texte et les boutons */
@@ -93,7 +94,7 @@ mark {
 }
 .btn:hover { transform: translate(-1px, -1px); box-shadow: 6px 6px 0 var(--rose); }
 .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--rose); }
-.btn--quiet { background: var(--paper); color: var(--azur); box-shadow: none; }
+.btn--quiet { background: var(--card); color: var(--azur); box-shadow: none; }
 .btn--quiet:hover { box-shadow: 4px 4px 0 var(--rose); }
 .link { font-weight: 600; color: var(--ink); }
 
@@ -125,10 +126,10 @@ mark {
 .machine__tabs { display: flex; flex-wrap: wrap; gap: 8px; }
 .machine__tabs button {
   font: inherit; font-size: var(--t-sm); font-weight: 640; padding: 0.6em 1em; border-radius: 999px; cursor: pointer;
-  border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+  border: 2px solid var(--ink); background: var(--card); color: var(--ink);
 }
 .machine__tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--rose); }
-.machine__window { border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--paper); box-shadow: 8px 8px 0 var(--ink); }
+.machine__window { border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--card); box-shadow: 8px 8px 0 var(--ink); }
 .machine__bar { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 2px solid var(--ink); background: var(--paper-2); font-size: 0.8rem; }
 .machine__dots { display: inline-flex; gap: 5px; }
 .machine__dots i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); }
@@ -269,7 +270,7 @@ mark {
 .plain { display: grid; gap: 0.75em; }
 .plain li { padding-left: 1.4em; position: relative; }
 .plain li::before { content: "→"; position: absolute; left: 0; color: var(--azur); }
-.mail { background: var(--paper); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 8px 8px 0 var(--ink); transform: rotate(0.8deg); max-width: 34rem; min-width: 0; }
+.mail { background: var(--card); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 8px 8px 0 var(--ink); transform: rotate(0.8deg); max-width: 34rem; min-width: 0; }
 .mail figcaption { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); padding: 10px 18px; border-bottom: 2px solid var(--ink); background: var(--paper-2); border-radius: 8px 8px 0 0; }
 .mail__body { padding: 20px 22px 24px; display: grid; gap: 0.85em; font-size: 1.05rem; line-height: 1.5; }
 .sign { font-family: var(--hand); font-size: 1.7rem; line-height: 1.1; color: var(--bleu); transform: rotate(-4deg); justify-self: start; margin-top: 0.1em; }
@@ -300,7 +301,7 @@ mark {
 /* ---------- Nous ---------- */
 .band--ridge { padding-top: clamp(150px, 26vh, 260px); overflow: hidden; }
 .ridge { position: absolute; inset: 0 0 auto; width: 100%; height: clamp(130px, 22vh, 220px); fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.ridge .far { stroke: #aab3c2; }
+.ridge .far { stroke: #c9bdb1; }
 .ridge .sun { stroke: var(--azur); }
 .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(24px, 4vw, 64px); margin-block: clamp(24px, 4vh, 44px); max-width: 62rem; }
 .duo > div { display: grid; gap: 0.6em; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; min-width: 0; }
@@ -322,9 +323,9 @@ mark {
 .contact .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(32px, 6vw, 90px); align-items: start; }
 .mail-line { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
 .mail__addr { font-size: var(--t-h3); font-weight: 720; letter-spacing: -0.02em; color: var(--ink); overflow-wrap: anywhere; }
-.brief { border: 2px solid var(--ink); border-radius: 10px; box-shadow: 8px 8px 0 var(--ink); padding: 22px; display: grid; gap: 14px; background: var(--paper); min-width: 0; }
+.brief { border: 2px solid var(--ink); border-radius: 10px; box-shadow: 8px 8px 0 var(--ink); padding: 22px; display: grid; gap: 14px; background: var(--card); min-width: 0; }
 .brief__hello { font-size: var(--t-lg); font-weight: 680; }
-.brief textarea, .brief input, .brief select { font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--paper); border: 0; border-bottom: 2px solid var(--rule); border-radius: 0; padding: 8px 0; width: 100%; }
+.brief textarea, .brief input, .brief select { font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--card); border: 0; border-bottom: 2px solid var(--rule); border-radius: 0; padding: 8px 0; width: 100%; }
 .brief textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
 .brief textarea:focus, .brief input:focus, .brief select:focus { outline: none; border-bottom-color: var(--azur); }
 .brief label { display: grid; gap: 2px; font-size: 0.8rem; font-weight: 600; color: var(--ink-2); min-width: 0; }
@@ -371,7 +372,7 @@ a.note { text-decoration: none; } a.note:hover { text-decoration: underline; }
 .hero--metier h1 { font-size: clamp(2.2rem, 4.6vw, 4rem); }
 .hero--metier .hero__text { gap: 18px; }
 .demo { display: grid; gap: 22px; }
-.demo__stage { border: 2px solid var(--ink); border-radius: 14px; box-shadow: 8px 8px 0 var(--ink); background: var(--paper); padding: clamp(14px, 2.5vw, 28px); position: relative; min-width: 0; }
+.demo__stage { border: 2px solid var(--ink); border-radius: 14px; box-shadow: 8px 8px 0 var(--ink); background: var(--card); padding: clamp(14px, 2.5vw, 28px); position: relative; min-width: 0; }
 .demo__legend { font-size: 0.8rem; color: var(--ink-2); }
 @keyframes pop-in { from { opacity: 0; transform: translateY(8px) scale(0.97); } }
 .is-in { animation: pop-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1.2); }
@@ -437,7 +438,7 @@ a.note { text-decoration: none; } a.note:hover { text-decoration: underline; }
 
 .merge { display: grid; gap: 18px; }
 .merge__cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; transition: gap 0.5s; }
-.merge__card { border: 2px solid var(--ink); border-radius: 10px; padding: 10px; display: grid; gap: 2px; font-size: 0.8rem; background: var(--paper); transform: rotate(calc((var(--i) - 2) * 2.2deg)) translateY(calc(abs(var(--i) - 2) * 5px)); transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s; min-width: 0; }
+.merge__card { border: 2px solid var(--ink); border-radius: 10px; padding: 10px; display: grid; gap: 2px; font-size: 0.8rem; background: var(--card); transform: rotate(calc((var(--i) - 2) * 2.2deg)) translateY(calc(abs(var(--i) - 2) * 5px)); transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s; min-width: 0; }
 .merge__card b { font-size: 0.85rem; } .merge__card span { color: var(--ink-2); overflow-wrap: anywhere; }
 .merge__board { border: 2px solid var(--ink); border-radius: 12px; padding: 16px; display: grid; gap: 14px; opacity: 0.18; filter: grayscale(1); transition: opacity 0.6s, filter 0.6s, box-shadow 0.6s; }
 .merge__title { font-weight: 720; } .merge__title span { font-weight: 500; color: var(--ink-2); }
