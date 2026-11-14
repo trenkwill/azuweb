@@ -171,7 +171,8 @@ for (const d of ['layout', 'templates', 'sections', 'assets', 'config', 'locales
 const copy = (from, to) => fs.copyFileSync(from, path.join(out, 'assets', to)); // Shopify range tout à plat dans assets/
 copy('assets/vendor/three.module.min.js', 'three.module.min.js');
 copy('assets/fonts/inter.woff2', 'inter.woff2');
-copy('assets/fonts/caveat.woff2', 'caveat.woff2');
+copy('assets/fonts/hand.woff2', 'hand.woff2');
+copy('assets/fonts/signature.woff2', 'signature.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
 copy('favicon.svg', 'favicon.svg');
 if (fs.existsSync('assets/img/cas')) for (const f of fs.readdirSync('assets/img/cas')) copy(`assets/img/cas/${f}`, `cas-${f}`);

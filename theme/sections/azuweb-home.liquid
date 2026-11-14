@@ -40,7 +40,7 @@
       <div class="prose">
         <h2 id="histoire-t">On fait ce métier depuis l'époque où les sites se mettaient en page avec des <span data-draw="underline">tableaux.</span></h2>
         <p>Des <code>&lt;table&gt;</code>, des images transparentes d'un pixel pour caler les colonnes, et un compteur de visites en bas de page. Depuis, on a refait le même métier avec chaque nouvelle façon de faire.</p>
-        <p>Voici la même page d'accueil, construite comme on la construisait à chaque époque. Essayez.</p>
+        <p>Voici la même boutique en ligne, construite comme on la construisait à chaque époque. Essayez.</p>
       </div>
 
       <div class="machine" id="machine" data-era="tables">
@@ -57,22 +57,23 @@
           </div>
           <div class="machine__view" id="era-view" role="tabpanel" aria-labelledby="tab-tables">
 
-            <!-- Fin des années 90 : une vraie mise en page en tableaux, comme à l'époque. -->
+            <!-- La même boutique à quatre époques. Fin des années 90 : une vraie mise en page en tableaux. -->
             <div class="era era--tables" data-era="tables">
               <table width="100%" cellpadding="6" cellspacing="0" border="1">
-                <tr><td colspan="2" class="t-head"><b>*** Bienvenue sur le site d'Azuweb ! ***</b></td></tr>
+                <tr><td colspan="2" class="t-head"><b>*** La Boutique du Sac en Toile ***</b></td></tr>
                 <tr>
                   <td width="130" valign="top" class="t-nav">
-                    <b>Menu</b><br>
-                    <u>Accueil</u><br><u>Nos services</u><br><u>Livre d'or</u><br><u>Liens</u><br><u>Nous écrire</u>
+                    <b>Rayons</b><br>
+                    <u>Accueil</u><br><u>Nos sacs</u><br><u>Bon de commande</u><br><u>Livre d'or</u><br><u>Nous écrire</u>
                   </td>
                   <td valign="top">
-                    <span class="t-new">NOUVEAU !</span> Nous créons votre <b>site Internet</b>.<br><br>
+                    <span class="t-new">NOUVEAU !</span> Commandez <b>par Internet</b> !<br><br>
                     <table cellpadding="4" cellspacing="0" border="1" class="t-inner">
-                      <tr><td>Création de pages</td><td>Oui</td></tr>
-                      <tr><td>Boutique en ligne</td><td>Bientôt</td></tr>
+                      <tr><td><b>Réf.</b></td><td><b>Article</b></td><td><b>Prix</b></td><td>&nbsp;</td></tr>
+                      <tr><td>001</td><td>Sac en toile écru</td><td>59 F</td><td><u>Ajouter au caddie</u></td></tr>
+                      <tr><td>002</td><td>Sac en toile bleu</td><td>59 F</td><td><u>Ajouter au caddie</u></td></tr>
                     </table>
-                    <div class="t-works">Site en construction</div>
+                    <div class="t-works">Paiement par chèque : imprimez le bon de commande</div>
                   </td>
                 </tr>
                 <tr><td colspan="2" class="t-foot">Vous êtes le visiteur n° <span class="t-count">001337</span> · Site optimisé pour un écran 800×600</td></tr>
@@ -80,35 +81,48 @@
             </div>
 
             <div class="era era--web2" data-era="web2" hidden>
-              <div class="w-head"><span class="w-logo">azuweb</span><span class="w-beta">bêta</span><span class="w-menu">accueil &nbsp; services &nbsp; blog</span></div>
+              <div class="w-head"><span class="w-logo">sacentoile</span><span class="w-beta">bêta</span><span class="w-menu">boutique &nbsp; blog &nbsp; <b>panier (0)</b></span></div>
               <div class="w-body">
                 <div class="w-box">
-                  <p class="w-title">Votre site, simple comme bonjour.</p>
-                  <p>Des feuilles de style, des coins arrondis et plus un seul tableau.</p>
-                  <span class="w-btn">Demander un devis »</span>
+                  <div class="w-photo"><span class="bag" aria-hidden="true"></span></div>
+                  <div class="w-info">
+                    <p class="w-title">Le sac en toile</p>
+                    <p>★★★★☆ <span class="w-small">12 avis</span></p>
+                    <p class="w-price">19,00 €</p>
+                    <span class="w-btn">Ajouter au panier »</span>
+                    <p class="w-small">Paiement 100 % sécurisé</p>
+                  </div>
                 </div>
-                <div class="w-tags"><span>css</span> <span>ajax</span> <span>blog</span> <span>rss</span></div>
+                <div class="w-tags"><span>sacs</span> <span>toile</span> <span>cadeaux</span> <span>promo</span></div>
               </div>
             </div>
 
             <div class="era era--flat" data-era="flat" hidden>
-              <div class="f-nav"><span>AZUWEB</span><i></i></div>
+              <div class="f-nav"><i></i><span>SAC EN TOILE</span><b>PANIER</b></div>
               <div class="f-hero">
-                <p class="f-title">Des sites qui s'adaptent à tous les écrans</p>
-                <span class="f-btn">EN SAVOIR PLUS</span>
+                <p class="f-title">Nouvelle collection</p>
+                <span class="f-btn">ACHETER</span>
               </div>
-              <div class="f-row"><span></span><span></span><span></span></div>
+              <div class="f-row">
+                <div><span><span class="bag" aria-hidden="true"></span></span>CORAIL<br>19 €</div>
+                <div><span><span class="bag" aria-hidden="true"></span></span>SOLEIL<br>19 €</div>
+                <div><span><span class="bag" aria-hidden="true"></span></span>AZUR<br>19 €</div>
+              </div>
             </div>
 
             <div class="era era--now" data-era="now" hidden>
-              <p class="n-kicker">Shopify · Amazon · Publicité · E-mail</p>
-              <p class="n-title">On construit votre boutique. Puis on la fait <mark>vendre.</mark></p>
-              <span class="n-btn">Nous écrire</span>
+              <div class="n-photo"><span class="bag" aria-hidden="true"></span></div>
+              <div class="n-info">
+                <p class="n-kicker">Sacs · Toile de coton</p>
+                <p class="n-title">Le sac en toile <mark>qui tient dix ans.</mark></p>
+                <p class="n-text">Coton épais, coutures doublées, fabriqué en France. Livré en 48 h, retour gratuit.</p>
+                <p class="n-buy"><span class="n-btn">Ajouter au panier · 19 €</span><span class="n-pay">ou payer en un geste</span></p>
+              </div>
             </div>
 
           </div>
         </div>
-        <p class="machine__caption" id="era-caption" aria-live="polite">Fin des années 90. Tout est dans des cases de tableau, bordures comprises.</p>
+        <p class="machine__caption" id="era-caption" aria-live="polite">Fin des années 90. Un tableau pour le catalogue, un bon de commande à imprimer, et un chèque par la poste.</p>
       </div>
 
       <div class="prose">

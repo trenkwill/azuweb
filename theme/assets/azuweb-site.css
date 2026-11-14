@@ -7,9 +7,14 @@
   font-weight: 100 900; font-display: swap;
 }
 @font-face {
-  font-family: "Caveat";
-  src: url("caveat.woff2") format("woff2");
-  font-weight: 400 700; font-display: swap;
+  font-family: "Reenie Beanie";
+  src: url("hand.woff2") format("woff2");
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Nothing You Could Do";
+  src: url("signature.woff2") format("woff2");
+  font-weight: 400; font-display: swap;
 }
 
 :root {
@@ -22,7 +27,8 @@
   --azur: #1456d9;        /* le bleu du stylo et des liens */
   --marker: #ffe45c;      /* surligneur */
   --text: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --hand: "Reenie Beanie", "Segoe Print", "Bradley Hand", cursive;   /* annotations au stylo */
+  --sign: "Nothing You Could Do", "Segoe Script", "Bradley Hand", cursive; /* signatures */
   --t-sm: 0.92rem; --t-base: 1.12rem; --t-lg: 1.34rem;
   --t-h3: clamp(1.45rem, 2.2vw, 1.85rem);
   --t-h2: clamp(1.9rem, 4vw, 3.1rem);
@@ -66,7 +72,7 @@ mark {
   background: linear-gradient(100deg, transparent 0.5%, var(--marker) 2.5%, var(--marker) 97%, transparent 99.5%) 0 78% / 100% 62% no-repeat;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
-.note { font-family: var(--hand); font-size: 1.55rem; line-height: 1.05; color: var(--azur); display: inline-block; transform: rotate(-3deg); position: relative; }
+.note { font-family: var(--hand); font-size: 1.9rem; line-height: 0.95; color: var(--azur); display: inline-block; transform: rotate(-3deg); position: relative; }
 [data-draw] { position: relative; white-space: nowrap; }
 .draw { position: absolute; overflow: visible; pointer-events: none; fill: none; stroke: var(--azur); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .draw path { stroke-dasharray: var(--len); stroke-dashoffset: 0; }
@@ -132,8 +138,9 @@ mark {
 .machine__dots i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); }
 .machine__url { flex: 1; min-width: 0; background: var(--paper); border: 1.5px solid var(--ink); border-radius: 5px; padding: 2px 8px; font-family: ui-monospace, Menlo, Consolas, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .machine__view { height: clamp(300px, 46vw, 400px); view-transition-name: era; overflow: hidden; position: relative; }
-.machine__caption { font-family: var(--hand); font-size: 1.5rem; line-height: 1.15; color: var(--azur); max-width: 30em; min-height: 2.3em; }
+.machine__caption { font-family: var(--hand); font-size: 1.85rem; line-height: 1; color: var(--azur); max-width: 30em; min-height: 2.3em; }
 .era { height: 100%; overflow: hidden; }
+.era[hidden] { display: none; }
 ::view-transition-old(era) { animation: era-out 0.38s cubic-bezier(0.6, 0, 0.8, 0.4) both; }
 ::view-transition-new(era) { animation: era-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 @keyframes era-out { to { opacity: 0; transform: scale(0.96) translateY(-8px); filter: blur(4px); } }
@@ -177,14 +184,35 @@ mark {
 .era--flat .f-title { font-size: clamp(20px, 3.4vw, 32px); font-weight: 200; max-width: 16em; line-height: 1.2; }
 .era--flat .f-btn { border: 2px solid #fff; padding: 9px 22px; font-size: 12px; letter-spacing: 2px; }
 .era--flat .f-row { display: flex; justify-content: center; gap: 28px; padding: 16px; }
-.era--flat .f-row span { width: 44px; height: 44px; border-radius: 50%; background: #e74c3c; }
-.era--flat .f-row span:nth-child(2) { background: #f1c40f; } .era--flat .f-row span:nth-child(3) { background: #3498db; }
 
-/* Aujourd'hui — cette page, en petit. */
-.era--now { padding: clamp(20px, 4vw, 44px); display: grid; align-content: center; justify-items: start; gap: 14px; }
-.era--now .n-kicker { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); }
-.era--now .n-title { font-size: clamp(1.7rem, 4.6vw, 3.1rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; max-width: 11em; }
+/* Le produit de la boutique fictive : un sac dessiné en CSS, repris à chaque époque. */
+.bag { display: inline-block; position: relative; width: 1em; height: 1.05em; margin-top: 0.42em; background: currentColor; border-radius: 0.04em 0.04em 0.1em 0.1em; }
+.bag::before { content: ""; position: absolute; left: 22%; right: 22%; bottom: 100%; height: 0.4em; border: 0.07em solid currentColor; border-bottom: 0; border-radius: 0.3em 0.3em 0 0; }
+
+.era--tables .t-works { background: #ffffcc; color: #000; text-shadow: none; border: 1px dashed #000; font-weight: normal; }
+.era--web2 .w-box { grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
+.era--web2 .w-photo { font-size: 74px; color: #d9b98a; padding: 6px 22px 14px; border-radius: 10px; background: linear-gradient(#f7fbff, #dcebf7); border: 1px solid #c6d9ea; line-height: 1; }
+.era--web2 .w-info { display: grid; gap: 6px; justify-items: start; }
+.era--web2 .w-price { font-size: 22px; font-weight: bold; color: #e2001a; }
+.era--web2 .w-small { font-size: 11px; color: #777; }
+.era--flat .f-nav b { font-weight: 400; }
+.era--flat .f-hero { padding: 14px; gap: 12px; }
+.era--flat .f-row { color: #2c3e50; font-size: 11px; letter-spacing: 2px; text-align: center; gap: clamp(14px, 4vw, 44px); padding: 12px; }
+.era--flat .f-row div { display: grid; gap: 6px; justify-items: center; }
+.era--flat .f-row div > span { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; color: #fff; line-height: 1; background: #e74c3c; padding-bottom: 4px; }
+.era--flat .f-row div:nth-child(2) > span { background: #f1c40f; } .era--flat .f-row div:nth-child(3) > span { background: #3498db; }
+
+/* Aujourd'hui — une fiche produit comme on les construit. */
+.era--now { padding: clamp(16px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(16px, 3vw, 36px); align-items: center; }
+.era--now .n-photo { background: var(--paper-2); border-radius: 10px; height: 100%; min-height: 150px; display: grid; place-items: center; font-size: clamp(70px, 13vw, 130px); color: #c9ab7c; line-height: 1; padding-bottom: 0.1em; }
+.era--now .n-info { display: grid; gap: 10px; justify-items: start; min-width: 0; }
+.era--now .n-kicker { font-size: 0.75rem; font-weight: 600; color: var(--ink-2); }
+.era--now .n-title { font-size: clamp(1.3rem, 3.2vw, 2.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; }
+.era--now .n-text { font-size: 0.9rem; color: var(--ink-2); line-height: 1.4; }
+.era--now .n-buy { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
 .era--now .n-btn { font-size: 0.85rem; font-weight: 680; padding: 0.8em 1.1em; border-radius: 8px; background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--marker); }
+.era--now .n-pay { font-size: 0.75rem; color: var(--ink-2); text-decoration: underline; }
+@media (max-width: 560px) { .era--tables { font-size: 13px; padding: 8px; } .era--tables .t-head { font-size: 15px; } .era--tables .t-inner { font-size: 12px; } .era--tables .t-works { font-size: 11px; } .era--now { grid-template-columns: minmax(0, 1fr); } .era--now .n-photo { min-height: 90px; font-size: 60px; } .era--now .n-text { display: none; } .era--web2 .w-photo { font-size: 48px; padding: 4px 12px 10px; } }
 
 /* ---------- Métiers : une icône en points devant chaque bloc ---------- */
 .metiers__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(40px, 7vh, 80px) clamp(32px, 6vw, 96px); margin-top: clamp(32px, 6vh, 64px); }
@@ -203,7 +231,7 @@ mark {
 .mail { background: var(--paper); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 8px 8px 0 var(--ink); transform: rotate(0.8deg); max-width: 34rem; min-width: 0; }
 .mail figcaption { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); padding: 10px 18px; border-bottom: 2px solid var(--ink); background: var(--paper-2); border-radius: 8px 8px 0 0; }
 .mail__body { padding: 20px 22px 24px; display: grid; gap: 0.85em; font-size: 1.05rem; line-height: 1.5; }
-.sign { font-family: var(--hand); font-size: 2.1rem; line-height: 1; color: var(--azur); transform: rotate(-4deg); justify-self: start; margin-top: 0.1em; }
+.sign { font-family: var(--sign); font-size: 1.75rem; line-height: 1.3; color: var(--azur); transform: rotate(-4deg); justify-self: start; margin-top: 0.1em; }
 
 .mails { display: grid; gap: 34px; min-width: 0; }
 .mail--b { transform: rotate(-0.7deg); justify-self: end; }
@@ -217,7 +245,7 @@ mark {
 
 .steps { counter-reset: s; margin-top: clamp(24px, 4vh, 44px); max-width: 48rem; border-top: 2px solid var(--ink); }
 .steps li { counter-increment: s; padding: 16px 0 16px 3.2rem; position: relative; border-bottom: 1px solid var(--rule); color: var(--ink-2); }
-.steps li::before { content: counter(s); position: absolute; left: 0.3rem; top: 14px; font-family: var(--hand); font-size: 2.2rem; line-height: 0.9; color: var(--azur); }
+.steps li::before { content: counter(s); position: absolute; left: 0.3rem; top: 14px; font-family: var(--hand); font-size: 2.6rem; line-height: 0.8; color: var(--azur); }
 .steps strong { color: var(--ink); font-weight: 720; }
 
 .work { margin-top: clamp(24px, 4vh, 44px); border-top: 2px solid var(--ink); }
@@ -268,7 +296,7 @@ mark {
 .h2--small { font-size: var(--t-h3); }
 .now { margin-top: clamp(20px, 3vh, 36px); border-top: 2px solid var(--ink); }
 .now li { padding: 14px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 2px; }
-.now time { font-family: var(--hand); font-size: 1.35rem; line-height: 1; color: var(--azur); }
+.now time { font-family: var(--hand); font-size: 1.65rem; line-height: 1; color: var(--azur); }
 .work__name a { color: inherit; text-decoration: none; }
 .work__name a::after { content: " →"; color: var(--azur); font-weight: 500; }
 

@@ -19,10 +19,10 @@
   var machine = document.getElementById('machine');
   if (machine) (function () {
   var captions = {
-    tables: 'Fin des années 90. Tout est dans des cases de tableau, bordures comprises.',
-    web2: 'Milieu des années 2000. Les feuilles de style arrivent, et avec elles les boutons brillants.',
-    flat: 'Années 2010. Le téléphone impose ses règles : aplats, grandes zones, menu replié.',
-    now: "Aujourd'hui. Moins d'effets, plus de texte. Et toujours la même question : est-ce que ça vend ?",
+    tables: 'Fin des années 90. Un tableau pour le catalogue, un bon de commande à imprimer, et un chèque par la poste.',
+    web2: 'Milieu des années 2000. Le panier arrive, avec les boutons brillants et le « paiement 100 % sécurisé ».',
+    flat: 'Années 2010. Le téléphone impose ses règles : aplats, grandes photos, menu replié.',
+    now: "Aujourd'hui. Une promesse, une preuve, un bouton. Et toujours la même question : est-ce que ça vend ?",
   };
   var tabs = [].slice.call(machine.querySelectorAll('[role="tab"]'));
   var eras = [].slice.call(machine.querySelectorAll('.era'));
