@@ -1,0 +1,62 @@
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="{{ routes.root_url }}#top"><img src="{{ 'logo.png' | asset_url }}" alt="Azuweb" width="720" height="157"></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}#metiers">Ce qu'on fait</a>
+      <a href="{{ routes.root_url }}#projets">Projets</a>
+      <a href="{{ routes.root_url }}#questions">Questions</a>
+      <a href="{{ routes.root_url }}#nous">Nous</a>
+      <a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
+    <div class="wrap"><div class="prose">
+      <a class="back" href="{{ routes.root_url }}#nous">← L'atelier</a>
+      <p class="kicker">Marketing et commerce international</p>
+      <h1>Emilie Dupré.</h1>
+      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
+    </div></div>
+  </section>
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 class="h2--small">Ce dont elle s'occupe</h2>
+        <p class="person__icons"><a href="{{ routes.root_url }}pages/amazon"><canvas data-icon="box" aria-hidden="true"></canvas>Amazon Seller Central →</a><a href="{{ routes.root_url }}pages/publicite-meta"><canvas data-icon="megaphone" aria-hidden="true"></canvas>Publicité Meta →</a><a href="{{ routes.root_url }}pages/emails-klaviyo"><canvas data-icon="envelope" aria-hidden="true"></canvas>E-mails Klaviyo →</a></p>
+        <p>C'est à elle que vous parlez quand il s'agit de vendre : un compte Amazon à tenir, des campagnes à suivre, une liste e-mail à faire vivre.</p>
+        <ul class="plain">
+          <li><strong>Chaque matin,</strong> le relevé des dépenses et des achats de la veille.</li>
+          <li><strong>Chaque semaine,</strong> un compte de résultat : ventes, publicité, marge.</li>
+          <li><strong>Avant chaque temps fort,</strong> un plan jour par jour.</li>
+        </ul>
+        <p><a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+      </div>
+      <figure class="mail mail--b">
+          <figcaption>Exemple de réponse, côté marketing</figcaption>
+          <div class="mail__body">
+            <p>Hello Claire,</p>
+            <p>J'ai repris les campagnes de la semaine. Deux annonces portent l'essentiel des ventes, les trois autres dépensent sans vendre.</p>
+            <p><mark>Je propose de couper ces trois-là</mark> et de reporter leur budget sur les deux premières.</p>
+            <p>Une question avant d'y toucher : si ça marche, votre stock suit ?</p>
+            <p class="sign">Emilie</p>
+          </div>
+        </figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap"><div class="prose">
+      <h2 class="h2--small">Vendre à l'étranger</h2>
+      <p>Ouvrir un marché, ce n'est pas traduire un site. Ce sont des prix, des taxes, des délais de livraison et une publicité à repenser pour chaque pays. Plusieurs de nos clients vendent aujourd'hui en Amérique du Nord, sur leur boutique ou sur Amazon.</p>
+    </div></div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
+    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+  </div>
+</footer>
+{% schema %}
+{ "name": "Azuweb · Emilie", "settings": [] }
+{% endschema %}

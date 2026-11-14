@@ -110,7 +110,7 @@ fs.writeFileSync('index.html', html);
 fs.writeFileSync('llms.txt', court + (cas.length ? `\n## Pour aller plus loin\n- [Version complète avec les études de cas](${A.site}/llms-full.txt)\n` : ''));
 fs.writeFileSync('llms-full.txt', long);
 fs.writeFileSync('robots.txt', `# Tout le monde est bienvenu, robots d'IA compris : ce site est fait pour être lu et cité.\nUser-agent: *\nAllow: /\n\nSitemap: ${A.site}/sitemap.xml\n`);
-fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'vercors/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'vercors/', 'william/', 'emilie/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 
 /* ---------- Pages d'étude de cas ---------- */
 const casMain = (c, root, img) => {
@@ -247,6 +247,83 @@ const vercorsMain = (root) => `<main>
     </div></div>
   </section>
 </main>`;
+// Les deux pages personnelles. La machine à remonter le temps vit sur celle de William.
+const machine = fs.readFileSync('content/fragments/machine.html', 'utf8');
+const mails = html.match(/<div class="mails">[\s\S]*?<\/figure>\s*<\/div>/)[0].match(/<figure[\s\S]*?<\/figure>/g);
+const svc = (root, slug) => (root === '../' ? `../services/${slug}/` : `${root}pages/${slug}`);
+const icons = (root, list) => `<p class="person__icons">${list.map(([icon, slug, label]) => `<a href="${svc(root, slug)}"><canvas data-icon="${icon}" aria-hidden="true"></canvas>${label} →</a>`).join('')}</p>`;
+const williamMain = (root) => `<main>
+  <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
+    <div class="wrap"><div class="prose">
+      <a class="back" href="${root}#nous">← L'atelier</a>
+      <p class="kicker">Design et développement</p>
+      <h1>William Hutter.</h1>
+      <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, applications sur mesure, tableaux de bord.</p>
+    </div></div>
+  </section>
+  <section class="era-section" id="histoire">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Il a commencé quand les sites se mettaient en page avec des <span data-draw="underline">tableaux.</span></h2>
+        <p>Des <code>&lt;table&gt;</code>, des images transparentes d'un pixel pour caler les colonnes, et un compteur de visites en bas de page. Depuis, il a refait le même métier avec chaque nouvelle façon de faire.</p>
+        <p>Voici la même boutique en ligne, construite comme on la construisait à chaque époque. Essayez.</p>
+      </div>
+${machine}
+      <div class="prose">
+        <p>Les outils changent tous les cinq ans. Ce qu'on demande à une page n'a pas bougé : <mark>se charger vite, se lire sans effort, donner envie d'acheter.</mark></p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 class="h2--small">Ce dont il s'occupe</h2>
+        ${icons(root, [['bag', 'shopify', 'Boutiques Shopify'], ['bars', 'donnees', 'Données'], ['network', 'agents-ia', 'Agents IA']])}
+        <p>C'est à lui que vous parlez quand il s'agit du site : une page qui casse, une nouvelle fiche produit, une application à écrire.</p>
+        <p><a class="btn" href="${root}#contact">Nous écrire</a></p>
+      </div>
+      ${mails[0]}
+    </div>
+  </section>
+</main>`;
+const emilieMain = (root) => `<main>
+  <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
+    <div class="wrap"><div class="prose">
+      <a class="back" href="${root}#nous">← L'atelier</a>
+      <p class="kicker">Marketing et commerce international</p>
+      <h1>Emilie Dupré.</h1>
+      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
+    </div></div>
+  </section>
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 class="h2--small">Ce dont elle s'occupe</h2>
+        ${icons(root, [['box', 'amazon', 'Amazon Seller Central'], ['megaphone', 'publicite-meta', 'Publicité Meta'], ['envelope', 'emails-klaviyo', 'E-mails Klaviyo']])}
+        <p>C'est à elle que vous parlez quand il s'agit de vendre : un compte Amazon à tenir, des campagnes à suivre, une liste e-mail à faire vivre.</p>
+        <ul class="plain">
+          <li><strong>Chaque matin,</strong> le relevé des dépenses et des achats de la veille.</li>
+          <li><strong>Chaque semaine,</strong> un compte de résultat : ventes, publicité, marge.</li>
+          <li><strong>Avant chaque temps fort,</strong> un plan jour par jour.</li>
+        </ul>
+        <p><a class="btn" href="${root}#contact">Nous écrire</a></p>
+      </div>
+      ${mails[1]}
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap"><div class="prose">
+      <h2 class="h2--small">Vendre à l'étranger</h2>
+      <p>Ouvrir un marché, ce n'est pas traduire un site. Ce sont des prix, des taxes, des délais de livraison et une publicité à repenser pour chaque pays. Plusieurs de nos clients vendent aujourd'hui en Amérique du Nord, sur leur boutique ou sur Amazon.</p>
+    </div></div>
+  </section>
+</main>`;
+const modules = (root) => `<script type="module" src="${root}assets/js/scene.js"></script>\n`;
+for (const [slug, title, desc, main] of [
+  ['william', 'William Hutter · Azuweb', "William Hutter, design et développement chez Azuweb : des sites depuis l'époque des tableaux, des boutiques Shopify aujourd'hui.", williamMain],
+  ['emilie', 'Emilie Dupré · Azuweb', 'Emilie Dupré, marketing et commerce international chez Azuweb : Amazon, publicité Meta, e-mails Klaviyo.', emilieMain],
+]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'))); }
+
 fs.mkdirSync('vercors', { recursive: true });
 fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n'));
 
@@ -291,7 +368,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 </html>
 `);
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<\/script>\s*/g, '');
-const liquid = (s) => s.replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"');
+const liquid = (s) => s.replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
 const lNav = liquid(nav), lFoot = foot;
@@ -314,6 +391,10 @@ A.services.forEach((s, i) => {
 });
 section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${vercorsMain(R)}\n${lFoot}\n<script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>`);
 fs.writeFileSync(path.join(out, 'templates/page.vercors.json'), tpl('azuweb-vercors'));
+section('azuweb-william.liquid', 'Azuweb · William', `${lNav}\n${williamMain(R)}\n${lFoot}`);
+fs.writeFileSync(path.join(out, 'templates/page.william.json'), tpl('azuweb-william'));
+section('azuweb-emilie.liquid', 'Azuweb · Emilie', `${lNav}\n${emilieMain(R)}\n${lFoot}`);
+fs.writeFileSync(path.join(out, 'templates/page.emilie.json'), tpl('azuweb-emilie'));
 // La version texte pour les IA : créer une page « llms » dans l'admin avec le modèle « llms ».
 fs.writeFileSync(path.join(out, 'templates/page.llms.liquid'), `{% layout none %}<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Azuweb, version texte</title></head><body><pre style="white-space:pre-wrap;font:16px/1.5 ui-monospace,monospace;max-width:80ch;margin:2rem auto;padding:0 1rem">{% raw %}${esc(long)}{% endraw %}</pre></body></html>\n`);
 fs.writeFileSync(path.join(out, 'config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Azuweb', theme_version: '1.1.0', theme_author: 'Azuweb', theme_documentation_url: A.site, theme_support_url: A.site }], null, 2));
