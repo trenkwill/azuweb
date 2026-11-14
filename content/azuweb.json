@@ -1,10 +1,10 @@
 {
   "_lisezmoi": "Source unique des informations sur Azuweb. Modifiez ce fichier puis lancez `node tools/build.mjs` : la page, llms.txt, les données structurées et le thème Shopify sont régénérés.",
-  "mis_a_jour": "2026-11-14",
+  "mis_a_jour": "2026-11-15",
   "nom": "Azuweb",
   "site": "https://azuweb.net",
   "accroche": "On construit votre boutique. Puis on vous aide à la marketer.",
-  "en_bref": "Azuweb est un atelier e-commerce de deux personnes, Emilie Dupré et William Hutter, installé dans le Vercors. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.",
+  "en_bref": "Azuweb est un atelier e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.",
   "lieu": "Vercors, France",
   "contact": {
     "utilisateur": "hello",
@@ -13,23 +13,27 @@
   "equipe": [
     {
       "nom": "Emilie Dupré",
-      "role": "Marketing en ligne et commerce international",
-      "bio": "A étudié le commerce international en école. Suit Amazon, la publicité, les e-mails et les marges des clients."
+      "role": "Marketing en ligne : Klaviyo, Amazon, publicité Meta et Google",
+      "bio": "A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix séquences d'e-mails essentielles."
     },
     {
       "nom": "William Hutter",
       "role": "Design et développement Shopify, applications sur mesure",
-      "bio": "Fait des sites depuis l'époque où on les mettait en page avec des tableaux. Dessine ce qu'il code et code ce qu'il dessine."
+      "bio": "Plus de quinze ans de design et de développement web, depuis l'époque où on mettait les sites en page avec des tableaux. Shopify Select Partner. Prix du Meilleur Freelance en Marketing Digital en 2022."
     }
   ],
   "faits": [
+    [
+      "Depuis",
+      "Plus de dix ans"
+    ],
     [
       "Taille",
       "Deux personnes, par choix, épaulées par des agents IA maison"
     ],
     [
       "Où",
-      "[Vercors](vercors/), France. Travail à distance, en français"
+      "[Autrans, dans le Vercors](vercors/). Travail à distance, en français"
     ],
     [
       "Pour qui",
@@ -42,6 +46,14 @@
     [
       "Marchés",
       "France, Europe et Amérique du Nord"
+    ],
+    [
+      "Tarifs",
+      "100 € HT de l'heure, soit 700 € HT la journée. Heures notées et consultables"
+    ],
+    [
+      "Reconnaissances",
+      "Shopify Select Partner, certification Meta Media Buying Professional"
     ],
     [
       "Premier contact",
@@ -335,7 +347,7 @@
     },
     {
       "nom": "Agents IA",
-      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Les mêmes outils peuvent être installés chez le client.",
+      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des applications sur mesure et forme leurs équipes.",
       "slug": "agents-ia",
       "resume": "On met des agents IA au travail sur votre boutique, avec un humain qui relit.",
       "pour_qui": [
@@ -371,7 +383,9 @@
         "Veille",
         "SEO",
         "Agents sur mesure",
-        "Un humain à la signature"
+        "Un humain à la signature",
+        "Applications sur mesure",
+        "Formation des équipes"
       ],
       "questions": [
         [
@@ -385,8 +399,30 @@
         [
           "Sur quoi s'appuient-ils ?",
           "Sur Claude, le modèle d'Anthropic, relié à vos outils : boutique, publicité, e-mails."
+        ],
+        [
+          "Formez-vous aussi nos équipes ?",
+          "Oui. On part de vos outils et de vos dossiers, pour que chacun reparte avec des gestes utiles dès le lendemain."
         ]
-      ]
+      ],
+      "plus": {
+        "titre": "Et dans votre entreprise ?",
+        "intro": "Ce qu'on a mis en place chez nous, on peut le construire chez vous. C'est un métier plus récent pour nous, et on l'aborde comme les autres : petit d'abord, utile tout de suite.",
+        "cartes": [
+          [
+            "Intégrer l'IA dans votre fonctionnement",
+            "On regarde vos tâches répétitives, une par une, et on voit lesquelles un agent peut préparer ou vérifier. On commence par une seule."
+          ],
+          [
+            "Des applications faites pour vous",
+            "Un outil interne qui répond à votre façon de travailler, branché sur votre boutique, vos e-mails et vos chiffres. Pas un logiciel générique de plus."
+          ],
+          [
+            "Former votre équipe",
+            "On montre à vos collaborateurs comment s'en servir au quotidien : rédiger, vérifier, analyser. Avec leurs vrais dossiers, pas des exemples d'école."
+          ]
+        ]
+      }
     }
   ],
   "methode": [
@@ -424,7 +460,7 @@
     ],
     [
       "Combien coûte un projet ?",
-      "Chaque projet est chiffré après un premier regard sur votre boutique. Vous recevez un périmètre écrit, un prix et une date avant de vous engager."
+      "Notre tarif est de 100 € HT de l'heure, soit 700 € HT la journée. Chaque projet est chiffré poste par poste après un premier regard sur votre boutique, avec une fourchette. On facture le temps réellement passé, et vous pouvez consulter les heures."
     ],
     [
       "Comment démarre-t-on ?",
@@ -494,6 +530,33 @@
       "Anny Blatt",
       "Laines et fils à tricoter",
       "Catalogue et filtres de la boutique Shopify."
+    ]
+  ],
+  "avis": [
+    [
+      "Professionnel et pédagogue, c'est un plaisir de travailler avec Azuweb depuis presque 2 ans. La réalisation à leur côté de notre site internet a été un succès auprès de notre clientèle. Ils sont à l'écoute, réactifs et toujours de bon conseil pour vous aider à développer votre business.",
+      "Charlotte C.",
+      "Les Merveilles de Babellou"
+    ],
+    [
+      "L'équipe Azuweb est une équipe d'expérience qui a su nous accompagner avec efficacité de la définition des personas à l'ensemble de la conception UI et UX du projet. Ayant pour notre part déjà plus de 13 ans d'expérience dans le e-commerce, nous avons apprécié la qualité des échanges avec l'équipe. Ça réfléchit très bien, très vite, avec des solutions adaptées.",
+      "",
+      "Black Idol"
+    ],
+    [
+      "Nous sommes très satisfaits de notre collaboration avec Emilie ! Elle a su nous donner beaucoup d'idées et de conseils, elle a été très investie dans le projet et très disponible. Mise en place de tous nos flows de marketing automation : stratégie et intégration Klaviyo.",
+      "Emilie",
+      "YAY Paris"
+    ],
+    [
+      "Une expérience très enrichissante avec Emilie, pleine de bons conseils et très sympathique. Nous sommes ravies d'avoir pu passer de Mailchimp à Klaviyo et d'avoir été accompagnées pour cette migration.",
+      "Marion",
+      "Takk Paris"
+    ],
+    [
+      "Nous travaillons avec Emilie depuis un moment maintenant et en sommes très satisfaites. Emilie est disponible et nous pousse à mettre en avant notre marque au travers des réseaux sociaux sans devoir exploser notre budget communication !",
+      "Fanny et Delphine",
+      "Oh Oui !"
     ]
   ]
 }

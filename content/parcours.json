@@ -1,0 +1,65 @@
+{
+  "_lisezmoi": "Les chemins qu'on voit souvent avant qu'une marque nous écrive. Ce sont des situations types, pas des clients nommés. Pour ajouter le vrai parcours d'un client (avec son accord et ses mots), ajoutez un champ \"temoin\" : { \"nom\": \"…\", \"marque\": \"…\", \"citation\": \"…\" }.",
+  "titre": "Les chemins qui mènent à nous.",
+  "intro": "Personne ne commence par nous. On arrive presque toujours après deux ou trois essais. Voici les chemins qu'on voit le plus souvent.",
+  "chemins": [
+    {
+      "titre": "Trois prestataires pour une seule boutique",
+      "resume": "Le chemin le plus courant : chaque besoin a trouvé son prestataire, et plus personne ne voit l'ensemble.",
+      "etapes": [
+        ["Une agence pour le site", "Le site est beau. Pour le faire évoluer, il faut un devis."],
+        ["Un freelance pour la publicité", "Les campagnes tournent, mais sans lien avec ce qui se passe sur le site."],
+        ["Un autre pour Amazon", "Encore un interlocuteur, encore un rapport, encore des chiffres différents."],
+        ["Des réunions pour coordonner", "Vous passez plus de temps à faire parler les prestataires entre eux qu'à vendre."]
+      ],
+      "arrivee": ["Un seul atelier", "Le site, Amazon, la publicité et les e-mails sont tenus par les deux mêmes personnes. Une seule conversation, un seul jeu de chiffres."],
+      "lien": ["shopify", "Voir comment on construit une boutique"]
+    },
+    {
+      "titre": "Un thème du commerce et quinze applications",
+      "resume": "On démarre vite et pas cher. Puis chaque nouveau besoin ajoute une application, un abonnement et un ralentissement.",
+      "etapes": [
+        ["Un thème acheté", "Parfait pour démarrer. Moins quand le catalogue grandit."],
+        ["Une application par besoin", "Avis, lots, pop-ups, traductions : chacune facture son abonnement et charge ses scripts."],
+        ["Des rustines", "Deux applications se marchent dessus. Personne ne sait plus laquelle fait quoi."],
+        ["Un site lent", "Les pages mettent du temps à s'afficher, surtout sur téléphone."]
+      ],
+      "arrivee": ["Un thème à votre mesure", "On range le catalogue, on remplace ce qui peut l'être par du code propre, et on garde seulement les applications utiles."],
+      "lien": ["shopify", "Tout sur les boutiques Shopify"]
+    },
+    {
+      "titre": "Une refonte que l'équipe ne peut pas toucher",
+      "resume": "La refonte a été livrée, elle est réussie, et depuis le site est figé.",
+      "etapes": [
+        ["Une grande refonte", "Plusieurs mois de travail, un beau résultat le jour de la mise en ligne."],
+        ["Un site sous verre", "Changer une image ou un texte demande un développeur."],
+        ["Des demandes qui s'empilent", "Chaque évolution devient un devis, puis un délai."],
+        ["Un site qui vieillit", "Les offres changent, le site ne suit plus."]
+      ],
+      "arrivee": ["Un site que vous tenez vous-mêmes", "On reprend le thème pour que chaque section se règle dans l'éditeur de Shopify. Vous modifiez, on s'occupe de ce qui demande du code."],
+      "lien": ["shopify", "Essayer l'éditeur"]
+    },
+    {
+      "titre": "Amazon, lancé un peu au hasard",
+      "resume": "La marque est sur Amazon parce qu'il fallait y être. Les fiches sont en ligne, la publicité aussi, et personne ne sait ce qu'il reste.",
+      "etapes": [
+        ["Des fiches faites vite", "Un titre plein de mots-clés, trois photos, une description recopiée du site."],
+        ["De la publicité automatique", "Amazon dépense le budget. Où et pourquoi, mystère."],
+        ["Des ventes, pas de marge", "Le chiffre d'affaires monte, le compte en banque moins."]
+      ],
+      "arrivee": ["Un compte tenu comme une boutique", "Des fiches écrites pour l'acheteur, des campagnes structurées, et chaque semaine un compte de résultat."],
+      "lien": ["amazon", "Tout sur Amazon Seller Central"]
+    },
+    {
+      "titre": "Le lundi passé dans les tableurs",
+      "resume": "Les chiffres existent, mais éparpillés dans cinq outils qui ne sont pas d'accord entre eux.",
+      "etapes": [
+        ["Un export par outil", "Publicité, e-mails, boutique : chacun a son tableau de bord."],
+        ["Un tableur pour tout recoller", "Quelqu'un y passe sa matinée du lundi."],
+        ["Des chiffres qui ne tombent pas juste", "Trois outils s'attribuent la même vente."]
+      ],
+      "arrivee": ["Un seul écran", "Tout est réuni dans l'admin Shopify, avec les mêmes périodes et les mêmes définitions."],
+      "lien": ["donnees", "Voir le tableau de bord"]
+    }
+  ]
+}

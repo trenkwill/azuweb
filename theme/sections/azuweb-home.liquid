@@ -26,6 +26,7 @@
           <a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a>
           <a class="link" href="{{ routes.root_url }}#metiers">Voir ce qu'on fait ↓</a>
         </div>
+        <p class="badges"><img src="{{ 'shopify-select.png' | asset_url }}" alt="Shopify Select Partner" width="523" height="232"><img src="{{ 'meta-certified.png' | asset_url }}" alt="Meta Certified Media Buying Professional" width="400" height="400"><span>Plus de dix ans de boutiques en ligne</span></p>
       </div>
     </div>
     <div class="hero__stage" id="stage" title="Cliquez pour passer à la forme suivante">
@@ -39,6 +40,7 @@
       <div class="prose">
         <h2 id="metiers-t">Ce qu'on fait, concrètement.</h2>
         <p>Six métiers, les deux mêmes personnes. Vous n'avez pas à coordonner une agence pour le site, une autre pour <a href="{{ routes.root_url }}pages/amazon">Amazon</a> et un freelance pour la publicité.</p>
+        <p><a class="link more" href="{{ routes.root_url }}pages/parcours">Voir les chemins qui mènent à nous →</a></p>
       </div>
     </div>
     <div class="wrap">
@@ -118,6 +120,7 @@
             <li>Récapitulatif chaque matin de vos comptes publicitaires</li>
             <li>Relecture réglementaire des textes produit, pour la beauté et les compléments</li>
             <li>Les mêmes outils installés chez vous, pour votre équipe</li>
+            <li>Applications sur mesure et formation de vos équipes à l'IA</li>
           </ul>
           <a class="link more" href="{{ routes.root_url }}pages/agents-ia">Tout sur ce métier →</a>
         </article>
@@ -129,13 +132,14 @@
   <section class="band" id="ton" aria-labelledby="ton-t">
     <div class="wrap split">
       <div class="prose">
-        <h2 id="ton-t">Comment on vous parle.</h2>
-        <p>Comme à quelqu'un qu'on respecte et qui n'a pas de temps à perdre.</p>
+        <h2 id="ton-t">Le quotidien avec nous.</h2>
+        <p>Voilà à quoi ressemble une semaine de travail ensemble.</p>
         <ul class="plain">
-          <li><strong>On répond en clair.</strong> Ce qu'on a regardé, ce qu'on a trouvé, ce qu'on propose.</li>
-          <li><strong>Quand c'est de notre côté, on le dit.</strong> Et on corrige.</li>
-          <li><strong>Quand on trouve autre chose en cherchant, on vous le signale.</strong> Même si personne ne l'a demandé.</li>
-          <li><strong>Quand on n'a pas le temps cette semaine, on le dit aussi.</strong> Et on vous donne une date.</li>
+          <li><strong>Vos demandes au même endroit.</strong> Un tableau partagé où vous les déposez, et où vous voyez où chacune en est.</li>
+          <li><strong>Des réponses claires.</strong> Ce qu'on a regardé, ce qu'on a trouvé, ce qu'on propose.</li>
+          <li><strong>Une liste après chaque réunion.</strong> Qui fait quoi, et pour quand.</li>
+          <li><strong>Une courte vidéo quand il faut expliquer.</strong> Pour que vous puissiez refaire le geste sans nous.</li>
+          <li><strong>Des heures notées.</strong> Vous pouvez consulter le temps passé, poste par poste.</li>
           <li><strong>Un doute ? On s'appelle.</strong> Dix minutes en visio valent mieux que douze e-mails.</li>
         </ul>
       </div>
@@ -216,6 +220,15 @@
     </div>
   </section>
 
+  <section class="section" id="avis" aria-labelledby="avis-t">
+    <div class="wrap">
+      <div class="prose"><h2 id="avis-t">Ce qu'en disent nos clients.</h2></div>
+      <!-- build:avis -->
+<ul class="avis"><li><blockquote><p>« Professionnel et pédagogue, c'est un plaisir de travailler avec Azuweb depuis presque 2 ans. La réalisation à leur côté de notre site internet a été un succès auprès de notre clientèle. Ils sont à l'écoute, réactifs et toujours de bon conseil pour vous aider à développer votre business. »</p><footer>Charlotte C., <b>Les Merveilles de Babellou</b></footer></blockquote></li><li><blockquote><p>« L'équipe Azuweb est une équipe d'expérience qui a su nous accompagner avec efficacité de la définition des personas à l'ensemble de la conception UI et UX du projet. Ayant pour notre part déjà plus de 13 ans d'expérience dans le e-commerce, nous avons apprécié la qualité des échanges avec l'équipe. Ça réfléchit très bien, très vite, avec des solutions adaptées. »</p><footer><b>Black Idol</b></footer></blockquote></li><li><blockquote><p>« Nous sommes très satisfaits de notre collaboration avec Emilie ! Elle a su nous donner beaucoup d'idées et de conseils, elle a été très investie dans le projet et très disponible. Mise en place de tous nos flows de marketing automation : stratégie et intégration Klaviyo. »</p><footer>Emilie, <b>YAY Paris</b></footer></blockquote></li><li><blockquote><p>« Une expérience très enrichissante avec Emilie, pleine de bons conseils et très sympathique. Nous sommes ravies d'avoir pu passer de Mailchimp à Klaviyo et d'avoir été accompagnées pour cette migration. »</p><footer>Marion, <b>Takk Paris</b></footer></blockquote></li><li><blockquote><p>« Nous travaillons avec Emilie depuis un moment maintenant et en sommes très satisfaites. Emilie est disponible et nous pousse à mettre en avant notre marque au travers des réseaux sociaux sans devoir exploser notre budget communication ! »</p><footer>Fanny et Delphine, <b>Oh Oui !</b></footer></blockquote></li></ul>
+<!-- /build:avis -->
+    </div>
+  </section>
+
   <section class="band band--ridge" id="nous" aria-labelledby="nous-t">
     <svg class="ridge" id="ridge" aria-hidden="true" preserveAspectRatio="none"></svg>
     <div class="wrap">
@@ -239,8 +252,15 @@
       </div>
       <div class="prose">
         <p>On vit et on travaille dans <a href="{{ routes.root_url }}pages/vercors">le Vercors</a>. On a aussi voyagé au Canada, et plusieurs de nos clients vendent aujourd'hui en Amérique du Nord.</p>
+        <p>On est aussi un couple, et les parents de deux enfants. Entre deux projets, on est sur les sentiers ou sur les skis de fond.</p>
         <p>L'un construit, l'autre aide à marketer, et on se relit. On reste petits par choix : vous parlez à ceux qui font le travail, sans commercial ni intermédiaire.</p>
         <a class="link more" href="{{ routes.root_url }}pages/vercors">Voir le Vercors en 3D →</a>
+        <a class="link more" href="{{ routes.root_url }}pages/philosophie">Lire notre façon de penser →</a>
+      </div>
+      <div class="photos">
+        <figure><img src="{{ 'atelier.jpg' | asset_url }}" alt="Emilie et William à leur bureau" width="1129" height="763" loading="lazy"><figcaption>À l'atelier</figcaption></figure>
+        <figure><img src="{{ 'emilie-rando.jpg' | asset_url }}" alt="Emilie en randonnée au bord d'un lac de montagne" width="744" height="932" loading="lazy"><figcaption>Emilie, en randonnée</figcaption></figure>
+        <figure><img src="{{ 'william-ski.jpg' | asset_url }}" alt="William en ski de fond" width="1100" height="758" loading="lazy"><figcaption>William, en ski de fond</figcaption></figure>
       </div>
     </div>
   </section>
@@ -252,7 +272,7 @@
         <p>Collez-la dans ChatGPT ou Claude et posez vos questions. Demain, on demandera à un assistant « qui peut refaire ma <a href="{{ routes.root_url }}pages/shopify">boutique Shopify</a> ? » avant d'ouvrir un seul site. Alors tout ce qu'il faut savoir sur nous est écrit ici, en clair, et tenu à jour.</p>
       </div>
       <!-- build:fiche -->
-<dl class="facts"><div><dt>Taille</dt><dd>Deux personnes, par choix, épaulées par des agents IA maison</dd></div><div><dt>Où</dt><dd><a href="{{ routes.root_url }}pages/vercors">Vercors</a>, France. Travail à distance, en français</dd></div><div><dt>Pour qui</dt><dd>Des marques qui vendent des produits physiques en ligne</dd></div><div><dt>Plateformes</dt><dd><a href="{{ routes.root_url }}pages/shopify">Shopify</a>, <a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a>, <a href="{{ routes.root_url }}pages/publicite-meta">Meta Ads</a>, <a href="{{ routes.root_url }}pages/emails-klaviyo">Klaviyo</a>, Webflow</dd></div><div><dt>Marchés</dt><dd>France, Europe et Amérique du Nord</dd></div><div><dt>Premier contact</dt><dd>Par e-mail, puis une visio pour regarder ensemble</dd></div></dl>
+<dl class="facts"><div><dt>Depuis</dt><dd>Plus de dix ans</dd></div><div><dt>Taille</dt><dd>Deux personnes, par choix, épaulées par des agents IA maison</dd></div><div><dt>Où</dt><dd><a href="{{ routes.root_url }}pages/vercors">Autrans, dans le Vercors</a>. Travail à distance, en français</dd></div><div><dt>Pour qui</dt><dd>Des marques qui vendent des produits physiques en ligne</dd></div><div><dt>Plateformes</dt><dd><a href="{{ routes.root_url }}pages/shopify">Shopify</a>, <a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a>, <a href="{{ routes.root_url }}pages/publicite-meta">Meta Ads</a>, <a href="{{ routes.root_url }}pages/emails-klaviyo">Klaviyo</a>, Webflow</dd></div><div><dt>Marchés</dt><dd>France, Europe et Amérique du Nord</dd></div><div><dt>Tarifs</dt><dd>100 € HT de l'heure, soit 700 € HT la journée. Heures notées et consultables</dd></div><div><dt>Reconnaissances</dt><dd>Shopify Select Partner, certification Meta Media Buying Professional</dd></div><div><dt>Premier contact</dt><dd>Par e-mail, puis une visio pour regarder ensemble</dd></div></dl>
 <!-- /build:fiche -->
       <div class="ai-tools">
         <button class="btn" id="copy-brief" type="button">Copier la fiche pour votre IA</button>
@@ -266,7 +286,7 @@
       <div>
         <div class="prose"><h2 id="questions-t">Les questions qu'on nous pose.</h2></div>
         <!-- build:faq -->
-<dl class="faq"><div><dt>Que fait Azuweb, en une phrase ?</dt><dd>On construit des <a href="{{ routes.root_url }}pages/shopify">boutiques Shopify</a> et on vous aide à les marketer : <a href="{{ routes.root_url }}pages/amazon">Amazon</a>, <a href="{{ routes.root_url }}pages/publicite-meta">publicité Meta</a>, <a href="{{ routes.root_url }}pages/emails-klaviyo">e-mails Klaviyo</a> et suivi des chiffres.</dd></div><div><dt>Qui sera mon interlocuteur ?</dt><dd><a href="{{ routes.root_url }}pages/emilie">Emilie</a> ou <a href="{{ routes.root_url }}pages/william">William</a>, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire.</dd></div><div><dt>Pouvez-vous reprendre une boutique Shopify existante ?</dt><dd>Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire.</dd></div><div><dt>Travaillez-vous avec des marques qui vendent à l'étranger ?</dt><dd>Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur <a href="{{ routes.root_url }}pages/amazon">Amazon</a> aux États-Unis.</dd></div><div><dt>Faites-vous seulement le site, ou aussi le marketing ?</dt><dd>Les deux. Le même atelier s'occupe du thème, d'Amazon, de la publicité Meta et des e-mails, ce qui évite de coordonner plusieurs prestataires.</dd></div><div><dt>Utilisez-vous l'intelligence artificielle ?</dt><dd>Oui, tous les jours. Nos <a href="{{ routes.root_url }}pages/agents-ia">agents IA</a> préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu.</dd></div><div><dt>Combien coûte un projet ?</dt><dd>Chaque projet est chiffré après un premier regard sur votre boutique. Vous recevez un périmètre écrit, un prix et une date avant de vous engager.</dd></div><div><dt>Comment démarre-t-on ?</dt><dd>Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier avis, puis on se parle en visio.</dd></div></dl>
+<dl class="faq"><div><dt>Que fait Azuweb, en une phrase ?</dt><dd>On construit des <a href="{{ routes.root_url }}pages/shopify">boutiques Shopify</a> et on vous aide à les marketer : <a href="{{ routes.root_url }}pages/amazon">Amazon</a>, <a href="{{ routes.root_url }}pages/publicite-meta">publicité Meta</a>, <a href="{{ routes.root_url }}pages/emails-klaviyo">e-mails Klaviyo</a> et suivi des chiffres.</dd></div><div><dt>Qui sera mon interlocuteur ?</dt><dd><a href="{{ routes.root_url }}pages/emilie">Emilie</a> ou <a href="{{ routes.root_url }}pages/william">William</a>, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire.</dd></div><div><dt>Pouvez-vous reprendre une boutique Shopify existante ?</dt><dd>Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire.</dd></div><div><dt>Travaillez-vous avec des marques qui vendent à l'étranger ?</dt><dd>Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur <a href="{{ routes.root_url }}pages/amazon">Amazon</a> aux États-Unis.</dd></div><div><dt>Faites-vous seulement le site, ou aussi le marketing ?</dt><dd>Les deux. Le même atelier s'occupe du thème, d'Amazon, de la publicité Meta et des e-mails, ce qui évite de coordonner plusieurs prestataires.</dd></div><div><dt>Utilisez-vous l'intelligence artificielle ?</dt><dd>Oui, tous les jours. Nos <a href="{{ routes.root_url }}pages/agents-ia">agents IA</a> préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu.</dd></div><div><dt>Combien coûte un projet ?</dt><dd>Notre tarif est de 100 € HT de l'heure, soit 700 € HT la journée. Chaque projet est chiffré poste par poste après un premier regard sur votre boutique, avec une fourchette. On facture le temps réellement passé, et vous pouvez consulter les heures.</dd></div><div><dt>Comment démarre-t-on ?</dt><dd>Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier avis, puis on se parle en visio.</dd></div></dl>
 <!-- /build:faq -->
       </div>
       <div>
@@ -319,7 +339,7 @@
 <footer class="foot">
   <div class="wrap foot__map">
     <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Publicité Meta</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
-    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}pages/parcours">Les chemins qui mènent à nous</a><a href="{{ routes.root_url }}pages/philosophie">Notre façon de penser</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
   </div>
   <div class="wrap foot__in">
     <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>

@@ -400,6 +400,8 @@ mark {
 .cards { counter-reset: c; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px; }
 .cards li { counter-increment: c; border: 2px solid var(--ink); border-radius: 14px; padding: 18px 18px 22px; background: var(--card); display: grid; gap: 10px; align-content: start; font-weight: 600; line-height: 1.35; transition: transform 0.15s, box-shadow 0.15s; min-width: 0; }
 .cards li::before { content: counter(c, decimal-leading-zero); font-size: 0.8rem; font-weight: 800; color: var(--azur); font-variant-numeric: tabular-nums; }
+.cards--big { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.cards--big strong { font-size: var(--t-lg); letter-spacing: -0.02em; line-height: 1.2; } .cards--big span { font-weight: 400; color: var(--ink-2); }
 .cards li:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--rose); }
 .mini__cta { background: var(--h-bg); color: var(--h-fg); padding-block: clamp(64px, 12vh, 140px); }
 .mini__cta .wrap { display: grid; gap: 18px; justify-items: start; }
@@ -510,6 +512,69 @@ mark {
   .merge__cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ag-nodes text { font-size: 17px; } }
 @media (prefers-reduced-motion: reduce) { .ag-pulses { display: none; } }
+
+/* ---------- Avis, badges, photos ---------- */
+.avis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; margin-top: clamp(24px, 4vh, 44px); }
+.avis li { border: 2px solid var(--ink); border-radius: 14px; background: var(--card); padding: 22px; min-width: 0; }
+.avis li:first-child { grid-column: 1 / -1; box-shadow: 6px 6px 0 var(--rose); }
+.avis li:first-child p { font-size: var(--t-lg); line-height: 1.4; max-width: 46em; }
+.avis blockquote { margin: 0; display: grid; gap: 14px; height: 100%; align-content: space-between; }
+.avis p { font-size: 1.05rem; line-height: 1.5; }
+.avis footer { font-size: var(--t-sm); color: var(--ink-2); } .avis footer b { color: var(--ink); }
+.badges { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; font-size: var(--t-sm); font-weight: 600; color: var(--ink-2); }
+.badges img { height: 44px; width: auto; display: block; } .badges img[src*="meta"] { height: 58px; }
+.photos { display: grid; grid-template-columns: 1.5fr 0.8fr 1.45fr; gap: 14px; margin-top: clamp(28px, 5vh, 52px); align-items: stretch; }
+.photos figure, .shot { margin: 0; display: grid; gap: 8px; grid-template-rows: minmax(0, 1fr) auto; min-width: 0; }
+.photos img, .shot img { width: 100%; height: 100%; object-fit: cover; display: block; border: 2px solid var(--ink); border-radius: 14px; }
+.photos img { aspect-ratio: auto; height: clamp(200px, 26vw, 360px); }
+.photos figcaption, .shot figcaption { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); }
+.shot img { height: auto; box-shadow: 8px 8px 0 var(--ink); }
+.shot--livre img { max-width: 260px; justify-self: start; }
+.person__photo { width: min(320px, 40vw); height: auto; display: block; border: 2px solid var(--ink); border-radius: 14px; box-shadow: 8px 8px 0 var(--rose); transform: rotate(1.5deg); }
+@media (max-width: 700px) { .photos { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .photos figure:first-child { grid-column: 1 / -1; } .person__photo { width: min(260px, 70%); } }
+
+/* ---------- Notre façon de penser ---------- */
+.creed { padding-block: clamp(40px, 8vh, 90px) clamp(64px, 11vh, 130px); }
+.creed .wrap { display: grid; gap: clamp(36px, 7vh, 72px); }
+.creed__toc { columns: 2 280px; column-gap: clamp(24px, 5vw, 80px); border-top: 2px solid var(--ink); padding-top: 22px; }
+.creed__toc li { break-inside: avoid; }
+.creed__toc a { display: block; padding: 5px 0; font-size: var(--t-lg); font-weight: 650; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.creed__toc a:hover { color: var(--azur); }
+.creed__toc span, .creed__list h2 span { color: var(--azur); font-variant-numeric: tabular-nums; font-weight: 800; margin-right: 0.3em; }
+.creed__list { display: grid; gap: 0; max-width: 46rem; }
+.creed__list article { padding: clamp(24px, 4vh, 40px) 0; border-top: 1px solid var(--rule); display: grid; gap: 12px; scroll-margin-top: 80px; }
+.creed__list article:target h2 { background: linear-gradient(var(--marker), var(--marker)) 0 78% / 100% 45% no-repeat; justify-self: start; }
+.creed__list h2 { font-size: var(--t-h3); letter-spacing: -0.028em; }
+.creed__list p { font-size: var(--t-lg); line-height: 1.5; }
+
+/* ---------- Les parcours ---------- */
+.paths__nav { display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: clamp(32px, 6vh, 64px); }
+.paths__nav a { display: inline-flex; align-items: center; gap: 10px; border: 2px solid var(--ink); border-radius: 999px; padding: 0.5em 1em 0.5em 0.5em; font-size: var(--t-sm); font-weight: 640; color: var(--ink); text-decoration: none; background: var(--card); }
+.paths__nav a:hover { box-shadow: 3px 3px 0 var(--rose); }
+.paths__nav b { width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-size: 0.8rem; }
+.path .wrap { display: grid; gap: clamp(28px, 5vh, 48px); }
+.path { scroll-margin-top: 70px; }
+.path__steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 0; counter-reset: p; }
+.path__steps li { counter-increment: p; position: relative; padding: 46px 22px 0 0; display: grid; gap: 6px; align-content: start; min-width: 0; }
+/* Le chemin : une ligne en pointillé d'un arrêt à l'autre, comme sur une carte de randonnée. */
+.path__steps li::before { content: ""; position: absolute; left: 0; right: 0; top: 13px; border-top: 4px dotted var(--ink-2); opacity: 0.45; }
+.path__steps li::after { content: counter(p); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); display: grid; place-items: center; font-size: 0.8rem; font-weight: 800; }
+.band .path__steps li::after { background: var(--paper-2); }
+.path__steps b { font-size: var(--t-lg); font-weight: 720; letter-spacing: -0.02em; line-height: 1.15; }
+.path__steps span { color: var(--ink-2); font-size: 1.02rem; line-height: 1.4; }
+.path__steps li:not(.path__end) b { text-decoration: line-through; text-decoration-color: var(--rose); text-decoration-thickness: 3px; }
+.path__steps .path__end::before { border-top-color: var(--bleu); opacity: 1; right: auto; width: 0; }
+.path__steps .path__end::after { content: "→"; background: var(--azur); border-color: var(--azur); color: #fff; }
+.path__steps .path__end b { color: var(--azur); }
+.path__steps .path__end { background: var(--card); border: 2px solid var(--ink); border-radius: 14px; padding: 46px 18px 18px; box-shadow: 6px 6px 0 var(--rose); }
+.path__steps .path__end::after { left: 18px; top: 10px; }
+.path__quote { border-left: 4px solid var(--rose); padding-left: 18px; max-width: var(--col); font-size: var(--t-lg); } .path__quote footer { font-size: var(--t-sm); color: var(--ink-2); margin-top: 6px; }
+@media (max-width: 700px) {
+  .path__steps { grid-template-columns: minmax(0, 1fr); }
+  .path__steps li { padding: 0 0 26px 44px; }
+  .path__steps li::before { left: 12px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 4px dotted var(--ink-2); }
+  .path__steps .path__end { padding: 16px 16px 16px 54px; } .path__steps .path__end::after { left: 14px; top: 16px; }
+}
 
 /* ---------- Le Vercors ---------- */
 .relief { position: relative; height: min(78vh, 720px); min-height: 380px; cursor: grab; touch-action: pan-y; overflow: hidden; background: var(--paper-2); border-block: 2px solid var(--ink); }

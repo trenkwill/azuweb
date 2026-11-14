@@ -17,10 +17,10 @@ const mail = `${A.contact.utilisateur}@${A.contact.domaine}`;
 // Dans le contenu, [texte](adresse) devient un lien ; `root` recale les adresses pour les pages des sous-dossiers.
 const rich = (s, root = '') => esc(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${root}${url}">${txt}</a>`);
 // Adresse d'une page interne selon l'endroit d'où on la lie (racine, sous-dossier, ou thème Shopify).
-const INTERNE = { shopify: 'services/shopify/', amazon: 'services/amazon/', 'publicite-meta': 'services/publicite-meta/', 'emails-klaviyo': 'services/emails-klaviyo/', donnees: 'services/donnees/', 'agents-ia': 'services/agents-ia/', vercors: 'vercors/', william: 'william/', emilie: 'emilie/' };
+const INTERNE = { shopify: 'services/shopify/', amazon: 'services/amazon/', 'publicite-meta': 'services/publicite-meta/', 'emails-klaviyo': 'services/emails-klaviyo/', donnees: 'services/donnees/', 'agents-ia': 'services/agents-ia/', vercors: 'vercors/', william: 'william/', emilie: 'emilie/', parcours: 'parcours/', philosophie: 'philosophie/' };
 const adresse = (slug, root) => (root.startsWith('{{') ? `${root}pages/${slug}` : root + INTERNE[slug]);
 // Recale les liens internes de l'en-tête et du pied de page pour une page située dans un sous-dossier.
-const recale = (s, root) => s.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`).replace(/href="((?:services|projets)\/[\w-]+\/|vercors\/|william\/|emilie\/|llms\.txt)"/g, `href="${root}$1"`);
+const recale = (s, root) => s.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`).replace(/href="((?:services|projets)\/[\w-]+\/|vercors\/|william\/|emilie\/|parcours\/|philosophie\/|llms\.txt)"/g, `href="${root}$1"`);
 // Liens automatiques : dans le texte courant, la première mention de chaque sujet par section mène à sa page.
 const TERMES = [['Amazon Seller Central', 'amazon'], ['publicité Meta', 'publicite-meta'], ['Meta Ads', 'publicite-meta'], ['e-mails Klaviyo', 'emails-klaviyo'], ['Klaviyo', 'emails-klaviyo'], ['tableau de bord', 'donnees'], ['agents IA', 'agents-ia'], ['boutiques Shopify', 'shopify'], ['boutique Shopify', 'shopify'], ['Shopify', 'shopify'], ['Amazon', 'amazon'], ['Vercors', 'vercors'], ['Autrans', 'vercors'], ['William', 'william'], ['Emilie', 'emilie']];
 const SANS_LIEN = new Set(['a', 'button', 'h1', 'h2', 'h3', 'script', 'style', 'svg', 'figure', 'table', 'select', 'label', 'dt', 'fieldset', 'code', 'nav', 'canvas', 'textarea', 'form']);
@@ -46,7 +46,7 @@ function autolink(html, root, self) {
     if (tout.startsWith('</')) { for (let i = pile.length - 1; i >= 0; i--) if (pile[i].nom === nom) { pile.length = i; break; } return tout; }
     if (nom === 'section' || nom === 'article') vus = new Set(self ? [self] : []);
     if (nom === 'a') { const m = /href="(?:[^"#]*\/)?([\w-]+)\/?"/.exec(attrs); if (m && INTERNE[m[1]]) vus.add(m[1]); }
-    if (!VIDES.has(nom) && !tout.endsWith('/>')) pile.push({ nom, skip: SANS_LIEN.has(nom) || /class="[^"]*\b(era|machine|demo__stage|kicker|review|mail|marquee|brief|foot|recit__n|mini__actions|others|person__icons|facts)\b/.test(attrs) });
+    if (!VIDES.has(nom) && !tout.endsWith('/>')) pile.push({ nom, skip: SANS_LIEN.has(nom) || /class="[^"]*\b(era|machine|demo__stage|kicker|review|mail|avis|creed__toc|marquee|brief|foot|recit__n|mini__actions|others|person__icons|facts)\b/.test(attrs) });
     return tout;
   });
 }
@@ -71,6 +71,7 @@ const shot = (slug, kind) => { const f = `assets/img/cas/${slug}-${kind}.jpg`; r
 const fiche = `<dl class="facts">${A.faits.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${rich(v)}</dd></div>`).join('')}</dl>`;
 const faq = `<dl class="faq">${A.faq.map(([q, r]) => `<div><dt>${esc(q)}</dt><dd>${rich(r)}</dd></div>`).join('')}</dl>`;
 const now = `<ul class="now">${A.en_ce_moment.map(([d, t]) => `<li><time datetime="${d}">${mois(d)}</time><span>${esc(t)}</span></li>`).join('')}</ul>`;
+const avis = `<ul class="avis">${A.avis.map(([texte, nom, marque]) => `<li><blockquote><p>« ${esc(texte)} »</p><footer>${nom ? `${esc(nom)}, ` : ''}<b>${esc(marque)}</b></footer></blockquote></li>`).join('')}</ul>`;
 const work = cas.length
   ? `<ul class="work">${cas.map((c) => `<li><span class="work__name"><a href="projets/${c.slug}/">${esc(c.client)}</a>${RELECTURE ? ` <small class="review-tag review-tag--${c.confiance}">${c.confiance}</small>` : ''}</span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('\n')}</ul>`
   : `<ul class="work">${A.projets.map(([n, k, w]) => `<li><span class="work__name">${esc(n)}</span><span class="work__kind">${esc(k)}</span><span class="work__what">${esc(w)}</span></li>`).join('\n')}</ul>`;
@@ -108,8 +109,14 @@ ${A.equipe.map((p) => `- ${p.nom} — ${p.role}. ${p.bio}`).join('\n')}
 ## Comment on travaille
 ${A.methode.map((m, i) => `${i + 1}. ${m}`).join('\n')}
 
+## Notre façon de penser
+${JSON.parse(fs.readFileSync('content/philosophie.json', 'utf8')).idees.map(([a, b]) => `- ${a} : ${b}`).join('\n')}
+
 ## Questions fréquentes
 ${A.faq.map(([q, r]) => `### ${q}\n${plain(r)}`).join('\n\n')}
+
+## Ce qu'en disent nos clients
+${A.avis.map(([texte, nom, marque]) => `- « ${texte} » (${nom ? nom + ', ' : ''}${marque})`).join('\n')}
 
 ## En ce moment
 ${A.en_ce_moment.map(([d, t]) => `- ${mois(d)} : ${t}`).join('\n')}
@@ -138,6 +145,7 @@ const foot = html.match(/<footer class="foot">[\s\S]*?<\/footer>/)[0];
 html = inject(html, 'fiche', fiche);
 html = inject(html, 'faq', faq);
 html = inject(html, 'now', now);
+html = inject(html, 'avis', avis);
 html = inject(html, 'work', work);
 html = inject(html, 'jsonld', `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>\n<script type="text/plain" id="brief-text">${esc(long)}</script>`);
 html = html.replace(/<main id="top">[\s\S]*<\/main>/, (m) => autolink(m, '', null));
@@ -146,7 +154,7 @@ fs.writeFileSync('index.html', html);
 fs.writeFileSync('llms.txt', court + (cas.length ? `\n## Pour aller plus loin\n- [Version complète avec les études de cas](${A.site}/llms-full.txt)\n` : ''));
 fs.writeFileSync('llms-full.txt', long);
 fs.writeFileSync('robots.txt', `# Tout le monde est bienvenu, robots d'IA compris : ce site est fait pour être lu et cité.\nUser-agent: *\nAllow: /\n\nSitemap: ${A.site}/sitemap.xml\n`);
-fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'vercors/', 'william/', 'emilie/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'philosophie/', 'parcours/', 'vercors/', 'william/', 'emilie/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 
 /* ---------- Pages d'étude de cas ---------- */
 const casMain = (c, root, img) => {
@@ -271,6 +279,7 @@ const serviceMain = (s, m, root, casHref) => {
   <div class="wrap mini__body">
     <div id="demo">${demos[s.slug] || ''}</div>
     <section id="livre"><div class="prose"><h2>Ce qu'on livre.</h2></div><ol class="cards">${m.points.map((q) => `<li>${q}</li>`).join('')}</ol></section>
+    ${s.plus ? `<section id="plus"><div class="prose"><h2>${esc(s.plus.titre)}</h2><p>${esc(s.plus.intro)}</p></div><ol class="cards cards--big">${s.plus.cartes.map(([a, b]) => `<li><strong>${esc(a)}</strong><span>${esc(b)}</span></li>`).join('')}</ol></section>` : ''}
     <section><div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks">${s.pour_qui.map((q) => `<li>${esc(q)}</li>`).join('')}</ul></div></section>
     <section id="comment"><div class="prose"><h2>Comment ça se passe.</h2><ol class="steps">${A.methode.map((x) => { const [a, b] = x.split(' : '); return `<li><strong>${esc(a)}.</strong> ${esc(b.charAt(0).toUpperCase() + b.slice(1))}.</li>`; }).join('')}</ol></div></section>
     ${lies.length ? `<section><div class="prose"><h2 class="h2--small">Des projets de ce genre</h2></div><ul class="work">${lies.map((c) => `<li><span class="work__name"><a href="${casHref(c)}">${esc(c.client)}</a></span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('')}</ul></section>` : ''}
@@ -325,6 +334,7 @@ const machine = fs.readFileSync('content/fragments/machine.html', 'utf8');
 const mails = html.match(/<div class="mails">[\s\S]*?<\/figure>\s*<\/div>/)[0].match(/<figure[\s\S]*?<\/figure>/g);
 const svc = (root, slug) => (root === '../' ? `../services/${slug}/` : `${root}pages/${slug}`);
 const icons = (root, list) => `<p class="person__icons">${list.map(([icon, slug, label]) => `<a href="${svc(root, slug)}"><canvas data-icon="${icon}" aria-hidden="true"></canvas>${label} →</a>`).join('')}</p>`;
+const pic = (root, file, alt, w, h, cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="${root.startsWith('{{') ? `{{ '${file}' | asset_url }}` : `${root}assets/img/${file}`}" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy">`;
 const photo = (root) => `<img class="duo__photo" src="${root.startsWith('{{') ? "{{ 'william-emilie.webp' | asset_url }}" : `${root}assets/img/william-emilie.webp`}" alt="William Hutter et Emilie Dupré, dos à dos" width="741" height="650">`;
 const williamMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
@@ -333,7 +343,7 @@ const williamMain = (root) => `<main>
       <p class="kicker">Design et développement</p>
       <h1>William Hutter.</h1>
       <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, applications sur mesure, tableaux de bord.</p>
-    </div>${photo(root)}</div>
+    </div>${pic(root, 'william-ski.jpg', 'William en ski de fond', 1100, 758, 'person__photo')}</div>
   </section>
   <section class="era-section" id="histoire">
     <div class="wrap">
@@ -359,6 +369,20 @@ ${machine}
       ${mails[0]}
     </div>
   </section>
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 class="h2--small">Reconnu par ses pairs</h2>
+        <ul class="plain">
+          <li><strong>Shopify Select Partner.</strong> Le niveau de partenariat que Shopify réserve aux agences qu'il a évaluées.</li>
+          <li><strong>Meilleur Freelance en Marketing Digital, 2022.</strong> Un prix remis sur scène, devant la profession.</li>
+          <li><strong>Dans le magazine Capital.</strong> <a href="https://www.capital.fr/votre-carriere/editeur-styliste-graphiste-ces-teletravailleurs-temoignent-1358240" rel="noopener">Un article sur ceux qui travaillent loin des grandes villes.</a></li>
+        </ul>
+        <p class="badges">${pic(root, 'shopify-select.png', 'Shopify Select Partner', 523, 232)}</p>
+      </div>
+      <figure class="shot">${pic(root, 'prix-2022.jpg', 'William sur scène, lauréat du prix du Meilleur Freelance en Marketing Digital 2022', 1024, 768)}<figcaption>La remise du prix, en 2022</figcaption></figure>
+    </div>
+  </section>
 </main>`;
 const emilieMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
@@ -367,7 +391,7 @@ const emilieMain = (root) => `<main>
       <p class="kicker">Marketing et commerce international</p>
       <h1>Emilie Dupré.</h1>
       <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
-    </div>${photo(root)}</div>
+    </div>${pic(root, 'emilie-rando.jpg', "Emilie en randonnée au bord d'un lac de montagne", 744, 932, 'person__photo')}</div>
   </section>
   <section class="band">
     <div class="wrap split">
@@ -386,6 +410,19 @@ const emilieMain = (root) => `<main>
     </div>
   </section>
   <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 class="h2--small">Elle a écrit le livre</h2>
+        <p>« Klaviyo Email Marketing Automation » : plus de 90 pages sur les dix séquences d'e-mails qui comptent, de la bienvenue à la relance des clients endormis.</p>
+        <p><a class="link more" href="https://www.amazon.fr/dp/B0D94VKS1K" rel="noopener">Le voir sur Amazon →</a></p>
+        <h2 class="h2--small" style="margin-top:1em">Certifiée par Meta</h2>
+        <p>Depuis mai 2024, Emilie est certifiée Media Buying Professional. Avant Azuweb, elle a accompagné des organisations comme Schneider Electric, Campus France ou le Conseil d'État.</p>
+        <p class="badges">${pic(root, 'meta-certified.png', 'Meta Certified Media Buying Professional', 400, 400)}</p>
+      </div>
+      <figure class="shot shot--livre">${pic(root, 'livre-klaviyo.jpg', 'Couverture du livre Klaviyo Email Marketing Automation, par Emilie Dupré', 405, 720)}</figure>
+    </div>
+  </section>
+  <section class="band">
     <div class="wrap"><div class="prose">
       <h2 class="h2--small">Vendre à l'étranger</h2>
       <p>Ouvrir un marché, ce n'est pas traduire un site. Ce sont des prix, des taxes, des délais de livraison et une publicité à repenser pour chaque pays. Plusieurs de nos clients vendent aujourd'hui en Amérique du Nord, sur leur boutique ou sur Amazon.</p>
@@ -397,6 +434,56 @@ for (const [slug, title, desc, main] of [
   ['william', 'William Hutter · Azuweb', "William Hutter, design et développement chez Azuweb : des sites depuis l'époque des tableaux, des boutiques Shopify aujourd'hui.", williamMain],
   ['emilie', 'Emilie Dupré · Azuweb', 'Emilie Dupré, marketing et commerce international chez Azuweb : Amazon, publicité Meta, e-mails Klaviyo.', emilieMain],
 ]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'), slug)); }
+
+// Les parcours : les chemins qu'on voit souvent avant qu'une marque nous écrive.
+const PARCOURS = JSON.parse(fs.readFileSync('content/parcours.json', 'utf8'));
+const parcoursMain = (root) => `<main>
+  <section class="section" style="padding-bottom:clamp(20px,4vh,40px)">
+    <div class="wrap"><div class="prose">
+      <a class="back" href="${root}#top">← Accueil</a>
+      <h1>${esc(PARCOURS.titre)}</h1>
+      <p class="case__lede">${esc(PARCOURS.intro)}</p>
+    </div></div>
+  </section>
+  <nav class="paths__nav wrap" aria-label="Choisir un chemin">${PARCOURS.chemins.map((c, i) => `<a href="#chemin-${i + 1}"><b>${i + 1}</b>${esc(c.titre)}</a>`).join('')}</nav>
+  ${PARCOURS.chemins.map((c, i) => `<section class="path ${i % 2 ? 'band' : 'section'}" id="chemin-${i + 1}">
+    <div class="wrap">
+      <div class="prose"><p class="recit__n">Chemin ${i + 1}</p><h2>${esc(c.titre)}</h2><p>${esc(c.resume)}</p></div>
+      <ol class="path__steps">
+        ${c.etapes.map(([a, b]) => `<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join('\n        ')}
+        <li class="path__end"><b>${esc(c.arrivee[0])}</b><span>${esc(c.arrivee[1])}</span><a class="link more" href="${adresse(c.lien[0], root)}">${esc(c.lien[1])} →</a></li>
+      </ol>
+      ${c.temoin ? `<blockquote class="path__quote"><p>« ${esc(c.temoin.citation)} »</p><footer>${esc(c.temoin.nom)}, ${esc(c.temoin.marque)}</footer></blockquote>` : ''}
+    </div>
+  </section>`).join('\n  ')}
+  <section class="section">
+    <div class="wrap"><div class="prose">
+      <h2>Vous vous reconnaissez ?</h2>
+      <p>Dites-nous où vous en êtes sur le chemin. On vous répond avec un premier avis.</p>
+      <p><a class="btn" href="${root}#contact">Nous écrire</a></p>
+    </div></div>
+  </section>
+</main>`;
+const PHILO = JSON.parse(fs.readFileSync('content/philosophie.json', 'utf8'));
+const num = (i) => String(i).padStart(2, '0');
+const philoMain = (root) => `<main class="creed">
+  <div class="wrap">
+    <div class="prose">
+      <a class="back" href="${root}#nous">← L'atelier</a>
+      <h1>${esc(PHILO.titre)}</h1>
+      <p class="case__lede">${esc(PHILO.intro)}</p>
+    </div>
+    <ol class="creed__toc">${PHILO.idees.map(([titre], i) => `<li><a href="#idee-${num(i)}"><span>${num(i)}.</span> ${esc(titre)}</a></li>`).join('')}</ol>
+    <div class="creed__list">
+      ${PHILO.idees.map(([titre, texte], i) => `<article id="idee-${num(i)}"><h2><span>${num(i)}.</span> ${esc(titre)}</h2><p>${esc(texte)}</p></article>`).join('\n      ')}
+    </div>
+    <div class="prose"><p><a class="btn" href="${root}#contact">On en parle ?</a></p></div>
+  </div>
+</main>`;
+fs.mkdirSync('philosophie', { recursive: true });
+fs.writeFileSync('philosophie/index.html', shell('../', 'Notre façon de penser · Azuweb', PHILO.intro, philoMain('../'), '', 'philosophie'));
+fs.mkdirSync('parcours', { recursive: true });
+fs.writeFileSync('parcours/index.html', shell('../', 'Les chemins qui mènent à nous · Azuweb', PARCOURS.intro, parcoursMain('../'), '', 'parcours'));
 
 fs.mkdirSync('vercors', { recursive: true });
 fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis Autrans, dans le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n', 'vercors'));
@@ -412,8 +499,7 @@ copy('assets/js/site.js', 'azuweb-site.js');
 copy('assets/js/metier.js', 'azuweb-metier.js');
 fs.writeFileSync(path.join(out, 'assets/azuweb-vercors.js'), fs.readFileSync('assets/js/vercors.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
 copy('favicon.svg', 'favicon.svg');
-copy('assets/img/logo.png', 'logo.png');
-copy('assets/img/william-emilie.webp', 'william-emilie.webp');
+for (const f of fs.readdirSync('assets/img')) if (fs.statSync(`assets/img/${f}`).isFile()) copy(`assets/img/${f}`, f);
 if (cas.length && fs.existsSync('assets/img/cas')) for (const f of fs.readdirSync('assets/img/cas')) copy(`assets/img/cas/${f}`, `cas-${f}`);
 fs.writeFileSync(path.join(out, 'assets/azuweb-site.css'), fs.readFileSync('assets/css/site.css', 'utf8').replaceAll('../fonts/', ''));
 fs.writeFileSync(path.join(out, 'assets/azuweb-scene.js'), fs.readFileSync('assets/js/scene.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
@@ -443,7 +529,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 </html>
 `);
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<\/script>\s*/g, '');
-const liquid = (s) => s.replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"');
+const liquid = (s) => s.replace(/src="assets\/img\/([\w.-]+)"/g, `src="{{ '$1' | asset_url }}"`).replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"').replaceAll('href="parcours/"', 'href="{{ routes.root_url }}pages/parcours"').replaceAll('href="philosophie/"', 'href="{{ routes.root_url }}pages/philosophie"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
 const lNav = liquid(nav), lFoot = liquid(foot);
@@ -466,6 +552,10 @@ A.services.forEach((s, i) => {
 });
 section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${autolink(vercorsMain(R), R, 'vercors')}\n${lFoot}\n<script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>`);
 fs.writeFileSync(path.join(out, 'templates/page.vercors.json'), tpl('azuweb-vercors'));
+section('azuweb-philosophie.liquid', 'Azuweb · Philosophie', `${lNav}\n${philoMain(R)}\n${lFoot}`);
+fs.writeFileSync(path.join(out, 'templates/page.philosophie.json'), tpl('azuweb-philosophie'));
+section('azuweb-parcours.liquid', 'Azuweb · Parcours', `${lNav}\n${autolink(parcoursMain(R), R, 'parcours')}\n${lFoot}`);
+fs.writeFileSync(path.join(out, 'templates/page.parcours.json'), tpl('azuweb-parcours'));
 section('azuweb-william.liquid', 'Azuweb · William', `${lNav}\n${autolink(williamMain(R), R, 'william')}\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/page.william.json'), tpl('azuweb-william'));
 section('azuweb-emilie.liquid', 'Azuweb · Emilie', `${lNav}\n${autolink(emilieMain(R), R, 'emilie')}\n${lFoot}`);
