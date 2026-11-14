@@ -341,7 +341,6 @@ for (const d of ['layout', 'templates', 'sections', 'assets', 'config', 'locales
 const copy = (from, to) => fs.copyFileSync(from, path.join(out, 'assets', to)); // Shopify range tout à plat dans assets/
 copy('assets/vendor/three.module.min.js', 'three.module.min.js');
 copy('assets/fonts/inter.woff2', 'inter.woff2');
-copy('assets/fonts/hand.woff2', 'hand.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
 copy('assets/js/metier.js', 'azuweb-metier.js');
 fs.writeFileSync(path.join(out, 'assets/azuweb-vercors.js'), fs.readFileSync('assets/js/vercors.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));

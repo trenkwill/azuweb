@@ -14,7 +14,6 @@ export const demos = {
       <label><input type="checkbox" id="ed-guide" data-toggle="guide"> Guide des tailles</label>
       <label><input type="checkbox" id="ed-plus" data-toggle="plus"> Produits complémentaires</label>
       <label><input type="checkbox" id="ed-b2b" data-toggle="b2b"> Prix professionnels</label>
-      <p class="note" data-arrow="left">à vous de jouer</p>
     </fieldset>
     <div class="editor__page" aria-live="polite">
       <p class="ed-block ed-bar" data-block="bar">Livraison offerte dès 50 €</p>
@@ -72,7 +71,7 @@ export const demos = {
         <tr data-cut><td>Carrousel promo</td><td>41 €</td><td>1</td><td><span class="bar" style="--w:25%" data-after="0%"></span></td></tr>
       </tbody>
     </table>
-    <p class="releve__actions"><button class="btn" type="button" id="releve-btn">Couper ce qui ne vend pas</button><span class="note" id="releve-note" hidden>même budget, sur ce qui marche</span></p>
+    <p class="releve__actions"><button class="btn" type="button" id="releve-btn">Couper ce qui ne vend pas</button><span class="hint" id="releve-note" hidden>même budget, sur ce qui marche</span></p>
   </div>
   <p class="demo__legend">Chiffres d'exemple.</p>
 </section>`,
@@ -130,11 +129,10 @@ export const demos = {
         <g transform="translate(20 126)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Récap publicité</text></g>
         <g transform="translate(20 206)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Relecture des textes</text></g>
         <g transform="translate(20 286)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Veille</text></g>
-        <g class="ag-human" transform="translate(290 140)"><rect width="150" height="80" rx="14"/><text x="75" y="35">Emilie</text><text x="75" y="60">ou William</text></g>
+        <g class="ag-human" transform="translate(290 140)"><rect width="150" height="80" rx="14"/><text x="75" y="30">Emilie</text><text x="75" y="50">ou William</text><text class="ag-sub" x="75" y="69">relit et valide</text></g>
         <g class="ag-live" transform="translate(600 156)"><rect width="100" height="48" rx="24"/><text x="50" y="30">En ligne</text></g>
       </g>
     </svg>
-    <p class="note agents__note">ici, quelqu'un relit</p>
   </div>
 </section>`,
 };
