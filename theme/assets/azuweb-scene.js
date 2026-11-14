@@ -157,7 +157,9 @@ if (renderer) {
   camera.position.z = 8;
 
   const geo = new THREE.BufferGeometry();
-  const from = new Float32Array(target('bag')), to = new Float32Array(target('bag'));
+  // Sur une page métier, la scène garde la forme du métier (data-shape) au lieu de les enchaîner.
+  const FIXED = shapes[stage.dataset.shape] ? stage.dataset.shape : null, FIRST = FIXED || 'bag';
+  const from = new Float32Array(target(FIRST)), to = new Float32Array(target(FIRST));
   const rand = new Float32Array(COUNT * 4).map(() => R());
   geo.setAttribute('position', new THREE.BufferAttribute(to, 3));
   geo.setAttribute('aFrom', new THREE.BufferAttribute(from, 3));
@@ -199,7 +201,7 @@ if (renderer) {
   rig.add(points);
   scene.add(rig);
 
-  let current = 'bag', mixStart = -10, halfW = 1, halfH = 1;
+  let current = FIRST, mixStart = -10, halfW = 1, halfH = 1;
   const DURATION = reduced ? 0.001 : 1.7;
   function morph(name, now) {
     if (name === current) return;
@@ -248,7 +250,11 @@ if (renderer) {
     requestAnimationFrame(frame);
     if (!visible || document.hidden) return;
     const t = clock.getElapsedTime();
-    if (force || (!reduced && t > nextAt)) { force = false; index = (index + 1) % ORDER.length; nextAt = t + 4.6; morph(ORDER[index], t); }
+    if (FIXED && force) { // un clic disperse les points, qui reviennent prendre leur forme
+      force = false;
+      for (let i = 0; i < COUNT * 3; i++) from[i] = to[i] + (R() - 0.5) * 5;
+      geo.attributes.aFrom.needsUpdate = true; mixStart = t; uniforms.uMix.value = 0;
+    } else if (!FIXED && (force || (!reduced && t > nextAt))) { force = false; index = (index + 1) % ORDER.length; nextAt = t + 4.6; morph(ORDER[index], t); }
     uniforms.uMix.value = Math.min(1, (t - mixStart) / DURATION);
     uniforms.uTime.value = reduced ? 0 : t;
     strength += (pointer.inside - strength) * 0.08;

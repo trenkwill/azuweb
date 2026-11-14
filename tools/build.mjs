@@ -7,6 +7,7 @@
 // Usage : node tools/build.mjs
 import fs from 'fs';
 import path from 'path';
+import { demos } from './demos.mjs';
 
 const A = JSON.parse(fs.readFileSync('content/azuweb.json', 'utf8'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -199,13 +200,16 @@ const serviceMain = (s, m, root, casHref) => {
   const lies = cas.filter((c) => (s.slug === 'amazon' ? /amazon/i.test(c.slug + c.resume) : PLATEFORME[s.slug] && (c.plateformes || []).includes(PLATEFORME[s.slug]))).slice(0, 8);
   return `<main class="case">
   <div class="wrap">
-    <div class="prose">
-      <a class="back" href="${root}#metiers">← Tous nos métiers</a>
-      <canvas class="service__icon" data-icon="${m.icon}" aria-hidden="true"></canvas>
-      <p class="kicker">${esc(m.tag)}</p>
-      <h1>${m.titre}</h1>
-      <p class="case__lede">${m.texte}</p>
+    <div class="hero hero--metier">
+      <div class="hero__text">
+        <a class="back" href="${root}#metiers">← Tous nos métiers</a>
+        <p class="kicker">${esc(m.tag)}</p>
+        <h1>${m.titre}</h1>
+        <p class="case__lede">${m.texte}</p>
+      </div>
+      <div class="hero__stage" id="stage" data-shape="${m.icon}" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
     </div>
+    ${demos[s.slug] || ''}
     <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks">${s.pour_qui.map((q) => `<li>${esc(q)}</li>`).join('')}</ul></div>
     <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech">${m.points.map((q) => `<li>${q}</li>`).join('')}</ul></div>
     <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps">${A.methode.map((x) => { const [a, b] = x.split(' : '); return `<li><strong>${esc(a)}.</strong> ${esc(b.charAt(0).toUpperCase() + b.slice(1))}.</li>`; }).join('')}</ol></div>
@@ -218,7 +222,7 @@ const serviceMain = (s, m, root, casHref) => {
 fs.rmSync('services', { recursive: true, force: true });
 A.services.forEach((s, i) => {
   fs.mkdirSync(`services/${s.slug}`, { recursive: true });
-  fs.writeFileSync(`services/${s.slug}/index.html`, shell('../../', `${s.nom} · Azuweb`, s.resume, serviceMain(s, metiers[i], '../../', (c) => `../../projets/${c.slug}/`), `<script type="module" src="../../assets/js/scene.js"></script>\n`));
+  fs.writeFileSync(`services/${s.slug}/index.html`, shell('../../', `${s.nom} · Azuweb`, s.resume, serviceMain(s, metiers[i], '../../', (c) => `../../projets/${c.slug}/`), `<script type="module" src="../../assets/js/scene.js"></script>\n<script src="../../assets/js/metier.js" defer></script>\n`));
 });
 const vercorsMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
@@ -226,20 +230,22 @@ const vercorsMain = (root) => `<main>
       <a class="back" href="${root}#nous">← Retour</a>
       <p class="kicker">Là où on travaille</p>
       <h1>Le Vercors.</h1>
-      <p class="case__lede">Un plateau de calcaire entre Grenoble et la Drôme, bordé de falaises. On y vit, on y travaille, et nos clients sont à Paris, à Lyon ou de l'autre côté de l'Atlantique.</p>
+      <p class="case__lede">On vit et on travaille à Autrans, dans le nord du Vercors : un val à mille mètres d'altitude, juste au-dessus de Grenoble. Nos clients, eux, sont à Paris, à Lyon ou de l'autre côté de l'Atlantique.</p>
     </div></div>
   </section>
   <div class="relief" id="relief">
-    <canvas id="relief-canvas" aria-label="Relief stylisé du Vercors, en points d'encre"></canvas>
-    <p class="relief__label" data-at="0.3,0.16">le Grand Veymont<small>2 341 m, le point culminant</small></p>
-    <p class="relief__label" data-at="0.72,-0.28">le Mont Aiguille<small>2 087 m</small></p>
-    <p class="relief__label" data-at="-0.2,0.35">les Hauts Plateaux</p>
-    <p class="relief__label" data-at="-0.28,-0.58">les gorges de la Bourne</p>
+    <canvas id="relief-canvas" aria-label="Relief stylisé du nord du Vercors, autour d'Autrans, en points d'encre"></canvas>
+    <p class="relief__label relief__label--home" data-at="-0.36,-0.34">Autrans<small>c'est ici qu'on travaille</small></p>
+    <p class="relief__label" data-at="-0.4,0.14">Méaudre</p>
+    <p class="relief__label" data-at="-0.03,-0.3">la Molière</p>
+    <p class="relief__label" data-at="0.52,-0.22">le Moucherotte<small>1 901 m, au-dessus de Grenoble</small></p>
+    <p class="relief__label" data-at="0.27,0.42">Villard-de-Lans</p>
+    <p class="relief__label" data-at="-0.15,0.62">les gorges de la Bourne</p>
     <p class="relief__hint">Faites glisser pour tourner autour</p>
   </div>
   <section class="section">
     <div class="wrap"><div class="prose">
-      <p>Ce relief est dessiné par le code, point par point. C'est une évocation, pas une carte : les sommets sont à peu près à leur place, le reste est de mémoire.</p>
+      <p>Ce relief est dessiné par le code, point par point. C'est une évocation, pas une carte : les vals, les crêtes et les villages sont à peu près à leur place, le reste est de mémoire.</p>
       <h2 class="h2--small">Pourquoi ça compte pour vous</h2>
       <p>Travailler loin des grandes villes nous oblige à bien faire deux choses : écrire clairement, et tenir nos délais sans réunion inutile. Un message précis le matin, une visio quand il faut se parler, et le reste du temps on avance.</p>
       <p>On n'a pas de bureau à vous faire visiter. On a un tableau partagé où vous voyez chaque tâche, et deux personnes qui répondent.</p>
@@ -252,14 +258,15 @@ const machine = fs.readFileSync('content/fragments/machine.html', 'utf8');
 const mails = html.match(/<div class="mails">[\s\S]*?<\/figure>\s*<\/div>/)[0].match(/<figure[\s\S]*?<\/figure>/g);
 const svc = (root, slug) => (root === '../' ? `../services/${slug}/` : `${root}pages/${slug}`);
 const icons = (root, list) => `<p class="person__icons">${list.map(([icon, slug, label]) => `<a href="${svc(root, slug)}"><canvas data-icon="${icon}" aria-hidden="true"></canvas>${label} →</a>`).join('')}</p>`;
+const photo = (root) => `<img class="duo__photo" src="${root.startsWith('{{') ? "{{ 'william-emilie.webp' | asset_url }}" : `${root}assets/img/william-emilie.webp`}" alt="William Hutter et Emilie Dupré, dos à dos" width="741" height="650">`;
 const williamMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
-    <div class="wrap"><div class="prose">
+    <div class="wrap person__head"><div class="prose">
       <a class="back" href="${root}#nous">← L'atelier</a>
       <p class="kicker">Design et développement</p>
       <h1>William Hutter.</h1>
       <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, applications sur mesure, tableaux de bord.</p>
-    </div></div>
+    </div>${photo(root)}</div>
   </section>
   <section class="era-section" id="histoire">
     <div class="wrap">
@@ -288,12 +295,12 @@ ${machine}
 </main>`;
 const emilieMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
-    <div class="wrap"><div class="prose">
+    <div class="wrap person__head"><div class="prose">
       <a class="back" href="${root}#nous">← L'atelier</a>
       <p class="kicker">Marketing et commerce international</p>
       <h1>Emilie Dupré.</h1>
       <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
-    </div></div>
+    </div>${photo(root)}</div>
   </section>
   <section class="band">
     <div class="wrap split">
@@ -325,7 +332,7 @@ for (const [slug, title, desc, main] of [
 ]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'))); }
 
 fs.mkdirSync('vercors', { recursive: true });
-fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n'));
+fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis Autrans, dans le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n'));
 
 /* ---------- Thème Shopify ---------- */
 const out = 'theme';
@@ -336,9 +343,11 @@ copy('assets/vendor/three.module.min.js', 'three.module.min.js');
 copy('assets/fonts/inter.woff2', 'inter.woff2');
 copy('assets/fonts/hand.woff2', 'hand.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
+copy('assets/js/metier.js', 'azuweb-metier.js');
 fs.writeFileSync(path.join(out, 'assets/azuweb-vercors.js'), fs.readFileSync('assets/js/vercors.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
 copy('favicon.svg', 'favicon.svg');
 copy('assets/img/logo.png', 'logo.png');
+copy('assets/img/william-emilie.webp', 'william-emilie.webp');
 if (cas.length && fs.existsSync('assets/img/cas')) for (const f of fs.readdirSync('assets/img/cas')) copy(`assets/img/cas/${f}`, `cas-${f}`);
 fs.writeFileSync(path.join(out, 'assets/azuweb-site.css'), fs.readFileSync('assets/css/site.css', 'utf8').replaceAll('../fonts/', ''));
 fs.writeFileSync(path.join(out, 'assets/azuweb-scene.js'), fs.readFileSync('assets/js/scene.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
@@ -368,7 +377,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 </html>
 `);
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<\/script>\s*/g, '');
-const liquid = (s) => s.replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"');
+const liquid = (s) => s.replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
 const lNav = liquid(nav), lFoot = foot;
@@ -386,7 +395,7 @@ for (const c of cas) {
 // Pages métier et Vercors : créer chaque page dans l'admin avec le modèle du même nom.
 const R = '{{ routes.root_url }}';
 A.services.forEach((s, i) => {
-  section(`azuweb-metier-${s.slug}.liquid`, `Métier · ${s.nom}`.slice(0, 25), `${lNav}\n${serviceMain(s, metiers[i], R, (c) => `${R}pages/${c.slug}`)}\n${lFoot}`);
+  section(`azuweb-metier-${s.slug}.liquid`, `Métier · ${s.nom}`.slice(0, 25), `${lNav}\n${serviceMain(s, metiers[i], R, (c) => `${R}pages/${c.slug}`)}\n${lFoot}\n<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>`);
   fs.writeFileSync(path.join(out, `templates/page.metier-${s.slug}.json`), tpl(`azuweb-metier-${s.slug}`));
 });
 section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${vercorsMain(R)}\n${lFoot}\n<script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>`);

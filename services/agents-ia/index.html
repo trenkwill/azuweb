@@ -23,13 +23,40 @@
 </header>
 <main class="case">
   <div class="wrap">
-    <div class="prose">
-      <a class="back" href="../../#metiers">← Tous nos métiers</a>
-      <canvas class="service__icon" data-icon="network" aria-hidden="true"></canvas>
-      <p class="kicker">Intelligence artificielle</p>
-      <h1>Des agents IA dans l'atelier, un humain à la signature.</h1>
-      <p class="case__lede">On travaille chaque jour avec des agents IA qu'on a mis en place nous-mêmes. Ils préparent, vérifient et surveillent. <strong>Rien ne part en ligne sans que l'un de nous deux l'ait relu.</strong></p>
+    <div class="hero hero--metier">
+      <div class="hero__text">
+        <a class="back" href="../../#metiers">← Tous nos métiers</a>
+        <p class="kicker">Intelligence artificielle</p>
+        <h1>Des agents IA dans l'atelier, un humain à la signature.</h1>
+        <p class="case__lede">On travaille chaque jour avec des agents IA qu'on a mis en place nous-mêmes. Ils préparent, vérifient et surveillent. <strong>Rien ne part en ligne sans que l'un de nous deux l'ait relu.</strong></p>
+      </div>
+      <div class="hero__stage" id="stage" data-shape="network" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
     </div>
+    <section class="demo" data-demo="agents" aria-labelledby="demo-t">
+  <div class="prose"><h2 class="h2--small" id="demo-t">Qui fait quoi, et qui signe.</h2>
+  <p>Les agents travaillent en continu et remontent ce qu'ils trouvent. Rien ne part en ligne sans passer par l'un de nous deux.</p></div>
+  <div class="demo__stage agents">
+    <svg viewBox="0 0 720 360" role="img" aria-label="Quatre agents IA envoient leurs trouvailles à une personne, qui valide avant la mise en ligne">
+      <g class="ag-links"><path id="ag-1" d="M120 70 C240 70 250 180 360 180"/><path id="ag-2" d="M120 150 C220 150 260 180 360 180"/><path id="ag-3" d="M120 230 C220 230 260 180 360 180"/><path id="ag-4" d="M120 310 C240 310 250 180 360 180"/><path id="ag-5" d="M360 180 L600 180"/></g>
+      <g class="ag-pulses">
+        <circle r="6"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#ag-1"/></animateMotion></circle>
+        <circle r="6"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#ag-2"/></animateMotion></circle>
+        <circle r="6"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#ag-3"/></animateMotion></circle>
+        <circle r="6"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.4s"><mpath href="#ag-4"/></animateMotion></circle>
+        <circle r="7" class="ag-ok"><animateMotion dur="1.6s" repeatCount="indefinite" begin="0.4s"><mpath href="#ag-5"/></animateMotion></circle>
+      </g>
+      <g class="ag-nodes">
+        <g transform="translate(20 46)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Audit du site</text></g>
+        <g transform="translate(20 126)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Récap publicité</text></g>
+        <g transform="translate(20 206)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Relecture des textes</text></g>
+        <g transform="translate(20 286)"><rect width="200" height="48" rx="24"/><text x="100" y="30">Veille</text></g>
+        <g class="ag-human" transform="translate(290 140)"><rect width="150" height="80" rx="14"/><text x="75" y="35">Emilie</text><text x="75" y="60">ou William</text></g>
+        <g class="ag-live" transform="translate(600 156)"><rect width="100" height="48" rx="24"/><text x="50" y="30">En ligne</text></g>
+      </g>
+    </svg>
+    <p class="note agents__note">ici, quelqu'un relit</p>
+  </div>
+</section>
     <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Une page cassée ou un prix faux reste en ligne des jours avant qu'on le voie.</li><li>Vos textes produit doivent respecter une réglementation.</li><li>Votre équipe perd du temps sur des vérifications répétitives.</li><li>Vous voulez utiliser l'IA sans lui confier les clés.</li></ul></div>
     <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Audit quotidien de votre site : liens cassés, prix, pages qui ne s'affichent plus</li><li>Récapitulatif chaque matin de vos comptes publicitaires</li><li>Relecture réglementaire des textes produit, pour la beauté et les compléments</li><li>Les mêmes outils installés chez vous, pour votre équipe</li></ul></div>
     <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
@@ -45,6 +72,7 @@
   </div>
 </footer>
 <script type="module" src="../../assets/js/scene.js"></script>
+<script src="../../assets/js/metier.js" defer></script>
 <script src="../../assets/js/site.js" defer></script>
 </body>
 </html>

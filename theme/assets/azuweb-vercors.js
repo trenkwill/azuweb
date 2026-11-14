@@ -1,5 +1,5 @@
 // Le Vercors en points d'encre : un relief dessiné par le code (une évocation, pas une carte).
-// Un grand plateau incliné, une falaise à l'est, le Grand Veymont sur la crête et le Mont Aiguille détaché.
+// Le Vercors nord, les Quatre Montagnes : deux vals parallèles entre trois lignes de crêtes, bordés de falaises.
 import * as THREE from './three.module.min.js';
 
 const stage = document.getElementById('relief');
@@ -19,22 +19,28 @@ if (renderer) {
   }
   const fbm = (x, y) => noise(x, y) * 0.5 + noise(x * 2.1, y * 2.1) * 0.25 + noise(x * 4.3, y * 4.3) * 0.125 + noise(x * 8.7, y * 8.7) * 0.0625;
   const step = (a, b, x) => smooth(Math.min(1, Math.max(0, (x - a) / (b - a))));
-  const VEYMONT = [0.3, 0.16], AIGUILLE = [0.72, -0.28];
+  // Le nord du massif, vu du dessus : x vers l'est, z vers le sud.
+  // À l'ouest, la crête qui domine la vallée de l'Isère ; le val d'Autrans et de Méaudre ; la Molière au milieu ;
+  // le val de Lans et de Villard ; puis le rebord est, avec le Moucherotte au-dessus de Grenoble.
+  const AUTRANS = [-0.36, -0.34], MEAUDRE = [-0.4, 0.14], MOLIERE = [-0.03, -0.3], MOUCHEROTTE = [0.52, -0.22], VILLARD = [0.27, 0.42];
+  const bump = (x, z, c, rx, rz) => Math.exp(-(Math.pow((x - c[0]) / rx, 2) + Math.pow((z - c[1]) / rz, 2)));
   function height(x, z) {
-    const edge = 0.42 + Math.sin(z * 3.1) * 0.05 + (noise(z * 4 + 9, 3) - 0.5) * 0.08;   // la ligne de falaise, sinueuse
-    const plateau = 0.3 + x * 0.16 + (fbm(x * 3 + 5, z * 3 + 2) - 0.47) * 0.2;            // les Hauts Plateaux, inclinés vers l'ouest
-    const crest = Math.exp(-Math.pow((x - edge + 0.06) / 0.09, 2)) * 0.13;                // la crête qui borde le vide
-    const veymont = Math.exp(-(Math.pow((x - VEYMONT[0]) / 0.1, 2) + Math.pow((z - VEYMONT[1]) / 0.2, 2))) * 0.22;
-    const valley = 0.04 + (fbm(x * 4 + 1, z * 4 + 7) - 0.5) * 0.07;                       // le Trièves, en contrebas
-    let h = plateau + crest + veymont;
-    h = h + (valley - h) * step(edge, edge + 0.045, x);                                    // la falaise : presque verticale
-    // Les gorges de la Bourne : une entaille qui serpente dans le plateau.
-    const gorge = Math.abs(z - (-0.55 + Math.sin(x * 4.2) * 0.12));
-    if (x < edge - 0.1) h -= Math.exp(-Math.pow(gorge / 0.035, 2)) * 0.2 * step(-0.95, -0.65, x) * (1 - step(0.05, 0.3, x));
-    // Le Mont Aiguille : une table de calcaire posée seule devant la falaise.
-    const dx = (x - AIGUILLE[0]) / 0.07, dz = (z - AIGUILLE[1]) / 0.13, d = Math.sqrt(dx * dx + dz * dz);
-    h = Math.max(h, 0.56 * (1 - step(0.82, 1.0, d)) + (1 - step(0.82, 1.0, d)) * (noise(x * 30, z * 30) - 0.5) * 0.03 + valley * step(0.82, 1.0, d));
-    return h * (1 - step(0.92, 1.0, Math.max(Math.abs(x), Math.abs(z))) * 0.5);
+    const grain = (fbm(x * 3.2 + 5, z * 3.2 + 2) - 0.47) * 0.13;
+    const west = -0.72 + Math.sin(z * 2.6) * 0.04 + (noise(z * 4 + 9, 3) - 0.5) * 0.06;    // falaise ouest
+    const east = 0.64 + Math.sin(z * 3.1 + 1) * 0.04 + (noise(z * 4 + 2, 8) - 0.5) * 0.06;  // falaise est
+    let h = 0.3 + grain;
+    h += Math.exp(-Math.pow((x - west - 0.09) / 0.09, 2)) * 0.2;                             // crête ouest
+    h += Math.exp(-Math.pow((x - MOLIERE[0] - z * 0.08) / 0.13, 2)) * 0.2 * (1 - step(0.25, 0.6, z)); // la Molière et Charande
+    h += Math.exp(-Math.pow((x - east + 0.1) / 0.1, 2)) * 0.2 + bump(x, z, MOUCHEROTTE, 0.1, 0.14) * 0.16; // rebord est et Moucherotte
+    h -= Math.exp(-Math.pow((x + 0.38 - z * 0.05) / 0.12, 2)) * 0.13;                        // val d'Autrans et de Méaudre
+    h -= Math.exp(-Math.pow((x - 0.28) / 0.12, 2)) * 0.11;                                   // val de Lans et de Villard
+    // Les gorges de la Bourne, au sud : une entaille qui part de Villard vers l'ouest.
+    const gorge = Math.abs(z - (0.62 + Math.sin(x * 4.2) * 0.07));
+    h -= Math.exp(-Math.pow(gorge / 0.035, 2)) * 0.22 * (1 - step(0.15, 0.35, x)) * step(west + 0.02, west + 0.2, x);
+    const low = 0.03 + (fbm(x * 4 + 1, z * 4 + 7) - 0.5) * 0.05;                              // les vallées de l'Isère et du Drac
+    h = h + (low - h) * step(east, east + 0.045, x);
+    h = h + (low - h) * (1 - step(west - 0.045, west, x));
+    return h * (1 - step(0.93, 1.0, Math.abs(z)) * 0.5);
   }
 
   const UP = 2.1; // le relief est exagéré, comme sur une maquette
@@ -102,7 +108,7 @@ if (renderer) {
   new ResizeObserver(resize).observe(stage); resize();
 
   // On tourne autour en glissant ; sinon le relief pivote lentement tout seul.
-  let yaw = 1.05, pitch = 0.42, drag = null, auto = true, visible = true;
+  let yaw = -2.5, pitch = 0.5, drag = null, auto = true, visible = true;
   stage.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, yaw, pitch }; auto = false; stage.setPointerCapture(e.pointerId); });
   stage.addEventListener('pointermove', (e) => {
     if (!drag) return;

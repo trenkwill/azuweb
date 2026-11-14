@@ -12,13 +12,35 @@
 </header>
 <main class="case">
   <div class="wrap">
-    <div class="prose">
-      <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
-      <canvas class="service__icon" data-icon="bars" aria-hidden="true"></canvas>
-      <p class="kicker">Données</p>
-      <h1>Tous vos chiffres au même endroit, dans l'admin Shopify.</h1>
-      <p class="case__lede">Meta, Google, Amazon, l'e-mail et la boutique ont chacun leur tableau de bord, et aucun ne dit la même chose. On les réunit dans un seul écran, là où vous travaillez déjà.</p>
+    <div class="hero hero--metier">
+      <div class="hero__text">
+        <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
+        <p class="kicker">Données</p>
+        <h1>Tous vos chiffres au même endroit, dans l'admin Shopify.</h1>
+        <p class="case__lede">Meta, Google, Amazon, l'e-mail et la boutique ont chacun leur tableau de bord, et aucun ne dit la même chose. On les réunit dans un seul écran, là où vous travaillez déjà.</p>
+      </div>
+      <div class="hero__stage" id="stage" data-shape="bars" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
     </div>
+    <section class="demo" data-demo="merge" aria-labelledby="demo-t">
+  <div class="prose"><h2 class="h2--small" id="demo-t">Cinq onglets, puis un seul écran.</h2>
+  <p>Chaque outil a son tableau de bord, et aucun ne donne le même chiffre. Appuyez pour les réunir.</p></div>
+  <div class="demo__stage merge" id="merge">
+    <div class="merge__cards">
+      <div class="merge__card" style="--i:0"><b>Meta Ads</b><span>Achats : 31</span></div>
+      <div class="merge__card" style="--i:1"><b>Google Ads</b><span>Conversions : 18</span></div>
+      <div class="merge__card" style="--i:2"><b>Amazon Ads</b><span>Commandes : 22</span></div>
+      <div class="merge__card" style="--i:3"><b>Klaviyo</b><span>Ventes : 14</span></div>
+      <div class="merge__card" style="--i:4"><b>Shopify</b><span>Commandes : 52</span></div>
+    </div>
+    <div class="merge__board" aria-live="polite">
+      <p class="merge__title">Cette semaine <span>dans l'admin Shopify</span></p>
+      <dl><div><dt>Commandes</dt><dd>52</dd></div><div><dt>Dépense publicitaire</dt><dd>1 140 €</dd></div><div><dt>Coût par commande</dt><dd>21,90 €</dd></div><div><dt>Vs semaine précédente</dt><dd>+8 %</dd></div></dl>
+      <p class="merge__rows"><span style="--w:42%">Meta</span><span style="--w:24%">Google</span><span style="--w:20%">E-mail</span><span style="--w:14%">Direct</span></p>
+    </div>
+    <p class="releve__actions"><button class="btn" type="button" id="merge-btn">Tout réunir</button></p>
+  </div>
+  <p class="demo__legend">Chiffres d'exemple.</p>
+</section>
     <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Chaque outil vous donne un chiffre d'affaires différent.</li><li>Vous passez votre lundi à recopier des tableaux.</li><li>Vous voulez comparer une semaine à la précédente en un coup d'œil.</li><li>Vous voulez voir où vous perdez vos visiteurs, de l'annonce à l'achat.</li></ul></div>
     <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Dépenses publicitaires par source et par campagne</li><li>Chiffre d'affaires, commandes, coût par commande</li><li>De l'annonce à l'inscription, de l'e-mail à l'achat</li></ul></div>
     <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
@@ -33,6 +55,7 @@
     <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
   </div>
 </footer>
+<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>
 {% schema %}
 { "name": "Métier · Données", "settings": [] }
 {% endschema %}

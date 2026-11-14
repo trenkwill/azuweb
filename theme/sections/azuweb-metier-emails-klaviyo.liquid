@@ -12,13 +12,28 @@
 </header>
 <main class="case">
   <div class="wrap">
-    <div class="prose">
-      <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
-      <canvas class="service__icon" data-icon="envelope" aria-hidden="true"></canvas>
-      <p class="kicker">E-mail · Klaviyo</p>
-      <h1>Les e-mails qui vendent pendant que vous dormez.</h1>
-      <p class="case__lede">Un visiteur qui laisse son adresse vaut plus qu'un clic. On met en place les séquences automatiques et les campagnes, et on mesure ce que chacune rapporte.</p>
+    <div class="hero hero--metier">
+      <div class="hero__text">
+        <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
+        <p class="kicker">E-mail · Klaviyo</p>
+        <h1>Les e-mails qui vendent pendant que vous dormez.</h1>
+        <p class="case__lede">Un visiteur qui laisse son adresse vaut plus qu'un clic. On met en place les séquences automatiques et les campagnes, et on mesure ce que chacune rapporte.</p>
+      </div>
+      <div class="hero__stage" id="stage" data-shape="envelope" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
     </div>
+    <section class="demo" data-demo="flow" aria-labelledby="demo-t">
+  <div class="prose"><h2 class="h2--small" id="demo-t">Une séquence, e-mail par e-mail.</h2>
+  <p>Choisissez une séquence et regardez-la se dérouler. Chacune part toute seule, au bon moment, pour chaque client.</p></div>
+  <div class="demo__stage flow">
+    <div class="machine__tabs" role="group" aria-label="Choisir une séquence">
+      <button type="button" data-flow="bienvenue" aria-pressed="true">Bienvenue</button>
+      <button type="button" data-flow="panier" aria-pressed="false">Panier abandonné</button>
+      <button type="button" data-flow="apres" aria-pressed="false">Après l'achat</button>
+    </div>
+    <ol class="flow__line" id="flow-line"></ol>
+  </div>
+  <p class="demo__legend">Délais et contenus d'exemple : on les règle sur votre marque.</p>
+</section>
     <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Vous récoltez des adresses mais vous n'envoyez presque rien.</li><li>Vos paniers abandonnés ne sont pas relancés.</li><li>Vos e-mails ne ressemblent pas à votre site.</li><li>Vous voulez savoir ce que chaque e-mail rapporte.</li></ul></div>
     <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Bienvenue, panier abandonné, paiement abandonné, après l'achat</li><li>Lancements, Black Friday, relances avant la fin d'une offre</li><li>Formulaires, pop-ups et quiz d'inscription</li><li>Chiffre d'affaires attribué par séquence et par campagne</li></ul></div>
     <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
@@ -33,6 +48,7 @@
     <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
   </div>
 </footer>
+<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>
 {% schema %}
 { "name": "Métier · E-mails Klaviyo", "settings": [] }
 {% endschema %}

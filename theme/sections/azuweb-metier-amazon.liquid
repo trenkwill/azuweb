@@ -12,13 +12,39 @@
 </header>
 <main class="case">
   <div class="wrap">
-    <div class="prose">
-      <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
-      <canvas class="service__icon" data-icon="box" aria-hidden="true"></canvas>
-      <p class="kicker">Amazon Seller Central</p>
-      <h1>Votre marque sur Amazon, tenue comme une vraie boutique.</h1>
-      <p class="case__lede">On gère le compte vendeur de bout en bout : ce que le client lit, ce qu'il voit, ce que vous dépensez en publicité, et ce qu'il vous reste à la fin de la semaine.</p>
+    <div class="hero hero--metier">
+      <div class="hero__text">
+        <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
+        <p class="kicker">Amazon Seller Central</p>
+        <h1>Votre marque sur Amazon, tenue comme une vraie boutique.</h1>
+        <p class="case__lede">On gère le compte vendeur de bout en bout : ce que le client lit, ce qu'il voit, ce que vous dépensez en publicité, et ce qu'il vous reste à la fin de la semaine.</p>
+      </div>
+      <div class="hero__stage" id="stage" data-shape="box" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
     </div>
+    <section class="demo" data-demo="compare" aria-labelledby="demo-t">
+  <div class="prose"><h2 class="h2--small" id="demo-t">Avant, après : faites glisser.</h2>
+  <p>La même fiche Amazon, avant et après notre passage. À gauche, ce qu'on trouve souvent. À droite, ce que l'acheteur devrait lire.</p></div>
+  <div class="demo__stage compare" style="--cut:50%">
+    <div class="compare__side compare__after">
+      <p class="az-tag">Après</p>
+      <div class="az-row"><div class="az-photo"><span class="bag" style="color:#d9c7a3" aria-hidden="true"></span><i></i><i></i><i></i></div>
+        <div class="az-text"><p class="az-title">Le Cabas n° 1, sac en toile de coton épais, fabriqué en France</p><p class="az-stars">★★★★★ <span>312</span></p>
+        <ul><li><b>Solide :</b> toile 400 g, coutures doublées</li><li><b>Pratique :</b> poche intérieure zippée</li><li><b>Garanti :</b> 10 ans, réparé gratuitement</li></ul></div></div>
+      <div class="az-aplus"><span>La matière</span><span>La fabrication</span><span>La garantie</span></div>
+      <p class="az-store">Visiter la boutique de la marque ›</p>
+    </div>
+    <div class="compare__side compare__before" aria-hidden="true">
+      <p class="az-tag">Avant</p>
+      <div class="az-row"><div class="az-photo az-photo--bad"><span class="bag" style="color:#9aa0a6" aria-hidden="true"></span></div>
+        <div class="az-text"><p class="az-title">SAC TOILE CABAS SAC COURSES SAC PLAGE SAC FEMME HOMME SHOPPING COTON GRAND SAC TOTE BAG SOLIDE RÉSISTANT NEUF</p><p class="az-stars">★★★☆☆ <span>4</span></p>
+        <p class="az-blob">Sac de bonne qualité. Livraison rapide. Convient pour les courses la plage le travail. Matière coton. Dimensions voir photo. Merci de nous contacter pour toute question avant de laisser un avis.</p></div></div>
+    </div>
+    <div class="compare__handle" aria-hidden="true"><span>‹ ›</span></div>
+    <label class="sr" for="cmp-range">Position du curseur avant / après</label>
+    <input class="compare__range" id="cmp-range" type="range" min="0" max="100" value="50">
+  </div>
+  <p class="demo__legend">Fiche d'exemple, pour une marque fictive.</p>
+</section>
     <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Votre marque est sur Amazon mais les fiches ne lui ressemblent pas.</li><li>Vous dépensez en Amazon Ads sans savoir ce qu'il vous reste.</li><li>Vous préparez un lancement aux États-Unis ou un temps fort comme le Black Friday.</li><li>Vous voulez un point clair chaque semaine, pas un tableau de bord de plus.</li></ul></div>
     <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Fiches produit : titres, points forts, termes de recherche</li><li>Contenus A+ dessinés pour l'ordinateur et pour le téléphone</li><li>Brand Store aux couleurs de la marque</li><li>Amazon Ads, avec un plan jour par jour pour le Black Friday</li><li>Compte de résultat chaque semaine : ventes, publicité, marge</li></ul></div>
     <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
@@ -33,6 +59,7 @@
     <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
   </div>
 </footer>
+<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>
 {% schema %}
 { "name": "Métier · Amazon Seller Ce", "settings": [] }
 {% endschema %}
