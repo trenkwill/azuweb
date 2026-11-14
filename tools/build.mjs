@@ -20,6 +20,8 @@ const ORDRE = fs.existsSync(`${casDir}/_ordre.json`) ? JSON.parse(fs.readFileSyn
 const rang = (c) => { const i = ORDRE.indexOf(c.slug); return i < 0 ? 999 : i; };
 // --sans-cas : la version publique tant que les études de cas ne sont pas validées.
 const SANS_CAS = process.argv.includes('--sans-cas');
+// --relecture : affiche sur chaque étude le niveau de confiance et les points à confirmer. Jamais pour la mise en ligne.
+const RELECTURE = process.argv.includes('--relecture');
 const cas = (fs.existsSync(casDir) && !SANS_CAS ? fs.readdirSync(casDir) : [])
   .filter((f) => f.endsWith('.json') && !f.startsWith('_'))
   .map((f) => JSON.parse(fs.readFileSync(path.join(casDir, f), 'utf8')))
@@ -32,7 +34,7 @@ const fiche = `<dl class="facts">${A.faits.map(([k, v]) => `<div><dt>${esc(k)}</
 const faq = `<dl class="faq">${A.faq.map(([q, r]) => `<div><dt>${esc(q)}</dt><dd>${esc(r)}</dd></div>`).join('')}</dl>`;
 const now = `<ul class="now">${A.en_ce_moment.map(([d, t]) => `<li><time datetime="${d}">${mois(d)}</time><span>${esc(t)}</span></li>`).join('')}</ul>`;
 const work = cas.length
-  ? `<ul class="work">${cas.map((c) => `<li><span class="work__name"><a href="projets/${c.slug}/">${esc(c.client)}</a></span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('\n')}</ul>`
+  ? `<ul class="work">${cas.map((c) => `<li><span class="work__name"><a href="projets/${c.slug}/">${esc(c.client)}</a>${RELECTURE ? ` <small class="review-tag review-tag--${c.confiance}">${c.confiance}</small>` : ''}</span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('\n')}</ul>`
   : `<ul class="work">${A.projets.map(([n, k, w]) => `<li><span class="work__name">${esc(n)}</span><span class="work__kind">${esc(k)}</span><span class="work__what">${esc(w)}</span></li>`).join('\n')}</ul>`;
 
 const jsonld = {
@@ -118,6 +120,7 @@ const casMain = (c, root, img) => {
       <h1>${esc(c.client)}</h1>
       <p class="case__lede">${esc(c.resume)}</p>
     </div>
+    ${RELECTURE ? `<aside class="review"><strong>Relecture · confiance ${esc(c.confiance)}.</strong> Ce cadre n'apparaîtra pas en ligne.${(c.a_verifier || []).length ? `<ul>${c.a_verifier.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}${(c.depots || []).length ? `<p>Dépôts lus : ${esc(c.depots.join(', '))}</p>` : ''}</aside>` : ''}
     <dl class="facts">
       ${c.periode ? `<div><dt>Période</dt><dd>${esc(c.periode)}</dd></div>` : ''}
       <div><dt>Plateformes</dt><dd>${esc((c.plateformes || []).join(', '))}</dd></div>

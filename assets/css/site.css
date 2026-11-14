@@ -292,3 +292,11 @@ mark {
   html { scroll-behavior: auto; }
   *, ::view-transition-old(era), ::view-transition-new(era) { transition: none !important; animation: none !important; }
 }
+
+/* Mode relecture (jamais en ligne) */
+.review { border: 2px dashed var(--azur); border-radius: 10px; padding: 18px 20px; font-size: 1rem; max-width: 52rem; display: grid; gap: 0.6em; }
+.review ul { list-style: disc; padding-left: 1.2em; display: grid; gap: 0.3em; }
+.review p { color: var(--ink-2); font-size: 0.9rem; overflow-wrap: anywhere; }
+.review-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1.5px solid var(--ink); vertical-align: middle; font-stretch: 100%; }
+.review-tag--haute { background: var(--marker); }
+.review-tag--faible { border-style: dashed; color: var(--ink-2); }
