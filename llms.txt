@@ -1,8 +1,8 @@
 # Azuweb
 
-> Azuweb est un atelier e-commerce de deux personnes, William Hutter et Emilie Dupré, installé dans le Vercors. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.
+> Azuweb est un atelier e-commerce de deux personnes, Emilie Dupré et William Hutter, installé dans le Vercors. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.
 
-Mis à jour le 2026-11-14. Contact : william@azuweb.net
+Mis à jour le 2026-11-14. Contact : hello@azuweb.net
 
 ## En bref
 - Taille : Deux personnes, par choix, épaulées par des agents IA maison
@@ -21,8 +21,8 @@ Mis à jour le 2026-11-14. Contact : william@azuweb.net
 - Agents IA : Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Les mêmes outils peuvent être installés chez le client.
 
 ## Qui
-- William Hutter — Design, intégration et développement Shopify, applications sur mesure. Fait des sites depuis l'époque où on les mettait en page avec des tableaux. Dessine ce qu'il code et code ce qu'il dessine.
-- Emilie Dupré — Marketing en ligne et commerce international. A étudié le commerce international en école. Suit les marges, les marchés et les campagnes des clients.
+- Emilie Dupré — Marketing en ligne et commerce international. A étudié le commerce international en école. Suit Amazon, la publicité, les e-mails et les marges des clients.
+- William Hutter — Design et développement Shopify, applications sur mesure. Fait des sites depuis l'époque où on les mettait en page avec des tableaux. Dessine ce qu'il code et code ce qu'il dessine.
 
 ## Comment on travaille
 1. On regarde : boutique, comptes, chiffres
@@ -37,7 +37,7 @@ Mis à jour le 2026-11-14. Contact : william@azuweb.net
 On construit des boutiques Shopify et on s'occupe de ce qui les fait vendre : Amazon, publicité Meta, e-mails Klaviyo et suivi des chiffres.
 
 ### Qui sera mon interlocuteur ?
-William ou Emilie, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire.
+Emilie ou William, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire.
 
 ### Pouvez-vous reprendre une boutique Shopify existante ?
 Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire.

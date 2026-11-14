@@ -4,22 +4,22 @@
   "nom": "Azuweb",
   "site": "https://azuweb.net",
   "accroche": "On construit votre boutique. Puis on la fait vendre.",
-  "en_bref": "Azuweb est un atelier e-commerce de deux personnes, William Hutter et Emilie Dupré, installé dans le Vercors. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.",
+  "en_bref": "Azuweb est un atelier e-commerce de deux personnes, Emilie Dupré et William Hutter, installé dans le Vercors. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.",
   "lieu": "Vercors, France",
   "contact": {
-    "utilisateur": "william",
+    "utilisateur": "hello",
     "domaine": "azuweb.net"
   },
   "equipe": [
     {
-      "nom": "William Hutter",
-      "role": "Design, intégration et développement Shopify, applications sur mesure",
-      "bio": "Fait des sites depuis l'époque où on les mettait en page avec des tableaux. Dessine ce qu'il code et code ce qu'il dessine."
-    },
-    {
       "nom": "Emilie Dupré",
       "role": "Marketing en ligne et commerce international",
-      "bio": "A étudié le commerce international en école. Suit les marges, les marchés et les campagnes des clients."
+      "bio": "A étudié le commerce international en école. Suit Amazon, la publicité, les e-mails et les marges des clients."
+    },
+    {
+      "nom": "William Hutter",
+      "role": "Design et développement Shopify, applications sur mesure",
+      "bio": "Fait des sites depuis l'époque où on les mettait en page avec des tableaux. Dessine ce qu'il code et code ce qu'il dessine."
     }
   ],
   "faits": [
@@ -89,7 +89,7 @@
     ],
     [
       "Qui sera mon interlocuteur ?",
-      "William ou Emilie, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire."
+      "Emilie ou William, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire."
     ],
     [
       "Pouvez-vous reprendre une boutique Shopify existante ?",

@@ -205,6 +205,10 @@ mark {
 .mail__body { padding: 20px 22px 24px; display: grid; gap: 0.85em; font-size: 1.05rem; line-height: 1.5; }
 .sign { font-family: var(--hand); font-size: 2.1rem; line-height: 1; color: var(--azur); transform: rotate(-4deg); justify-self: start; margin-top: 0.1em; }
 
+.mails { display: grid; gap: 34px; min-width: 0; }
+.mail--b { transform: rotate(-0.7deg); justify-self: end; }
+.duo__role { font-size: var(--t-sm); font-weight: 640; color: var(--azur); margin-top: -0.3em; }
+
 /* ---------- Règles de design, méthode, projets ---------- */
 .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0 clamp(24px, 4vw, 56px); margin-top: clamp(28px, 5vh, 52px); border-top: 2px solid var(--ink); }
 .rules > div { padding: 22px 0 26px; border-bottom: 1px solid var(--rule); min-width: 0; }

@@ -134,7 +134,7 @@ const casMain = (c, root, img) => {
     </div>
     ${(c.technique || []).length ? `<div class="prose"><h2 class="h2--small">Sous le capot</h2><ul class="case__tech">${c.technique.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
     ${c.resultat ? `<div class="prose"><h2 class="h2--small">Ce que ça a changé</h2><p>${esc(c.resultat)}</p></div>` : ''}
-    <div class="prose"><p><a class="btn" href="${root}#contact">Un projet du même genre ? Écrire à William</a></p></div>
+    <div class="prose"><p><a class="btn" href="${root}#contact">Un projet du même genre ? Nous écrire</a></p></div>
   </div>
 </main>`;
 };

@@ -180,7 +180,7 @@
   document.getElementById('brief').addEventListener('submit', function (e) {
     e.preventDefault();
     var f = e.target;
-    var body = ['Hello William,', '', f.msg.value.trim(), '',
+    var body = ['Hello,', '', f.msg.value.trim(), '',
       f.url.value.trim() ? 'Ma boutique : ' + f.url.value.trim() : null,
       '', f.name.value.trim()].filter(function (l) { return l !== null; }).join('\n');
     window.location.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(f.need.value) + '&body=' + encodeURIComponent(body);
