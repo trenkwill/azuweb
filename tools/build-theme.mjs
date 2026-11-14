@@ -15,7 +15,7 @@ const [, description] = html.match(/<meta name="description" content="([^"]*)"/)
 const copy = (from, to) => fs.copyFileSync(from, path.join(out, 'assets', to));
 copy('assets/vendor/three.module.min.js', 'three.module.min.js');
 copy('assets/fonts/bricolage.woff2', 'bricolage.woff2');
-copy('assets/fonts/instrument-italic.woff2', 'instrument-italic.woff2');
+copy('assets/fonts/caveat.woff2', 'caveat.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
 copy('favicon.svg', 'favicon.svg');
 fs.writeFileSync(path.join(out, 'assets/azuweb-site.css'), fs.readFileSync('assets/css/site.css', 'utf8').replaceAll('../fonts/', ''));
@@ -28,7 +28,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
 <meta name="description" content="{{ page_description | default: ${JSON.stringify(description)} | escape }}">
-<meta name="theme-color" content="#050a16">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" href="{{ 'favicon.svg' | asset_url }}" type="image/svg+xml">
 <link rel="preload" href="{{ 'bricolage.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
@@ -54,9 +54,9 @@ fs.writeFileSync(path.join(out, 'sections/azuweb-home.liquid'), `${chrome(main)}
 {% endschema %}
 `);
 fs.writeFileSync(path.join(out, 'sections/azuweb-page.liquid'), `${chrome(`
-  <section class="panel panel--deep" style="padding-top:160px">
+  <section class="section">
     <div class="wrap">
-      <div class="head"><h1 class="display" style="font-size:var(--t-2xl)">{{ page.title | default: page_title }}</h1></div>
+      <div class="prose"><h1 style="font-size:var(--t-h2)">{{ page.title | default: page_title }}</h1></div>
       <div class="rte">{{ page.content }}</div>
     </div>
   </section>`)}

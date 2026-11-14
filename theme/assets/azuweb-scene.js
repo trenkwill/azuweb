@@ -1,11 +1,12 @@
-// Scène 3D d'Azuweb : un nuage de particules qui prend la forme de chaque métier
-// (boutique, colis, annonce, e-mail, courbe, réseau) au fil du défilement.
+// Scène 3D d'Azuweb : des points d'encre qui dessinent chaque métier en volume
+// (sac, colis, mégaphone, enveloppe, colonnes, réseau) et se réarrangent au défilement.
 import * as THREE from './three.module.min.js';
 
 const canvas = document.getElementById('scene');
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const small = window.matchMedia('(max-width: 820px)');
-const COUNT = small.matches ? 7000 : 16000;
+const stage = document.getElementById('stage');
+const small = window.matchMedia('(max-width: 860px)');
+const COUNT = small.matches ? 6000 : 13000;
 
 /* ---------- Générateurs de formes (chaque fonction renvoie un point) ---------- */
 const R = Math.random;
@@ -137,8 +138,8 @@ if (renderer) {
   camera.position.z = 8;
 
   const geo = new THREE.BufferGeometry();
-  const from = new Float32Array(target('orb'));
-  const to = new Float32Array(target('orb'));
+  const from = new Float32Array(target('bag'));
+  const to = new Float32Array(target('bag'));
   const rand = new Float32Array(COUNT * 4).map(() => R());
   geo.setAttribute('position', new THREE.BufferAttribute(to, 3));
   geo.setAttribute('aFrom', new THREE.BufferAttribute(from, 3));
@@ -146,10 +147,10 @@ if (renderer) {
 
   const uniforms = {
     uMix: { value: 1 }, uTime: { value: 0 }, uSize: { value: 30 }, uAlpha: { value: 1 },
-    uA: { value: new THREE.Color('#2f7dff') }, uB: { value: new THREE.Color('#bfdcff') }, uC: { value: new THREE.Color('#ffc65a') },
+    uA: { value: new THREE.Color('#10151f') }, uB: { value: new THREE.Color('#1456d9') }, uC: { value: new THREE.Color('#1456d9') },
   };
   const mat = new THREE.ShaderMaterial({
-    uniforms, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+    uniforms, transparent: true, depthWrite: false, depthTest: false, blending: THREE.NormalBlending,
     vertexShader: `
       attribute vec3 aFrom; attribute vec4 aRand;
       uniform float uMix, uTime, uSize;
@@ -162,17 +163,17 @@ if (renderer) {
         p += sw * 0.014;
         vec4 mv = modelViewMatrix * vec4(p, 1.0);
         gl_Position = projectionMatrix * mv;
-        gl_PointSize = uSize * (0.55 + aRand.z * 1.1) / -mv.z;
-        vTone = aRand.y; vGold = step(0.955, aRand.w); vDepth = smoothstep(-10.5, -5.5, mv.z);
+        gl_PointSize = uSize * (0.5 + aRand.z * 0.8) / -mv.z;
+        vTone = aRand.y; vGold = step(0.8, aRand.w); vDepth = smoothstep(-10.5, -5.5, mv.z);
       }`,
     fragmentShader: `
       uniform vec3 uA, uB, uC; uniform float uAlpha;
       varying float vTone; varying float vGold; varying float vDepth;
       void main() {
         float d = length(gl_PointCoord - 0.5);
-        float a = smoothstep(0.5, 0.05, d);
-        vec3 c = mix(mix(uA, uB, vTone * vTone), uC, vGold);
-        gl_FragColor = vec4(c, a * uAlpha * (0.25 + 0.6 * vDepth));
+        float a = smoothstep(0.5, 0.32, d);
+        vec3 c = mix(uA, uC, vGold);
+        gl_FragColor = vec4(c, a * uAlpha * (0.3 + 0.7 * vDepth));
       }`,
   });
   const points = new THREE.Points(geo, mat);
@@ -182,7 +183,7 @@ if (renderer) {
   scene.add(rig);
 
   /* ---------- Changement de forme ---------- */
-  let current = 'orb', mixStart = -10;
+  let current = 'bag', mixStart = -10;
   const DURATION = reduced ? 0.001 : 1.7;
   function morph(name, now) {
     if (name === current || !shapes[name]) return;
@@ -201,25 +202,23 @@ if (renderer) {
   const stages = [...document.querySelectorAll('[data-shape]')];
   function activeShape() {
     const mid = window.innerHeight * 0.55;
-    let name = 'orb';
+    let name = stages.length ? stages[0].dataset.shape : 'bag';
     for (const el of stages) if (el.getBoundingClientRect().top < mid) name = el.dataset.shape;
     return name;
   }
 
   /* ---------- Cadrage ---------- */
-  let offsetX = 0, offsetY = 0, scale = 1;
   function resize() {
-    const w = window.innerWidth, h = window.innerHeight;
+    const w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
-    const halfW = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z * camera.aspect;
-    if (small.matches) { offsetX = 0; offsetY = 1.0; scale = Math.min(1, halfW / 2.1) * 0.78; uniforms.uAlpha.value = 0.85; }
-    else { offsetX = halfW * 0.54; offsetY = 0; scale = Math.min(1.05, halfW / 3.9); uniforms.uAlpha.value = 1; }
-    uniforms.uSize.value = 30 * renderer.getPixelRatio() * (h / 900);
-    rig.scale.setScalar(scale);
+    const halfH = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+    rig.scale.setScalar(Math.min(halfH, halfH * camera.aspect) / 1.55);
+    uniforms.uSize.value = 23 * renderer.getPixelRatio() * (h / 600) * (small.matches ? 1.5 : 1);
   }
-  window.addEventListener('resize', resize);
+  new ResizeObserver(resize).observe(stage);
   resize();
 
   const pointer = { x: 0, y: 0 };
@@ -228,14 +227,15 @@ if (renderer) {
     pointer.y = e.clientY / window.innerHeight - 0.5;
   }, { passive: true });
 
-  let visible = true;
-  document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+  // On ne dessine que lorsque la scène est à l'écran.
+  let visible = false;
+  new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(stage);
 
   const clock = new THREE.Clock();
   let rx = 0, ry = 0;
   function frame() {
     requestAnimationFrame(frame);
-    if (!visible) return;
+    if (!visible || document.hidden) return;
     const t = clock.getElapsedTime();
     morph(activeShape(), t);
     const p = Math.min(1, (t - mixStart) / DURATION);
@@ -243,13 +243,13 @@ if (renderer) {
     uniforms.uTime.value = reduced ? 0 : t;
     rx += (pointer.y * 0.35 - rx) * 0.05;
     ry += (pointer.x * 0.6 - ry) * 0.05;
-    const spin = reduced ? 0.5 : t * 0.16;
+    const spin = reduced ? 0.5 : t * 0.2;
     // L'enveloppe et les colonnes se lisent de face : on les fait osciller au lieu de tourner.
     const flat = current === 'envelope' || current === 'bars' || current === 'megaphone';
     const goal = flat ? Math.sin(t * 0.5) * 0.45 : spin;
     rig.userData.y = rig.userData.y === undefined ? goal : rig.userData.y + shortest(goal - rig.userData.y) * 0.04;
     rig.rotation.set(rx + 0.12, rig.userData.y + ry, 0);
-    rig.position.set(offsetX, offsetY + (reduced ? 0 : Math.sin(t * 0.7) * 0.05), 0);
+    rig.position.set(0, reduced ? 0 : Math.sin(t * 0.7) * 0.04, 0);
     renderer.render(scene, camera);
   }
   function shortest(d) { return Math.atan2(Math.sin(d), Math.cos(d)); }
