@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
+<meta name="description" content="{{ page_description | default: "Azuweb conçoit et développe des boutiques Shopify, gère vos comptes Amazon Seller Central, vos campagnes Meta Ads et vos e-mails Klaviyo. Une seule équipe pour toute la chaîne de vente en ligne." | escape }}">
+<meta name="theme-color" content="#050a16">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="icon" href="{{ 'favicon.svg' | asset_url }}" type="image/svg+xml">
+<link rel="preload" href="{{ 'bricolage.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+{{ 'azuweb-site.css' | asset_url | stylesheet_tag }}
+{{ content_for_header }}
+</head>
+<body>
+{{ content_for_layout }}
+<script type="module" src="{{ 'azuweb-scene.js' | asset_url }}"></script>
+<script src="{{ 'azuweb-site.js' | asset_url }}" defer></script>
+</body>
+</html>

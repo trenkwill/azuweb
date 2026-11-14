@@ -1,0 +1,245 @@
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="{{ routes.root_url }}#top" aria-label="Azuweb, retour en haut de page"><svg viewBox="92 9 246 62" role="img" aria-hidden="true"><g transform="translate(92 9)"><path d="M175.707,18.557 L163.149,59 L153.321,59 C152.800997,59 152.359002,58.8440016 151.995,58.532 C151.630998,58.2199984 151.345001,57.7000036 151.137,56.972 L145.365,36.809 C145.078999,35.8989955 144.825501,35.0020044 144.6045,34.118 C144.383499,33.2339956 144.182001,32.3370046 144,31.427 C143.817999,32.3370046 143.616501,33.2469955 143.3955,34.157 C143.174499,35.0670046 142.921001,35.9769955 142.635,36.887 L136.785,56.972 C136.394998,58.3240068 135.537007,59 134.211,59 L124.851,59 L112.293,18.557 L121.965,18.557 C122.823004,18.557 123.544497,18.758498 124.1295,19.1615 C124.714503,19.564502 125.110999,20.064997 125.319,20.663 L129.375,38.798 C129.713002,40.1760069 130.011999,41.5084936 130.272,42.7955 C130.532001,44.0825064 130.765999,45.3759935 130.974,46.676 C131.312002,45.3759935 131.669498,44.0825064 132.0465,42.7955 C132.423502,41.5084936 132.832998,40.1760069 133.275,38.798 L138.345,20.624 C138.553001,20.025997 138.942997,19.525502 139.515,19.1225 C140.087003,18.719498 140.762996,18.518 141.543,18.518 L146.925,18.518 C147.783004,18.518 148.504497,18.719498 149.0895,19.1225 C149.674503,19.525502 150.070999,20.025997 150.279,20.624 L155.115,38.798 C155.505002,40.1760069 155.888498,41.5149935 156.2655,42.815 C156.642502,44.1150065 156.986998,45.4279934 157.299,46.754 C157.507001,45.4539935 157.753999,44.1540065 158.04,42.854 C158.326001,41.5539935 158.650998,40.202007 159.015,38.798 L163.305,20.663 C163.513001,20.064997 163.902997,19.564502 164.475,19.1615 C165.047003,18.758498 165.722996,18.557 166.503,18.557 L175.707,18.557 Z"/><path d="M196.729,33.923 C196.729,32.9609952 196.605501,32.0250046 196.3585,31.115 C196.111499,30.2049954 195.708503,29.3925036 195.1495,28.6775 C194.590497,27.9624964 193.856005,27.3840022 192.946,26.942 C192.035995,26.4999978 190.931007,26.279 189.631,26.279 C187.342989,26.279 185.549007,26.9354934 184.249,28.2485 C182.948994,29.5615066 182.091002,31.4529877 181.675,33.923 L196.729,33.923 Z M181.519,40.943 C181.909002,44.3230169 182.935992,46.7734924 184.6,48.2945 C186.264008,49.8155076 188.408987,50.576 191.035,50.576 C192.439007,50.576 193.647995,50.4070017 194.662,50.069 C195.676005,49.7309983 196.579496,49.3540021 197.3725,48.938 C198.165504,48.5219979 198.893497,48.1450017 199.5565,47.807 C200.219503,47.4689983 200.914996,47.3 201.643,47.3 C202.605005,47.3 203.332998,47.6509965 203.827,48.353 L207.337,52.682 C206.088994,54.1120072 204.743507,55.2754955 203.3005,56.1725 C201.857493,57.0695045 200.375508,57.7714975 198.8545,58.2785 C197.333492,58.7855025 195.812508,59.136499 194.2915,59.3315 C192.770492,59.526501 191.321007,59.624 189.943,59.624 C187.108986,59.624 184.450512,59.1625046 181.9675,58.2395 C179.484488,57.3164954 177.313509,55.9450091 175.4545,54.125 C173.595491,52.3049909 172.126505,50.0430135 171.0475,47.339 C169.968495,44.6349865 169.429,41.4890179 169.429,37.901 C169.429,35.1969865 169.890495,32.6360121 170.8135,30.218 C171.736505,27.7999879 173.062491,25.6810091 174.7915,23.861 C176.520509,22.0409909 178.613488,20.5980053 181.0705,19.532 C183.527512,18.4659947 186.302985,17.933 189.397,17.933 C192.075013,17.933 194.525489,18.3489958 196.7485,19.181 C198.971511,20.0130042 200.882492,21.2219921 202.4815,22.808 C204.080508,24.3940079 205.328496,26.3374885 206.2255,28.6385 C207.122504,30.9395115 207.571,33.5459854 207.571,36.458 C207.571,37.3680045 207.532,38.1089971 207.454,38.681 C207.376,39.2530029 207.233001,39.7079983 207.025,40.046 C206.816999,40.3840017 206.537502,40.6179994 206.1865,40.748 C205.835498,40.8780007 205.387003,40.943 204.841,40.943 L181.519,40.943 Z"/><path d="M218.2795,48.002 C219.189505,48.9900049 220.177495,49.6919979 221.2435,50.108 C222.309505,50.5240021 223.388495,50.732 224.4805,50.732 C225.624506,50.732 226.677495,50.5175021 227.6395,50.0885 C228.601505,49.6594979 229.426997,48.9575049 230.116,47.9825 C230.805003,47.0074951 231.344498,45.720508 231.7345,44.1215 C232.124502,42.522492 232.3195,40.5530117 232.3195,38.213 C232.3195,36.1849899 232.170001,34.4625071 231.871,33.0455 C231.571999,31.6284929 231.130003,30.4715045 230.545,29.5745 C229.959997,28.6774955 229.232004,28.027502 228.361,27.6245 C227.489996,27.221498 226.495506,27.02 225.3775,27.02 C223.895493,27.02 222.608505,27.3449967 221.5165,27.995 C220.424495,28.6450032 219.345505,29.5939938 218.2795,30.842 L218.2795,48.002 Z M218.2795,22.847 C219.839508,21.3649926 221.548991,20.1755045 223.408,19.2785 C225.267009,18.3814955 227.340489,17.933 229.6285,17.933 C231.916511,17.933 233.996491,18.4009953 235.8685,19.337 C237.740509,20.2730047 239.339493,21.6054914 240.6655,23.3345 C241.991507,25.0635086 243.011996,27.1499878 243.727,29.594 C244.442004,32.0380122 244.7995,34.7679849 244.7995,37.784 C244.7995,41.0600164 244.383504,44.0369866 243.5515,46.715 C242.719496,49.3930134 241.543008,51.6874904 240.022,53.5985 C238.500992,55.5095096 236.687511,56.9914947 234.5815,58.0445 C232.475489,59.0975053 230.148513,59.624 227.6005,59.624 C226.378494,59.624 225.286505,59.5070012 224.3245,59.273 C223.362495,59.0389988 222.478504,58.7075021 221.6725,58.2785 C220.866496,57.8494979 220.132003,57.336003 219.469,56.738 C218.805997,56.139997 218.162503,55.4900035 217.5385,54.788 L217.1095,56.816 C216.901499,57.6480042 216.563502,58.2199984 216.0955,58.532 C215.627498,58.8440016 215.003504,59 214.2235,59 L206.1895,59 L206.1895,0.617 L218.2795,0.617 L218.2795,22.847 Z"/><path d="M116.121,18.557 L116.121,59 L108.633,59 C107.124992,59 106.137002,58.3240068 105.669,56.972 L104.967,54.632 C104.186996,55.3860038 103.381004,56.0684969 102.549,56.6795 C101.716996,57.2905031 100.826505,57.8104979 99.8775,58.2395 C98.9284953,58.6685021 97.9015055,59.0064988 96.7965,59.2535 C95.6914945,59.5005012 94.4890065,59.624 93.189,59.624 C90.978989,59.624 89.0225085,59.2405038 87.3195,58.4735 C85.6164915,57.7064962 84.1800059,56.6340069 83.01,55.256 C81.8399942,53.8779931 80.956003,52.2530094 80.358,50.381 C79.759997,48.5089906 79.461,46.4550112 79.461,44.219 L79.461,18.557 L91.551,18.557 L91.551,44.219 C91.551,46.22101 92.0059955,47.7679945 92.916,48.86 C93.8260046,49.9520055 95.1649912,50.498 96.933,50.498 C98.2590066,50.498 99.5004942,50.2185028 100.6575,49.6595 C101.814506,49.1004972 102.938995,48.3400048 104.031,47.378 L104.031,18.557 L116.121,18.557 Z"/><path d="M81.49,23.393 C81.49,24.2250042 81.3470014,25.0309961 81.061,25.811 C80.7749986,26.5910039 80.3980023,27.2279975 79.93,27.722 L63.043,50.03 L81.1,50.03 L81.1,59 L49.12,59 L49.12,54.086 C49.12,53.5919975 49.2499987,52.9680038 49.51,52.214 C49.7700013,51.4599962 50.1599974,50.7580033 50.68,50.108 L67.723,27.527 L50.212,27.527 L50.212,18.557 L81.49,18.557 L81.49,23.393 Z"/><path d="M36.543,37.1 L31.278,21.539 C30.887998,20.5509951 30.4720022,19.3875067 30.03,18.0485 C29.5879978,16.7094933 29.1460022,15.2600078 28.704,13.7 C28.313998,15.2860079 27.8980022,16.7549932 27.456,18.107 C27.0139978,19.4590068 26.5980019,20.6289951 26.208,21.617 L20.982,37.1 L36.543,37.1 Z M57.4467773,58.9991455 L47.2287773,58.9991455 C46.0847716,58.9991455 45.2010035,58.5565027 44.499,58.0235 C43.7969965,57.4904973 43.2640018,56.8080042 42.9,55.976 L39.546,46.07 L17.94,46.07 L14.586,55.976 C14.2999986,56.7040036 13.7865037,57.3604971 13.0455,57.9455 C12.3044963,58.5305029 11.3880055,58.823 10.296,58.823 L0,58.823 L21.996,2 L35.49,2 L57.4467773,58.9991455 Z"/></g></svg></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}#metiers">Métiers</a>
+      <a href="{{ routes.root_url }}#design">Design</a>
+      <a href="{{ routes.root_url }}#methode">Méthode</a>
+      <a href="{{ routes.root_url }}#projets">Projets</a>
+      <a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap" data-shape="orb">
+    <div class="hero__text">
+      <p class="eyebrow">Agence e-commerce · depuis 2016</p>
+      <h1 class="display">On construit la boutique. Puis on la fait <em>vendre.</em></h1>
+      <p class="lede">Azuweb conçoit et développe des boutiques Shopify, gère vos comptes Amazon Seller Central, vos campagnes Meta et vos e-mails Klaviyo. Une seule équipe pour toute la chaîne, du thème au tableau de bord.</p>
+      <div class="hero__cta">
+        <a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="{{ routes.root_url }}#metiers">Voir ce qu'on fait</a>
+      </div>
+      <p class="tools"><b>On travaille avec</b> <span>Shopify</span> <span>Amazon Seller Central</span> <span>Meta Ads</span> <span>Klaviyo</span> <span>Webflow</span> <span>Figma</span> <span>GA4</span> <span>Claude</span></p>
+    </div>
+  </section>
+
+  <section id="metiers" aria-labelledby="metiers-t">
+    <div class="wrap intro">
+      <p class="eyebrow">Ce qu'on fait, concrètement</p>
+      <h2 class="display" id="metiers-t" style="margin-top:18px">Six métiers, <em>un seul</em> interlocuteur.</h2>
+    </div>
+
+    <article class="chapter wrap" data-shape="bag">
+      <div class="chapter__body">
+        <p class="eyebrow">Shopify</p>
+        <h3>Une boutique construite autour de votre catalogue, pas d'un modèle.</h3>
+        <p>Refonte complète ou évolution d'un site existant. On part de vos produits et de la façon dont vos clients les choisissent, puis on écrit le thème pour que <strong>votre équipe modifie tout depuis l'éditeur Shopify</strong>, sans nous appeler.</p>
+        <ul class="ticks">
+          <li>Thèmes sur mesure ou sur la base Horizon de Shopify</li>
+          <li>Fiches produit pilotées par métaobjets : guides des tailles, filtres, produits complémentaires</li>
+          <li>Plusieurs marchés et plusieurs langues, France, Europe, États-Unis</li>
+          <li>Applications sur mesure quand l'App Store ne suffit pas : paiement, lots, B2B, prix, pop-ups, comptes clients</li>
+          <li>Maintenance, corrections et évolutions au fil de l'eau</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="chapter wrap" data-shape="box">
+      <div class="chapter__body">
+        <p class="eyebrow">Amazon Seller Central</p>
+        <h3>Votre marque sur Amazon, tenue comme une vraie boutique.</h3>
+        <p>On gère le compte vendeur de bout en bout : ce que le client lit, ce qu'il voit, ce que vous dépensez en publicité, et ce qu'il vous reste à la fin de la semaine.</p>
+        <ul class="ticks">
+          <li>Fiches produit : titres, points forts, termes de recherche</li>
+          <li>Contenus A+ dessinés pour l'ordinateur et pour le téléphone, en plusieurs langues</li>
+          <li>Brand Store aux couleurs de la marque</li>
+          <li>Amazon Ads : structure des campagnes, enchères, plan jour par jour pour le Black Friday</li>
+          <li>Compte de résultat hebdomadaire : ventes, publicité, marge</li>
+        </ul>
+        <p class="case"><b>En ce moment :</b> le lancement aux États-Unis d'une marque française de beauté, des fiches jusqu'aux campagnes.</p>
+      </div>
+    </article>
+
+    <article class="chapter wrap" data-shape="megaphone">
+      <div class="chapter__body">
+        <p class="eyebrow">Publicité Meta</p>
+        <h3>Des campagnes Facebook et Instagram suivies tous les matins.</h3>
+        <p>La publicité ne se règle pas une fois par mois. Chaque matin, on relève les dépenses et les achats de la veille, campagne par campagne, et on ajuste.</p>
+        <ul class="ticks">
+          <li>Structure du compte, audiences et budgets</li>
+          <li>Annonces écrites et dessinées avec le même soin que le site</li>
+          <li>Campagnes d'inscription pour nourrir votre liste e-mail</li>
+          <li>Trafic envoyé vers votre boutique Shopify ou vers Amazon, selon l'objectif</li>
+          <li>Un relevé clair : ce qui a été dépensé, ce qui a été vendu</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="chapter wrap" data-shape="envelope">
+      <div class="chapter__body">
+        <p class="eyebrow">E-mail · Klaviyo</p>
+        <h3>Les e-mails qui vendent pendant que vous dormez.</h3>
+        <p>Un visiteur qui laisse son adresse vaut plus qu'un clic. On met en place les séquences automatiques et les campagnes, et on mesure le chiffre d'affaires que chacune rapporte.</p>
+        <ul class="ticks">
+          <li>Séquences automatiques : bienvenue, panier abandonné, paiement abandonné, après l'achat</li>
+          <li>Campagnes et temps forts : lancements, Black Friday, relances avant la fin d'une offre</li>
+          <li>Formulaires, pop-ups et quiz d'inscription</li>
+          <li>Synchronisation des listes avec vos autres outils</li>
+          <li>Chiffre d'affaires attribué par séquence et par campagne</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="chapter wrap" data-shape="bars">
+      <div class="chapter__body">
+        <p class="eyebrow">Données</p>
+        <h3>Tous vos chiffres au même endroit, dans l'admin Shopify.</h3>
+        <p>Meta, Google, Amazon, l'e-mail et la boutique ont chacun leur tableau de bord, et aucun ne dit la même chose. On les réunit dans un seul écran, là où vous travaillez déjà.</p>
+        <ul class="ticks">
+          <li>Dépenses publicitaires par source et par campagne</li>
+          <li>Chiffre d'affaires, commandes et coût par commande</li>
+          <li>Trafic et taux de conversion par canal</li>
+          <li>Tunnels : de l'annonce à l'inscription, de l'e-mail à l'achat</li>
+          <li>Comparaison avec la période précédente, sur 7, 30 ou 90 jours</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="chapter wrap" data-shape="network">
+      <div class="chapter__body">
+        <p class="eyebrow">Intelligence artificielle</p>
+        <h3>Des agents IA dans l'équipe, un humain à la signature.</h3>
+        <p>On travaille chaque jour avec des agents IA que nous avons mis en place nous-mêmes. Ils préparent, vérifient et surveillent. <strong>Rien ne part en production sans qu'une personne de l'équipe l'ait relu et validé.</strong></p>
+        <ul class="ticks">
+          <li>Audit quotidien de votre site : liens cassés, prix, pages qui ne s'affichent plus</li>
+          <li>Récapitulatif chaque matin de vos comptes publicitaires</li>
+          <li>Relecture réglementaire des textes produit, pour la beauté et les compléments alimentaires</li>
+          <li>Veille concurrentielle, SEO et réseaux sociaux</li>
+          <li>Les mêmes outils installés chez vous, pour votre équipe</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel" id="design" aria-labelledby="design-t">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Comment on dessine</p>
+        <h2 class="display" id="design-t">Un beau site qui ne vend pas est un site <em>raté.</em></h2>
+        <p class="lede muted">Le design sert à faire comprendre le produit, à rassurer, puis à faire acheter. Voici les règles qu'on s'impose sur chaque projet.</p>
+      </div>
+      <ul class="design">
+        <li><h3>On part du produit</h3><p>Avant la première maquette, on lit votre catalogue, vos avis clients et les questions posées au service client. La page se construit autour de ce que l'acheteur a besoin de savoir.</p></li>
+        <li><h3>Le téléphone d'abord</h3><p>La plupart de vos visiteurs arrivent depuis une publicité, sur leur téléphone. On dessine cet écran en premier, l'ordinateur ensuite.</p></li>
+        <li><h3>Le texte fait partie du design</h3><p>On écrit les titres et les arguments en même temps que la maquette. Pas de faux texte : ce que vous validez est ce qui sera en ligne.</p></li>
+        <li><h3>Vous gardez la main</h3><p>Chaque section est modifiable dans l'éditeur de thème. Changer une image, un texte ou l'ordre d'une page ne demande pas de développeur.</p></li>
+        <li><h3>Rapide et lisible</h3><p>Des pages légères, des contrastes suffisants, une navigation au clavier qui fonctionne. C'est bon pour vos clients et pour votre référencement.</p></li>
+        <li><h3>La même main partout</h3><p>Site, contenus Amazon, e-mails, annonces : une marque se reconnaît quand tout est dessiné par la même équipe.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel panel--deep" id="methode" aria-labelledby="methode-t">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Comment on travaille</p>
+        <h2 class="display" id="methode-t">Vous voyez tout, <em>à chaque étape.</em></h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Écoute et audit</h3><p>On regarde votre boutique, vos comptes et vos chiffres. Vous repartez avec une liste claire de ce qui freine les ventes.</p></li>
+        <li><h3>Cadrage et devis</h3><p>Un périmètre écrit, un prix, une date. Ce qui est dedans, ce qui n'y est pas.</p></li>
+        <li><h3>Design</h3><p>Maquettes sur téléphone puis sur ordinateur, avec les vrais textes et les vraies images.</p></li>
+        <li><h3>Développement</h3><p>Sur une copie de votre boutique. Vous suivez chaque tâche sur un tableau partagé et vous testez avant tout le monde.</p></li>
+        <li><h3>Mise en ligne</h3><p>Un jour choisi ensemble, une liste de contrôle, et quelqu'un de disponible si un détail accroche.</p></li>
+        <li><h3>Suivi</h3><p>Maintenance, nouvelles pages, publicité, e-mails : on reste à vos côtés mois après mois.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="panel" id="projets" aria-labelledby="projets-t">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Projets</p>
+        <h2 class="display" id="projets-t">Des marques qui vendent <em>de vraies choses.</em></h2>
+      </div>
+      <ul class="work">
+        <li><span class="work__name">Nooance Paris</span><span class="work__kind">Soin anti-âge et masques LED</span><span class="work__what">Thème Shopify, applications sur mesure, compte Amazon aux États-Unis, e-mails et tableau de bord marketing.</span></li>
+        <li><span class="work__name">Lacroix</span><span class="work__kind">Skis et textile technique</span><span class="work__what">Boutique Shopify en France et aux États-Unis, fiches produit sur métaobjets, guide des tailles.</span></li>
+        <li><span class="work__name">Miller</span><span class="work__kind">Joaillerie ancienne, Paris</span><span class="work__what">Maintenance et évolutions de la boutique Shopify : fiches produit, paiement, comptes clients.</span></li>
+        <li><span class="work__name">Olloïs</span><span class="work__kind">Homéopathie en ligne</span><span class="work__what">Deux boutiques Shopify, dont le lancement d'une gamme pour chiens et chats.</span></li>
+        <li><span class="work__name">Oh Oui</span><span class="work__kind">Desserts</span><span class="work__what">Site Webflow et boutique Shopify, en français et en anglais.</span></li>
+        <li><span class="work__name">Les Merveilles de Babellou</span><span class="work__kind">Mode vintage de grandes maisons</span><span class="work__what">Refonte de la boutique Shopify, pages de marque, vidéos d'accueil, traduction.</span></li>
+        <li><span class="work__name">Solyluna</span><span class="work__kind">Matériel de micro-macramé</span><span class="work__what">Refonte Shopify et outils sur mesure pour les formations et les commandes.</span></li>
+        <li><span class="work__name">Morgane Rospars</span><span class="work__kind">Ex-libris et tampons personnalisés</span><span class="work__what">Refonte de la boutique Shopify et campagnes Meta.</span></li>
+        <li><span class="work__name">Anny Blatt</span><span class="work__kind">Laines et fils à tricoter</span><span class="work__what">Catalogue et filtres de la boutique Shopify.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel panel--deep" id="equipe" aria-labelledby="equipe-t">
+    <div class="wrap about">
+      <div class="head" style="margin:0">
+        <p class="eyebrow">Qui sommes-nous</p>
+        <h2 class="display" id="equipe-t">Une petite équipe, <em>exprès.</em></h2>
+      </div>
+      <div class="about__text">
+        <p><strong>Azuweb, c'est William Hutter et Emilie Dupré.</strong> Depuis 2016, on accompagne des marques qui vendent sur Amazon et sur leur propre site. On sait ce que c'est de surveiller un stock, une marge et un compte publicitaire.</p>
+        <p>Depuis, on met ce savoir-faire au service d'autres marques. Vous parlez aux personnes qui font le travail : pas de commercial, pas de chef de projet qui transmet.</p>
+        <p>Nos agents IA nous permettent d'en faire bien plus qu'une équipe de notre taille, en gardant le soin d'un travail d'artisan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact wrap" id="contact" data-shape="orb" aria-labelledby="contact-t">
+    <div class="contact__in">
+      <p class="eyebrow">Contact</p>
+      <h2 class="display" id="contact-t">Racontez-nous <em>ce qui coince.</em></h2>
+      <p class="lede">Envoyez l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On vous répond avec un premier avis, pas avec une brochure.</p>
+      <div class="mail">
+        <a class="mail__addr" id="mail" href="{{ routes.root_url }}#contact" data-u="william" data-d="azuweb.net">Afficher l'adresse e-mail</a>
+        <button class="btn btn--ghost" id="copy" type="button">Copier</button>
+      </div>
+      <form class="brief" id="brief">
+        <div class="brief__row">
+          <label for="f-name">Votre nom<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-url">Votre boutique<input id="f-url" name="url" placeholder="maboutique.fr" inputmode="url"></label>
+        </div>
+        <label for="f-need">Votre besoin
+          <select id="f-need" name="need">
+            <option>Refonte ou création d'une boutique Shopify</option>
+            <option>Évolutions et maintenance Shopify</option>
+            <option>Amazon Seller Central</option>
+            <option>Publicité Meta</option>
+            <option>E-mails Klaviyo</option>
+            <option>Tableau de bord et données</option>
+            <option>Agents IA pour mon équipe</option>
+            <option>Autre chose</option>
+          </select>
+        </label>
+        <label for="f-msg">Votre message<textarea id="f-msg" name="msg" required></textarea></label>
+        <div class="brief__foot">
+          <button class="btn" type="submit">Préparer l'e-mail <span class="arrow" aria-hidden="true">→</span></button>
+          <small>Le bouton ouvre votre messagerie avec le message déjà rédigé. Rien n'est envoyé ni enregistré par ce site.</small>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb</span>
+    <span>Shopify · Amazon · Meta Ads · Klaviyo · Données · IA</span>
+  </div>
+</footer>
+
+
+{% schema %}
+{ "name": "Azuweb · Accueil", "settings": [] }
+{% endschema %}

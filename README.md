@@ -11,3 +11,11 @@ Site de l'agence Azuweb : une page statique, sans étape de build.
 Pour voir le site en local : `python3 -m http.server` puis ouvrir http://localhost:8000.
 
 L'ancien site (Jekyll et Grunt, 2016) reste dans l'historique git.
+
+## Version Shopify
+
+Le site est hébergé sur Shopify. Le dossier `theme/` est le thème Shopify, fabriqué à partir de `index.html` et de `assets/` :
+
+    node tools/build-theme.mjs
+
+Ne modifiez pas `theme/` à la main : changez `index.html` ou `assets/`, puis relancez la commande.

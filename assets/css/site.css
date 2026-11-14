@@ -194,3 +194,9 @@ main, .foot { position: relative; z-index: 1; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Pages de contenu (mentions légales, etc.) */
+.rte { max-width: 42em; color: var(--mute); display: grid; gap: 1em; }
+.rte h2, .rte h3 { color: var(--paper); font-size: var(--t-lg); margin-top: 1em; }
+.rte a { color: var(--azur-hi); }
+.rte ul { list-style: disc; padding-left: 1.2em; }
