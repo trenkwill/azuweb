@@ -1,0 +1,5 @@
+# Tout le monde est bienvenu, robots d'IA compris : ce site est fait pour être lu et cité.
+User-agent: *
+Allow: /
+
+Sitemap: https://azuweb.net/sitemap.xml

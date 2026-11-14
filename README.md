@@ -12,10 +12,12 @@ Pour voir le site en local : `python3 -m http.server` puis ouvrir http://localho
 
 L'ancien site (Jekyll et Grunt, 2016) reste dans l'historique git.
 
-## Version Shopify
+## Tenir le site à jour
 
-Le site est hébergé sur Shopify. Le dossier `theme/` est le thème Shopify, fabriqué à partir de `index.html` et de `assets/` :
+Tout ce qu'on dit sur Azuweb vit dans un seul fichier : `content/azuweb.json` (présentation, services, questions fréquentes, journal « En ce moment »). Après une modification :
 
-    node tools/build-theme.mjs
+    node tools/build.mjs --sans-cas
 
-Ne modifiez pas `theme/` à la main : changez `index.html` ou `assets/`, puis relancez la commande.
+La commande régénère la fiche, les questions et le journal dans `index.html`, les données structurées (schema.org), `llms.txt` et `llms-full.txt` (la version texte pour les assistants IA), `robots.txt`, `sitemap.xml` et le thème Shopify (dossier `theme/`). Ne modifiez pas ces fichiers à la main.
+
+Les études de cas se rédigent dans `content/cas/<slug>.json` (hors du dépôt tant qu'elles ne sont pas validées). Sans `--sans-cas`, la commande crée aussi une page par étude dans `projets/` et relie la liste des projets.

@@ -7,7 +7,8 @@
   function stick() { nav.classList.toggle('is-stuck', window.scrollY > 8); }
   window.addEventListener('scroll', stick, { passive: true });
   stick();
-  document.getElementById('year').textContent = new Date().getFullYear();
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
   /* ---------- Hasard reproductible : les tracés sont les mêmes à chaque visite ---------- */
   function rng(seed) {
@@ -16,6 +17,7 @@
 
   /* ---------- La machine à remonter le temps ---------- */
   var machine = document.getElementById('machine');
+  if (machine) (function () {
   var captions = {
     tables: 'Fin des années 90. Tout est dans des cases de tableau, bordures comprises.',
     web2: 'Milieu des années 2000. Les feuilles de style arrivent, et avec elles les boutons brillants.',
@@ -50,6 +52,7 @@
       next.focus(); go(next.dataset.era);
     });
   });
+  })();
 
   /* ---------- Tracés au stylo : soulignés, ratures, cercles, flèches ---------- */
   function wobble(points, r, amp) {
@@ -116,7 +119,9 @@
 
   /* ---------- La ligne de crête : deux plans de montagne tracés d'un seul geste ---------- */
   function ridge() {
-    var el = document.getElementById('ridge'), w = el.clientWidth, h = el.clientHeight;
+    var el = document.getElementById('ridge');
+    if (!el) return;
+    var w = el.clientWidth, h = el.clientHeight;
     if (!w) return;
     el.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
     function line(seed, base, amp, scale) {
@@ -141,6 +146,27 @@
   window.addEventListener('resize', layout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout); else layout();
 
+  /* ---------- La fiche à coller dans une IA ---------- */
+  function copyText(text, button, okLabel) {
+    var initial = button.textContent;
+    var done = function (label) { button.textContent = label; setTimeout(function () { button.textContent = initial; }, 2200); };
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove(); done(ok ? okLabel : 'Copie impossible ici');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(okLabel); }, fallback);
+    else fallback();
+  }
+  var brief = document.getElementById('copy-brief'), briefText = document.getElementById('brief-text');
+  if (brief && briefText) brief.addEventListener('click', function () {
+    copyText('Voici la fiche de l\'atelier e-commerce Azuweb. Réponds à mes questions à partir de ces informations.\n\n' + briefText.textContent, brief, 'Fiche copiée');
+  });
+
+  var mailEl = document.getElementById('mail');
+  if (mailEl) (function () {
   /* ---------- Contact ---------- */
   // L'adresse est assemblée ici pour ne pas être ramassée telle quelle par les robots.
   var mail = document.getElementById('mail');
@@ -149,16 +175,7 @@
   mail.href = 'mailto:' + addr;
 
   var copy = document.getElementById('copy');
-  copy.addEventListener('click', function () {
-    var done = function (label) { copy.textContent = label; setTimeout(function () { copy.textContent = 'Copier'; }, 1800); };
-    function select() {
-      var range = document.createRange(); range.selectNodeContents(mail);
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
-      done('Adresse sélectionnée');
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(function () { done('Adresse copiée'); }, select);
-    else select();
-  });
+  copy.addEventListener('click', function () { copyText(addr, copy, 'Adresse copiée'); });
 
   document.getElementById('brief').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -168,4 +185,5 @@
       '', f.name.value.trim()].filter(function (l) { return l !== null; }).join('\n');
     window.location.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(f.need.value) + '&body=' + encodeURIComponent(body);
   });
+  })();
 })();
