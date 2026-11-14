@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Vercors · Azuweb</title>
+<meta name="description" content="Azuweb travaille depuis le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="../#top" aria-label="Azuweb, retour en haut de page"><svg class="logo__cursor logo__cursor--rose" viewBox="0 0 14 21" aria-hidden="true"><path d="M1 1v16.5l4.3-3.9 3.3 6.9 2.9-1.4-3.2-6.7h5.4z"/></svg><span>azuweb</span><svg class="logo__cursor logo__cursor--bleu" viewBox="0 0 14 21" aria-hidden="true"><path d="M1 1v16.5l4.3-3.9 3.3 6.9 2.9-1.4-3.2-6.7h5.4z"/></svg></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="../#metiers">Ce qu'on fait</a>
+      <a href="../#projets">Projets</a>
+      <a href="../#questions">Questions</a>
+      <a href="../#nous">Nous</a>
+      <a class="btn" href="../#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
+    <div class="wrap"><div class="prose">
+      <a class="back" href="../#nous">← Retour</a>
+      <p class="kicker">Là où on travaille</p>
+      <h1>Le Vercors.</h1>
+      <p class="case__lede">Un plateau de calcaire entre Grenoble et la Drôme, bordé de falaises. On y vit, on y travaille, et nos clients sont à Paris, à Lyon ou de l'autre côté de l'Atlantique.</p>
+    </div></div>
+  </section>
+  <div class="relief" id="relief">
+    <canvas id="relief-canvas" aria-label="Relief stylisé du Vercors, en points d'encre"></canvas>
+    <p class="relief__label" data-at="0.3,0.16">le Grand Veymont<small>2 341 m, le point culminant</small></p>
+    <p class="relief__label" data-at="0.72,-0.28">le Mont Aiguille<small>2 087 m</small></p>
+    <p class="relief__label" data-at="-0.2,0.35">les Hauts Plateaux</p>
+    <p class="relief__label" data-at="-0.28,-0.58">les gorges de la Bourne</p>
+    <p class="relief__hint">Faites glisser pour tourner autour</p>
+  </div>
+  <section class="section">
+    <div class="wrap"><div class="prose">
+      <p>Ce relief est dessiné par le code, point par point. C'est une évocation, pas une carte : les sommets sont à peu près à leur place, le reste est de mémoire.</p>
+      <h2 class="h2--small">Pourquoi ça compte pour vous</h2>
+      <p>Travailler loin des grandes villes nous oblige à bien faire deux choses : écrire clairement, et tenir nos délais sans réunion inutile. Un message précis le matin, une visio quand il faut se parler, et le reste du temps on avance.</p>
+      <p>On n'a pas de bureau à vous faire visiter. On a un tableau partagé où vous voyez chaque tâche, et deux personnes qui répondent.</p>
+      <p><a class="btn" href="../#contact">Nous écrire</a></p>
+    </div></div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
+    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+  </div>
+</footer>
+<script type="module" src="../assets/js/vercors.js"></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

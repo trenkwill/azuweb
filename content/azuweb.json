@@ -29,7 +29,7 @@
     ],
     [
       "Où",
-      "Vercors, France. Travail à distance, en français"
+      "[Vercors](vercors/), France. Travail à distance, en français"
     ],
     [
       "Pour qui",
@@ -37,7 +37,7 @@
     ],
     [
       "Plateformes",
-      "Shopify, Amazon Seller Central, Meta Ads, Klaviyo, Webflow"
+      "[Shopify](services/shopify/), [Amazon Seller Central](services/amazon/), [Meta Ads](services/publicite-meta/), [Klaviyo](services/emails-klaviyo/), Webflow"
     ],
     [
       "Marchés",
@@ -51,27 +51,75 @@
   "services": [
     {
       "nom": "Boutiques Shopify",
-      "texte": "Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, applications sur mesure (paiement, lots, B2B, prix, pop-ups), maintenance."
+      "texte": "Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, applications sur mesure (paiement, lots, B2B, prix, pop-ups), maintenance.",
+      "slug": "shopify",
+      "resume": "On construit et on fait évoluer des boutiques Shopify, du thème aux applications sur mesure.",
+      "pour_qui": [
+        "Vous lancez une marque et il vous faut une boutique solide dès le premier jour.",
+        "Votre boutique existe, mais votre équipe ne peut rien modifier sans développeur.",
+        "Votre catalogue a grandi et les fiches produit ne suivent plus.",
+        "Vous ouvrez un nouveau marché, une nouvelle langue ou la vente aux professionnels."
+      ]
     },
     {
       "nom": "Amazon Seller Central",
-      "texte": "Gestion du compte vendeur : fiches produit, contenus A+, Brand Store, Amazon Ads, compte de résultat hebdomadaire."
+      "texte": "Gestion du compte vendeur : fiches produit, contenus A+, Brand Store, Amazon Ads, compte de résultat hebdomadaire.",
+      "slug": "amazon",
+      "resume": "On tient votre compte vendeur Amazon comme une vraie boutique : contenus, publicité et rentabilité.",
+      "pour_qui": [
+        "Votre marque est sur Amazon mais les fiches ne lui ressemblent pas.",
+        "Vous dépensez en Amazon Ads sans savoir ce qu'il vous reste.",
+        "Vous préparez un lancement aux États-Unis ou un temps fort comme le Black Friday.",
+        "Vous voulez un point clair chaque semaine, pas un tableau de bord de plus."
+      ]
     },
     {
       "nom": "Publicité Meta",
-      "texte": "Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, relevé quotidien des dépenses et des achats."
+      "texte": "Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, relevé quotidien des dépenses et des achats.",
+      "slug": "publicite-meta",
+      "resume": "On gère vos campagnes Facebook et Instagram, avec un relevé chaque matin.",
+      "pour_qui": [
+        "Vos campagnes tournent mais personne ne les regarde tous les jours.",
+        "Vous ne savez pas quelles annonces vendent vraiment.",
+        "Vous voulez faire grandir votre liste e-mail avant un lancement.",
+        "Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon."
+      ]
     },
     {
       "nom": "E-mails Klaviyo",
-      "texte": "Séquences automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué."
+      "texte": "Séquences automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué.",
+      "slug": "emails-klaviyo",
+      "resume": "On met en place les e-mails automatiques et les campagnes qui font revenir vos clients.",
+      "pour_qui": [
+        "Vous récoltez des adresses mais vous n'envoyez presque rien.",
+        "Vos paniers abandonnés ne sont pas relancés.",
+        "Vos e-mails ne ressemblent pas à votre site.",
+        "Vous voulez savoir ce que chaque e-mail rapporte."
+      ]
     },
     {
       "nom": "Données",
-      "texte": "Un tableau de bord dans l'admin Shopify qui réunit publicité Meta, Google et Amazon, trafic, e-mail et ventes."
+      "texte": "Un tableau de bord dans l'admin Shopify qui réunit publicité Meta, Google et Amazon, trafic, e-mail et ventes.",
+      "slug": "donnees",
+      "resume": "On réunit vos chiffres de publicité, de trafic, d'e-mail et de ventes dans un seul écran.",
+      "pour_qui": [
+        "Chaque outil vous donne un chiffre d'affaires différent.",
+        "Vous passez votre lundi à recopier des tableaux.",
+        "Vous voulez comparer une semaine à la précédente en un coup d'œil.",
+        "Vous voulez voir où vous perdez vos visiteurs, de l'annonce à l'achat."
+      ]
     },
     {
       "nom": "Agents IA",
-      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Les mêmes outils peuvent être installés chez le client."
+      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Les mêmes outils peuvent être installés chez le client.",
+      "slug": "agents-ia",
+      "resume": "On met des agents IA au travail sur votre boutique, avec un humain qui relit.",
+      "pour_qui": [
+        "Une page cassée ou un prix faux reste en ligne des jours avant qu'on le voie.",
+        "Vos textes produit doivent respecter une réglementation.",
+        "Votre équipe perd du temps sur des vérifications répétitives.",
+        "Vous voulez utiliser l'IA sans lui confier les clés."
+      ]
     }
   ],
   "methode": [
@@ -97,7 +145,7 @@
     ],
     [
       "Travaillez-vous avec des marques qui vendent à l'étranger ?",
-      "Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur Amazon aux États-Unis."
+      "Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur [Amazon](services/amazon/) aux États-Unis."
     ],
     [
       "Faites-vous seulement le site, ou aussi le marketing ?",
@@ -105,7 +153,7 @@
     ],
     [
       "Utilisez-vous l'intelligence artificielle ?",
-      "Oui, tous les jours. Nos agents IA préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu."
+      "Oui, tous les jours. Nos [agents IA](services/agents-ia/) préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu."
     ],
     [
       "Combien coûte un projet ?",

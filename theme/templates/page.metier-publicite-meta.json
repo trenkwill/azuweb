@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-metier-publicite-meta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

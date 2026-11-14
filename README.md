@@ -6,7 +6,7 @@ Site de l'agence Azuweb : une page statique, sans étape de build.
 - `assets/css/site.css` : les styles (couleurs et typographie en variables en tête de fichier)
 - `assets/js/scene.js` : la scène 3D, des points d'encre qui dessinent chaque métier (`data-shape` dans le HTML)
 - `assets/js/site.js` : navigation, machine à remonter le temps, tracés au stylo, contact
-- `assets/vendor/` : three.js (licence MIT), `assets/fonts/` : Inter, Reenie Beanie et Nothing You Could Do (licence OFL), hébergées sur place, sans appel à un service tiers
+- `assets/vendor/` : three.js (licence MIT), `assets/fonts/` : Inter et Gochi Hand (licence OFL), hébergées sur place, sans appel à un service tiers
 
 Pour voir le site en local : `python3 -m http.server` puis ouvrir http://localhost:8000.
 

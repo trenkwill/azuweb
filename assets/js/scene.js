@@ -108,7 +108,7 @@ function build(name, count) {
 const angle = (name, t, phase = 0) => (FLAT[name] ? Math.sin(t * 0.5 + phase) * 0.5 : t * 0.25 + phase);
 
 /* ---------- Petites icônes en 2D ---------- */
-const INK = '#10151f', AZUR = '#1456d9';
+const INK = '#10151f', AZUR = '#007bf7';
 document.querySelectorAll('canvas[data-icon]').forEach((cv, n) => {
   const name = cv.dataset.icon, N = 1100, pts = build(name, N), ctx = cv.getContext('2d');
   let on = false, last = 0;

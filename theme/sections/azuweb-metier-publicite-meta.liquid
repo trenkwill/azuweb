@@ -1,0 +1,38 @@
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="{{ routes.root_url }}#top" aria-label="Azuweb, retour en haut de page"><svg class="logo__cursor logo__cursor--rose" viewBox="0 0 14 21" aria-hidden="true"><path d="M1 1v16.5l4.3-3.9 3.3 6.9 2.9-1.4-3.2-6.7h5.4z"/></svg><span>azuweb</span><svg class="logo__cursor logo__cursor--bleu" viewBox="0 0 14 21" aria-hidden="true"><path d="M1 1v16.5l4.3-3.9 3.3 6.9 2.9-1.4-3.2-6.7h5.4z"/></svg></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}#metiers">Ce qu'on fait</a>
+      <a href="{{ routes.root_url }}#projets">Projets</a>
+      <a href="{{ routes.root_url }}#questions">Questions</a>
+      <a href="{{ routes.root_url }}#nous">Nous</a>
+      <a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+<main class="case">
+  <div class="wrap">
+    <div class="prose">
+      <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
+      <canvas class="service__icon" data-icon="megaphone" aria-hidden="true"></canvas>
+      <p class="kicker">Publicité Meta</p>
+      <h1>Des campagnes Facebook et Instagram suivies tous les matins.</h1>
+      <p class="case__lede">La publicité ne se règle pas une fois par mois. Chaque matin, on relève les dépenses et les achats de la veille, campagne par campagne, et on ajuste.</p>
+    </div>
+    <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Vos campagnes tournent mais personne ne les regarde tous les jours.</li><li>Vous ne savez pas quelles annonces vendent vraiment.</li><li>Vous voulez faire grandir votre liste e-mail avant un lancement.</li><li>Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon.</li></ul></div>
+    <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Structure du compte, audiences et budgets</li><li>Annonces écrites et dessinées avec le même soin que le site</li><li>Campagnes d'inscription pour nourrir votre liste e-mail</li><li>Un relevé clair : ce qui a été dépensé, ce qui a été vendu</li></ul></div>
+    <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
+    
+    <div class="prose"><h2 class="h2--small">Nos autres métiers</h2><p class="others"><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p></div>
+    <div class="prose"><p><a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet</a></p></div>
+  </div>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
+    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+  </div>
+</footer>
+{% schema %}
+{ "name": "Métier · Publicité Meta", "settings": [] }
+{% endschema %}

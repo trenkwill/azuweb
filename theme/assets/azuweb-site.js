@@ -37,11 +37,66 @@
     machine.dataset.era = name;
     document.getElementById('era-caption').textContent = captions[name];
   }
+  /* ---------- Le passage d'une époque à l'autre : la page se défait en points, puis se refait ---------- */
+  // Couleurs dominantes de chaque époque : les points les portent pendant le passage.
+  var PALETTE = {
+    tables: ['#c0c0c0', '#000080', '#ffffcc', '#ffffff', '#dfdfdf'],
+    web2: ['#54a3ee', '#ffffff', '#84c225', '#e9f3fb', '#1e69de'],
+    flat: ['#1abc9c', '#2c3e50', '#ecf0f1', '#e74c3c', '#f1c40f'],
+    now: ['#faf7f2', '#1f3d2b', '#efe8da', '#d9c7a3', '#ffffff'],
+  };
+  function rgb(hex) { var n = parseInt(hex.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; }
+  var busy = false;
   function go(name) {
-    if (machine.dataset.era === name) return;
-    // L'API View Transitions anime le passage d'une époque à l'autre ; sans elle, on change simplement.
-    if (document.startViewTransition && !reduced) document.startViewTransition(function () { show(name); });
-    else show(name);
+    var from = machine.dataset.era;
+    if (from === name || busy) return;
+    var view = document.getElementById('era-view'), w = view.clientWidth, h = view.clientHeight;
+    if (reduced || !w) return show(name);
+    busy = true;
+    var STEP = w < 500 ? 5 : 6, cols = Math.ceil(w / STEP), rows = Math.ceil(h / STEP), n = cols * rows;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var layer = document.createElement('canvas'); layer.className = 'machine__dots-layer';
+    layer.width = w * dpr; layer.height = h * dpr;
+    var g = layer.getContext('2d'); g.scale(dpr, dpr);
+    var r = rng(Date.now() % 100000), ax = new Float32Array(n), ay = new Float32Array(n), delay = new Float32Array(n), i;
+    for (i = 0; i < n; i++) { var a = r() * 6.283, d = 14 + r() * 60; ax[i] = Math.cos(a) * d; ay[i] = Math.sin(a) * d - 18; delay[i] = r() * 0.35; }
+    function colours(img, key) {
+      var out = new Uint8Array(n * 3), pal = PALETTE[key].map(rgb), k, x, y, o, p;
+      for (k = 0; k < n; k++) {
+        if (img) { x = Math.min(w - 1, (k % cols) * STEP + (STEP >> 1)); y = Math.min(h - 1, ((k / cols) | 0) * STEP + (STEP >> 1)); o = (y * img.width + x) * 4; out[k * 3] = img.data[o]; out[k * 3 + 1] = img.data[o + 1]; out[k * 3 + 2] = img.data[o + 2]; }
+        else { p = pal[(r() * r() * pal.length) | 0]; out[k * 3] = p[0]; out[k * 3 + 1] = p[1]; out[k * 3 + 2] = p[2]; }
+      }
+      return out;
+    }
+    // t : 0 = la page intacte, 1 = les points au plus loin. « real » : les points portent les vrais pixels.
+    function draw(t, col, real) {
+      g.clearRect(0, 0, w, h);
+      g.globalAlpha = real ? 1 : Math.min(1, t * 1.6);
+      g.fillStyle = '#f4f6f9'; g.fillRect(0, 0, w, h);
+      g.globalAlpha = 1;
+      for (var k = 0; k < n; k++) {
+        var e = Math.min(1, Math.max(0, (t - delay[k]) / (1 - 0.35))); e = e * e * (3 - 2 * e);
+        var size = real ? STEP + 0.6 - e * (STEP - 2) : e * 3.2;
+        if (size < 0.3) continue;
+        var x = (k % cols) * STEP + ax[k] * e, y = ((k / cols) | 0) * STEP + ay[k] * e;
+        g.fillStyle = 'rgb(' + col[k * 3] + ',' + col[k * 3 + 1] + ',' + col[k * 3 + 2] + ')';
+        if (e > 0.5) { g.beginPath(); g.arc(x + STEP / 2, y + STEP / 2, size / 2, 0, 6.283); g.fill(); } else g.fillRect(x, y, size, size);
+      }
+    }
+    function play(ms, fromT, toT, col, real, then) {
+      var start = performance.now();
+      (function step(now) {
+        var p = Math.min(1, (now - start) / ms);
+        draw(fromT + (toT - fromT) * p, col, real);
+        if (p < 1) requestAnimationFrame(step); else then();
+      })(start);
+    }
+    var colA = colours(null, from);
+    view.appendChild(layer);
+    play(520, 0, 1, colA, false, function () {
+      show(name);
+      play(620, 1, 0, colours(null, name), false, function () { layer.remove(); busy = false; });
+    });
   }
   tabs.forEach(function (t, i) {
     t.addEventListener('click', function () { go(t.dataset.era); });
@@ -145,6 +200,76 @@
   function layout() { cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { decorate(); ridge(); }); }
   window.addEventListener('resize', layout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout); else layout();
+
+  /* ---------- Œuf de Pâques : tapez « azuweb » et les titres se défont en points ---------- */
+  // Chaque titre visible est redessiné mot à mot sur un calque, puis échantillonné en points
+  // qui fuient le pointeur et reviennent à leur place. Échap (ou dix secondes) pour revenir.
+  var typed = '', egg = null;
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && egg) return egg.stop();
+    if (e.key.length !== 1 || /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || ''))) return;
+    typed = (typed + e.key.toLowerCase()).slice(-6);
+    if (typed === 'azuweb' && !egg && !reduced) egg = startEgg();
+  });
+  function startEgg() {
+    var W = window.innerWidth, H = window.innerHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var off = document.createElement('canvas'); off.width = W; off.height = H;
+    var o = off.getContext('2d', { willReadFrequently: true });
+    var heads = [].filter.call(document.querySelectorAll('h1, h2, h3, .work__name'), function (el) {
+      var b = el.getBoundingClientRect(); return b.bottom > 0 && b.top < H && b.width > 0;
+    });
+    o.textBaseline = 'alphabetic';
+    heads.forEach(function (el) {
+      var cs = getComputedStyle(el), walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), node, range = document.createRange();
+      o.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily; o.fillStyle = '#000';
+      if ('letterSpacing' in o) o.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
+      while ((node = walker.nextNode())) {
+        var re = /\S+/g, m;
+        while ((m = re.exec(node.data))) {
+          range.setStart(node, m.index); range.setEnd(node, m.index + m[0].length);
+          var b = range.getBoundingClientRect();
+          if (b.width) o.fillText(m[0], b.left, b.bottom - b.height * 0.22);
+        }
+      }
+    });
+    var data = o.getImageData(0, 0, W, H).data, pts = [], x, y, STEP = 3;
+    for (y = 0; y < H; y += STEP) for (x = 0; x < W; x += STEP) if (data[(y * W + x) * 4 + 3] > 128) pts.push(x, y, x, y, 0, 0);
+    if (!pts.length) return null;
+    var layer = document.createElement('canvas');
+    layer.width = W * dpr; layer.height = H * dpr;
+    layer.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:50;pointer-events:none';
+    var g = layer.getContext('2d'); g.scale(dpr, dpr);
+    document.body.appendChild(layer);
+    heads.forEach(function (el) { el.style.color = 'transparent'; });
+    var px = -999, py = -999, alive = true, born = performance.now(), startY = window.scrollY;
+    function move(e) { px = e.clientX; py = e.clientY; }
+    window.addEventListener('pointermove', move, { passive: true });
+    // Une bourrasque au départ, pour qu'on voie tout de suite que les lettres sont devenues des points.
+    for (var i = 0; i < pts.length; i += 6) { pts[i + 4] = (Math.random() - 0.5) * 26; pts[i + 5] = (Math.random() - 0.7) * 26; }
+    var api = { stop: stop };
+    function stop() {
+      if (!alive) return; alive = false;
+      window.removeEventListener('pointermove', move);
+      heads.forEach(function (el) { el.style.color = ''; });
+      layer.remove(); egg = null;
+    }
+    (function frame(now) {
+      if (!alive) return;
+      if (now - born > 10000 || Math.abs(window.scrollY - startY) > 4) return stop();
+      g.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i += 6) {
+        var dx = pts[i] - px, dy = pts[i + 1] - py, d2 = dx * dx + dy * dy;
+        if (d2 < 12000) { var f = (1 - d2 / 12000) * 2.6, d = Math.sqrt(d2) + 0.01; pts[i + 4] += (dx / d) * f; pts[i + 5] += (dy / d) * f; }
+        pts[i + 4] = (pts[i + 4] + (pts[i + 2] - pts[i]) * 0.045) * 0.9;
+        pts[i + 5] = (pts[i + 5] + (pts[i + 3] - pts[i + 1]) * 0.045) * 0.9;
+        pts[i] += pts[i + 4]; pts[i + 1] += pts[i + 5];
+        g.fillStyle = (i / 6) % 7 === 0 ? '#007bf7' : (i / 6) % 11 === 0 ? '#fdafbd' : '#10151f';
+        g.fillRect(pts[i], pts[i + 1], 2.2, 2.2);
+      }
+      requestAnimationFrame(frame);
+    })(born);
+    return api;
+  }
 
   /* ---------- La fiche à coller dans une IA ---------- */
   function copyText(text, button, okLabel) {
