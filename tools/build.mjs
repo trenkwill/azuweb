@@ -156,7 +156,7 @@ for (const c of cas) {
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Article', headline: `${c.client} : étude de cas`, about: c.secteur, description: c.resume, author: { '@type': 'Organization', name: A.nom, url: A.site } })}</script>
 </head>
 <body>
-${nav.replaceAll('href="#', `href="${root}#`)}
+${nav.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`)}
 ${casMain(c, root, (f) => root + f)}
 ${foot}
 <script src="${root}assets/js/site.js" defer></script>
@@ -179,7 +179,7 @@ const shell = (root, title, description, main, scripts = '') => `<!doctype html>
 <link rel="stylesheet" href="${root}assets/css/site.css">
 </head>
 <body>
-${nav.replaceAll('href="#', `href="${root}#`)}
+${nav.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`)}
 ${main}
 ${foot}
 ${scripts}<script src="${root}assets/js/site.js" defer></script>
@@ -261,6 +261,7 @@ copy('assets/fonts/hand.woff2', 'hand.woff2');
 copy('assets/js/site.js', 'azuweb-site.js');
 fs.writeFileSync(path.join(out, 'assets/azuweb-vercors.js'), fs.readFileSync('assets/js/vercors.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
 copy('favicon.svg', 'favicon.svg');
+copy('assets/img/logo.png', 'logo.png');
 if (cas.length && fs.existsSync('assets/img/cas')) for (const f of fs.readdirSync('assets/img/cas')) copy(`assets/img/cas/${f}`, `cas-${f}`);
 fs.writeFileSync(path.join(out, 'assets/azuweb-site.css'), fs.readFileSync('assets/css/site.css', 'utf8').replaceAll('../fonts/', ''));
 fs.writeFileSync(path.join(out, 'assets/azuweb-scene.js'), fs.readFileSync('assets/js/scene.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
@@ -290,7 +291,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 </html>
 `);
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<\/script>\s*/g, '');
-const liquid = (s) => s.replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"');
+const liquid = (s) => s.replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
 const lNav = liquid(nav), lFoot = foot;

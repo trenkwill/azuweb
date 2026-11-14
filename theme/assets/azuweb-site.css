@@ -79,11 +79,8 @@ mark {
 .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .nav.is-stuck { border-color: var(--rule); }
 .nav__in { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 64px; }
-.logo { display: inline-flex; align-items: flex-end; color: var(--ink); text-decoration: none; font-weight: 900; font-size: 1.7rem; letter-spacing: -0.085em; line-height: 1; padding: 0 0 6px; }
-.logo span { padding-right: 0.085em; }
-.logo__cursor { width: 11px; height: 17px; margin-bottom: -9px; flex: none; }
-.logo__cursor--rose { fill: var(--rose); transform: scaleX(-1); margin-right: -3px; }
-.logo__cursor--bleu { fill: var(--bleu); margin-left: -3px; }
+.logo { display: inline-flex; }
+.logo img { height: 34px; width: auto; display: block; }
 .nav__links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 30px); font-size: var(--t-sm); }
 .nav__links a:not(.btn) { color: var(--ink); text-decoration: none; }
 .nav__links a:not(.btn):hover { text-decoration: underline; }
