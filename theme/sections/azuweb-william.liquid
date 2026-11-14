@@ -16,7 +16,7 @@
       <a class="back" href="{{ routes.root_url }}#nous">← L'atelier</a>
       <p class="kicker">Design et développement</p>
       <h1>William Hutter.</h1>
-      <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, applications sur mesure, tableaux de bord.</p>
+      <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes <a href="{{ routes.root_url }}pages/shopify">Shopify</a>, applications sur mesure, tableaux de bord.</p>
     </div><img class="duo__photo" src="{{ 'william-emilie.webp' | asset_url }}" alt="William Hutter et Emilie Dupré, dos à dos" width="741" height="650"></div>
   </section>
   <section class="era-section" id="histoire">
@@ -173,9 +173,13 @@
   </section>
 </main>
 <footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Publicité Meta</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
   <div class="wrap foot__in">
     <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
-    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
   </div>
 </footer>
 {% schema %}

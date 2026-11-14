@@ -1,5 +1,21 @@
 // Les démonstrations des pages métier. Chaque bloc ne s'active que si sa démonstration est sur la page.
 (function () {
+  /* Navigation du mini-site : barre de progression et rubrique en cours. */
+  var mini = document.querySelector('.mini__nav');
+  if (mini) {
+    var links = [].slice.call(mini.querySelectorAll('a[href^="#"]'));
+    var targets = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    var tick = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      mini.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max) : 0);
+      var here = -1;
+      targets.forEach(function (el, i) { if (el && el.getBoundingClientRect().top < window.innerHeight * 0.45) here = i; });
+      links.forEach(function (a, i) { a.classList.toggle('is-here', i === here); });
+    };
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
+  }
+
   var demo = document.querySelector('[data-demo]');
   if (!demo) return;
   var kind = demo.dataset.demo;

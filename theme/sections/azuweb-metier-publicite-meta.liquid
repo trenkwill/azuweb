@@ -10,18 +10,34 @@
     </nav>
   </div>
 </header>
-<main class="case">
-  <div class="wrap">
-    <div class="hero hero--metier">
-      <div class="hero__text">
+<main class="mini mini--bleu">
+  <section class="mini__hero">
+    <div class="wrap mini__hero-in">
+      <div class="mini__text">
         <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
         <p class="kicker">Publicité Meta</p>
         <h1>Des campagnes Facebook et Instagram suivies tous les matins.</h1>
         <p class="case__lede">La publicité ne se règle pas une fois par mois. Chaque matin, on relève les dépenses et les achats de la veille, campagne par campagne, et on ajuste.</p>
+        <p class="mini__actions"><a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet</a><a class="link" href="#demo">Voir la démonstration ↓</a></p>
       </div>
-      <div class="hero__stage" id="stage" data-shape="megaphone" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
+      <div class="dots-stage mini__stage" data-shape="megaphone" data-ink="#ffffff" data-accent="#fdafbd" title="Cliquez pour disperser les points"><canvas aria-hidden="true"></canvas></div>
     </div>
-    <section class="demo" data-demo="releve" aria-labelledby="demo-t">
+  </section>
+  <nav class="mini__nav" aria-label="Dans cette page">
+    <div class="wrap"><b>Publicité Meta</b><a href="#recit">Le récit</a><a href="#demo">Démonstration</a><a href="#livre">Ce qu'on livre</a><a href="#comment">Comment</a><a href="#faq">Questions</a></div>
+    <i class="mini__progress" aria-hidden="true"></i>
+  </nav>
+  <div class="marquee" aria-hidden="true"><div><span>Facebook</span><span>Instagram</span><span>Audiences</span><span>Annonces</span><span>Campagnes d'inscription</span><span>Relevé du matin</span><span>Budget</span><span>Tests</span><span>Facebook</span><span>Instagram</span><span>Audiences</span><span>Annonces</span><span>Campagnes d'inscription</span><span>Relevé du matin</span><span>Budget</span><span>Tests</span></div></div>
+  <section class="recit wrap" id="recit">
+    <div class="recit__chapters">
+      <article data-chapter="megaphone"><p class="recit__n">1 / 3</p><h2>Aujourd'hui</h2><p>Vos campagnes tournent. Quelqu'un les a réglées il y a trois mois, et depuis personne ne les ouvre. Certaines annonces dépensent chaque jour sans rien vendre.</p></article>
+      <article data-chapter="envelope"><p class="recit__n">2 / 3</p><h2>Ce qu'on fait</h2><p>Chaque matin, on relève ce qui a été dépensé et ce qui a été acheté, annonce par annonce. On coupe, on renforce, on teste une nouvelle idée.</p></article>
+      <article data-chapter="bars"><p class="recit__n">3 / 3</p><h2>Ce que ça change</h2><p>Le budget va là où ça marche. Et les visiteurs qui n'achètent pas tout de suite laissent leur adresse : la suite se joue par e-mail.</p></article>
+    </div>
+    <div class="dots-stage recit__stage" data-follow data-shape="megaphone"><canvas aria-hidden="true"></canvas></div>
+  </section>
+  <div class="wrap mini__body">
+    <div id="demo"><section class="demo" data-demo="releve" aria-labelledby="demo-t">
   <div class="prose"><h2 class="h2--small" id="demo-t">Le relevé du matin, en vrai.</h2>
   <p>Voilà à quoi ressemble ce qu'on regarde chaque matin. Deux annonces vendent, deux dépensent pour rien. Appuyez sur le bouton pour voir ce qu'on en fait.</p></div>
   <div class="demo__stage releve">
@@ -37,19 +53,30 @@
     <p class="releve__actions"><button class="btn" type="button" id="releve-btn">Couper ce qui ne vend pas</button><span class="hint" id="releve-note" hidden>même budget, sur ce qui marche</span></p>
   </div>
   <p class="demo__legend">Chiffres d'exemple.</p>
-</section>
-    <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Vos campagnes tournent mais personne ne les regarde tous les jours.</li><li>Vous ne savez pas quelles annonces vendent vraiment.</li><li>Vous voulez faire grandir votre liste e-mail avant un lancement.</li><li>Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon.</li></ul></div>
-    <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech"><li>Structure du compte, audiences et budgets</li><li>Annonces écrites et dessinées avec le même soin que le site</li><li>Campagnes d'inscription pour nourrir votre liste e-mail</li><li>Un relevé clair : ce qui a été dépensé, ce qui a été vendu</li></ul></div>
-    <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div>
+</section></div>
+    <section id="livre"><div class="prose"><h2>Ce qu'on livre.</h2></div><ol class="cards"><li>Structure du compte, audiences et budgets</li><li>Annonces écrites et dessinées avec le même soin que le site</li><li>Campagnes d'inscription pour nourrir votre liste e-mail</li><li>Un relevé clair : ce qui a été dépensé, ce qui a été vendu</li></ol></section>
+    <section><div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Vos campagnes tournent mais personne ne les regarde tous les jours.</li><li>Vous ne savez pas quelles annonces vendent vraiment.</li><li>Vous voulez faire grandir votre liste e-mail avant un lancement.</li><li>Vous hésitez entre envoyer le trafic vers votre site ou vers <a href="{{ routes.root_url }}pages/amazon">Amazon</a>.</li></ul></div></section>
+    <section id="comment"><div class="prose"><h2>Comment ça se passe.</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un tableau partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, e-mails, mois après mois.</li></ol></div></section>
     
-    <div class="prose"><h2 class="h2--small">Nos autres métiers</h2><p class="others"><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p></div>
-    <div class="prose"><p><a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet</a></p></div>
+    <section id="faq"><div class="prose"><h2>Les questions sur ce métier.</h2></div><dl class="faq"><div><dt>Faites-vous aussi les visuels ?</dt><dd>Oui. Les annonces sont écrites et dessinées par nous, dans le même style que votre site.</dd></div><div><dt>Qui a accès au compte ?</dt><dd>Le compte publicitaire reste le vôtre. Vous nous donnez un accès, que vous pouvez retirer.</dd></div><div><dt>À quelle fréquence a-t-on des nouvelles ?</dt><dd>On regarde les comptes chaque matin, et on vous écrit dès qu'il y a une décision à prendre.</dd></div></dl></section>
   </div>
+  <section class="mini__cta">
+    <div class="wrap">
+      <h2>On regarde votre cas ?</h2>
+      <p>Envoyez l'adresse de votre boutique et ce qui coince. On répond avec un premier avis.</p>
+      <p class="mini__actions"><a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+      <a class="mini__next" href="{{ routes.root_url }}pages/emails-klaviyo"><span>Métier suivant</span><b>E-mails Klaviyo →</b></a>
+    </div>
+  </section>
 </main>
 <footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Publicité Meta</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
   <div class="wrap foot__in">
     <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
-    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
   </div>
 </footer>
 <script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>

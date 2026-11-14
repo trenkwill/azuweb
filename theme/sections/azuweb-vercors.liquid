@@ -40,9 +40,13 @@
   </section>
 </main>
 <footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Publicité Meta</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
   <div class="wrap foot__in">
     <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
-    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
   </div>
 </footer>
 <script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>

@@ -16,6 +16,40 @@ const mois = (ym) => { const [y, m] = ym.split('-'); return `${MOIS[+m - 1]} ${y
 const mail = `${A.contact.utilisateur}@${A.contact.domaine}`;
 // Dans le contenu, [texte](adresse) devient un lien ; `root` recale les adresses pour les pages des sous-dossiers.
 const rich = (s, root = '') => esc(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${root}${url}">${txt}</a>`);
+// Adresse d'une page interne selon l'endroit d'où on la lie (racine, sous-dossier, ou thème Shopify).
+const INTERNE = { shopify: 'services/shopify/', amazon: 'services/amazon/', 'publicite-meta': 'services/publicite-meta/', 'emails-klaviyo': 'services/emails-klaviyo/', donnees: 'services/donnees/', 'agents-ia': 'services/agents-ia/', vercors: 'vercors/', william: 'william/', emilie: 'emilie/' };
+const adresse = (slug, root) => (root.startsWith('{{') ? `${root}pages/${slug}` : root + INTERNE[slug]);
+// Recale les liens internes de l'en-tête et du pied de page pour une page située dans un sous-dossier.
+const recale = (s, root) => s.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`).replace(/href="((?:services|projets)\/[\w-]+\/|vercors\/|william\/|emilie\/|llms\.txt)"/g, `href="${root}$1"`);
+// Liens automatiques : dans le texte courant, la première mention de chaque sujet par section mène à sa page.
+const TERMES = [['Amazon Seller Central', 'amazon'], ['publicité Meta', 'publicite-meta'], ['Meta Ads', 'publicite-meta'], ['e-mails Klaviyo', 'emails-klaviyo'], ['Klaviyo', 'emails-klaviyo'], ['tableau de bord', 'donnees'], ['agents IA', 'agents-ia'], ['boutiques Shopify', 'shopify'], ['boutique Shopify', 'shopify'], ['Shopify', 'shopify'], ['Amazon', 'amazon'], ['Vercors', 'vercors'], ['Autrans', 'vercors'], ['William', 'william'], ['Emilie', 'emilie']];
+const SANS_LIEN = new Set(['a', 'button', 'h1', 'h2', 'h3', 'script', 'style', 'svg', 'figure', 'table', 'select', 'label', 'dt', 'fieldset', 'code', 'nav', 'canvas', 'textarea', 'form']);
+const VIDES = new Set(['br', 'img', 'input', 'hr', 'meta', 'link', 'source', 'path', 'circle', 'rect', 'mpath']);
+function autolink(html, root, self) {
+  const pile = []; let vus = new Set(self ? [self] : []);
+  return html.replace(/<!--[\s\S]*?-->|<\/?([a-zA-Z][\w-]*)([^>]*)>|([^<]+)/g, (tout, nom, attrs, texte) => {
+    if (texte !== undefined) {
+      if (pile.some((e) => e.skip) || !pile.some((e) => ['p', 'li', 'dd'].includes(e.nom))) return tout;
+      let out = texte; const poses = [];
+      for (const [terme, slug] of TERMES) {
+        if (vus.has(slug)) continue;
+        const re = new RegExp(`(?<![\\wÀ-ÿ>])${terme.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\wÀ-ÿ])`);
+        if (!re.test(out)) continue;
+        // On pose un jeton, remplacé à la fin, pour qu'un terme ne soit pas cherché dans un lien déjà posé.
+        out = out.replace(re, (m) => { poses.push(`<a href="${adresse(slug, root)}">${m}</a>`); return `\u0000${poses.length - 1}\u0000`; });
+        vus.add(slug);
+      }
+      return out.replace(/\u0000(\d+)\u0000/g, (m, i) => poses[+i]);
+    }
+    if (!nom) return tout;
+    nom = nom.toLowerCase();
+    if (tout.startsWith('</')) { for (let i = pile.length - 1; i >= 0; i--) if (pile[i].nom === nom) { pile.length = i; break; } return tout; }
+    if (nom === 'section' || nom === 'article') vus = new Set(self ? [self] : []);
+    if (nom === 'a') { const m = /href="(?:[^"#]*\/)?([\w-]+)\/?"/.exec(attrs); if (m && INTERNE[m[1]]) vus.add(m[1]); }
+    if (!VIDES.has(nom) && !tout.endsWith('/>')) pile.push({ nom, skip: SANS_LIEN.has(nom) || /class="[^"]*\b(era|machine|demo__stage|kicker|review|mail|marquee|brief|foot|recit__n|mini__actions|others|person__icons|facts)\b/.test(attrs) });
+    return tout;
+  });
+}
 const plain = (s) => String(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
 
 /* ---------- Études de cas ---------- */
@@ -106,6 +140,7 @@ html = inject(html, 'faq', faq);
 html = inject(html, 'now', now);
 html = inject(html, 'work', work);
 html = inject(html, 'jsonld', `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>\n<script type="text/plain" id="brief-text">${esc(long)}</script>`);
+html = html.replace(/<main id="top">[\s\S]*<\/main>/, (m) => autolink(m, '', null));
 fs.writeFileSync('index.html', html);
 
 fs.writeFileSync('llms.txt', court + (cas.length ? `\n## Pour aller plus loin\n- [Version complète avec les études de cas](${A.site}/llms-full.txt)\n` : ''));
@@ -157,9 +192,9 @@ for (const c of cas) {
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Article', headline: `${c.client} : étude de cas`, about: c.secteur, description: c.resume, author: { '@type': 'Organization', name: A.nom, url: A.site } })}</script>
 </head>
 <body>
-${nav.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`)}
-${casMain(c, root, (f) => root + f)}
-${foot}
+${recale(nav, root)}
+${autolink(casMain(c, root, (f) => root + f), root, null)}
+${recale(foot, root)}
 <script src="${root}assets/js/site.js" defer></script>
 </body>
 </html>
@@ -169,7 +204,7 @@ ${foot}
 }
 
 /* ---------- Pages métier et page Vercors ---------- */
-const shell = (root, title, description, main, scripts = '') => `<!doctype html>
+const shell = (root, title, description, main, scripts = '', self = null) => `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -180,49 +215,81 @@ const shell = (root, title, description, main, scripts = '') => `<!doctype html>
 <link rel="stylesheet" href="${root}assets/css/site.css">
 </head>
 <body>
-${nav.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`)}
-${main}
-${foot}
+${recale(nav, root)}
+${autolink(main, root, self)}
+${recale(foot, root)}
 ${scripts}<script src="${root}assets/js/site.js" defer></script>
 </body>
 </html>
 `;
 // Chaque métier de la page d'accueil (forme en points, titre, texte, liste) devient une page à part entière.
+const sansLiens = (s) => s.replace(/<a [^>]*>|<\/a>/g, ''); // les liens de l'accueil ne valent pas depuis une autre page
 const metiers = [...html.matchAll(/<article class="metier">([\s\S]*?)<\/article>/g)].map((m) => ({
   icon: m[1].match(/data-icon="(\w+)"/)[1],
   tag: m[1].match(/<span class="metier__tag">([^<]*)<\/span>/)[1],
   titre: m[1].match(/<\/span>([^<]*)<\/h3>/)[1],
-  texte: m[1].match(/<p>([\s\S]*?)<\/p>/)[1],
-  points: [...m[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((x) => x[1]),
+  texte: sansLiens(m[1].match(/<p>([\s\S]*?)<\/p>/)[1]),
+  points: [...m[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((x) => sansLiens(x[1])),
 }));
 const PLATEFORME = { shopify: 'Shopify', amazon: 'Amazon' };
+// Chaque page métier est un mini-site : entrée en couleur, navigation propre, récit animé, démonstration, questions.
+const THEMES = {
+  creme: { ink: '#10151f', accent: '#007bf7' },
+  encre: { ink: '#fffbf8', accent: '#fdafbd' },
+  bleu: { ink: '#ffffff', accent: '#fdafbd' },
+  rose: { ink: '#10151f', accent: '#0067de' },
+};
 const serviceMain = (s, m, root, casHref) => {
   const lies = cas.filter((c) => (s.slug === 'amazon' ? /amazon/i.test(c.slug + c.resume) : PLATEFORME[s.slug] && (c.plateformes || []).includes(PLATEFORME[s.slug]))).slice(0, 8);
-  return `<main class="case">
-  <div class="wrap">
-    <div class="hero hero--metier">
-      <div class="hero__text">
+  const th = THEMES[s.theme], next = A.services[(A.services.indexOf(s) + 1) % A.services.length];
+  const page = (slug) => (root === '../../' ? `../${slug}/` : `${root}pages/${slug}`);
+  const mots = s.mots.map((w) => `<span>${esc(w)}</span>`).join('');
+  return `<main class="mini mini--${s.theme}">
+  <section class="mini__hero">
+    <div class="wrap mini__hero-in">
+      <div class="mini__text">
         <a class="back" href="${root}#metiers">← Tous nos métiers</a>
         <p class="kicker">${esc(m.tag)}</p>
         <h1>${m.titre}</h1>
         <p class="case__lede">${m.texte}</p>
+        <p class="mini__actions"><a class="btn" href="${root}#contact">Parler de votre projet</a><a class="link" href="#demo">Voir la démonstration ↓</a></p>
       </div>
-      <div class="hero__stage" id="stage" data-shape="${m.icon}" title="Cliquez pour disperser les points"><canvas id="scene" aria-hidden="true"></canvas></div>
+      <div class="dots-stage mini__stage" data-shape="${m.icon}" data-ink="${th.ink}" data-accent="${th.accent}" title="Cliquez pour disperser les points"><canvas aria-hidden="true"></canvas></div>
     </div>
-    ${demos[s.slug] || ''}
-    <div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks">${s.pour_qui.map((q) => `<li>${esc(q)}</li>`).join('')}</ul></div>
-    <div class="prose"><h2 class="h2--small">Ce qu'on livre</h2><ul class="case__tech">${m.points.map((q) => `<li>${q}</li>`).join('')}</ul></div>
-    <div class="prose"><h2 class="h2--small">Comment ça se passe</h2><ol class="steps">${A.methode.map((x) => { const [a, b] = x.split(' : '); return `<li><strong>${esc(a)}.</strong> ${esc(b.charAt(0).toUpperCase() + b.slice(1))}.</li>`; }).join('')}</ol></div>
-    ${lies.length ? `<div><div class="prose"><h2 class="h2--small">Des projets de ce genre</h2></div><ul class="work">${lies.map((c) => `<li><span class="work__name"><a href="${casHref(c)}">${esc(c.client)}</a></span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('')}</ul></div>` : ''}
-    <div class="prose"><h2 class="h2--small">Nos autres métiers</h2><p class="others">${A.services.filter((o) => o.slug !== s.slug).map((o) => `<a href="${root === '../../' ? `../${o.slug}/` : `${root}pages/${o.slug}`}">${esc(o.nom)}</a>`).join('')}</p></div>
-    <div class="prose"><p><a class="btn" href="${root}#contact">Parler de votre projet</a></p></div>
+  </section>
+  <nav class="mini__nav" aria-label="Dans cette page">
+    <div class="wrap"><b>${esc(s.nom)}</b><a href="#recit">Le récit</a><a href="#demo">Démonstration</a><a href="#livre">Ce qu'on livre</a><a href="#comment">Comment</a><a href="#faq">Questions</a></div>
+    <i class="mini__progress" aria-hidden="true"></i>
+  </nav>
+  <div class="marquee" aria-hidden="true"><div>${mots}${mots}</div></div>
+  <section class="recit wrap" id="recit">
+    <div class="recit__chapters">
+      ${s.recit.map(([titre, texte], i) => `<article data-chapter="${s.formes[i]}"><p class="recit__n">${i + 1} / ${s.recit.length}</p><h2>${esc(titre)}</h2><p>${esc(texte)}</p></article>`).join('\n      ')}
+    </div>
+    <div class="dots-stage recit__stage" data-follow data-shape="${s.formes[0]}"><canvas aria-hidden="true"></canvas></div>
+  </section>
+  <div class="wrap mini__body">
+    <div id="demo">${demos[s.slug] || ''}</div>
+    <section id="livre"><div class="prose"><h2>Ce qu'on livre.</h2></div><ol class="cards">${m.points.map((q) => `<li>${q}</li>`).join('')}</ol></section>
+    <section><div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks">${s.pour_qui.map((q) => `<li>${esc(q)}</li>`).join('')}</ul></div></section>
+    <section id="comment"><div class="prose"><h2>Comment ça se passe.</h2><ol class="steps">${A.methode.map((x) => { const [a, b] = x.split(' : '); return `<li><strong>${esc(a)}.</strong> ${esc(b.charAt(0).toUpperCase() + b.slice(1))}.</li>`; }).join('')}</ol></div></section>
+    ${lies.length ? `<section><div class="prose"><h2 class="h2--small">Des projets de ce genre</h2></div><ul class="work">${lies.map((c) => `<li><span class="work__name"><a href="${casHref(c)}">${esc(c.client)}</a></span><span class="work__kind">${esc(c.secteur)}</span><span class="work__what">${esc(c.resume)}</span></li>`).join('')}</ul></section>` : ''}
+    <section id="faq"><div class="prose"><h2>Les questions sur ce métier.</h2></div><dl class="faq">${s.questions.map(([q, r]) => `<div><dt>${esc(q)}</dt><dd>${esc(r)}</dd></div>`).join('')}</dl></section>
   </div>
+  <section class="mini__cta">
+    <div class="wrap">
+      <h2>On regarde votre cas ?</h2>
+      <p>Envoyez l'adresse de votre boutique et ce qui coince. On répond avec un premier avis.</p>
+      <p class="mini__actions"><a class="btn" href="${root}#contact">Nous écrire</a></p>
+      <a class="mini__next" href="${page(next.slug)}"><span>Métier suivant</span><b>${esc(next.nom)} →</b></a>
+    </div>
+  </section>
 </main>`;
 };
 fs.rmSync('services', { recursive: true, force: true });
 A.services.forEach((s, i) => {
   fs.mkdirSync(`services/${s.slug}`, { recursive: true });
-  fs.writeFileSync(`services/${s.slug}/index.html`, shell('../../', `${s.nom} · Azuweb`, s.resume, serviceMain(s, metiers[i], '../../', (c) => `../../projets/${c.slug}/`), `<script type="module" src="../../assets/js/scene.js"></script>\n<script src="../../assets/js/metier.js" defer></script>\n`));
+  fs.writeFileSync(`services/${s.slug}/index.html`, shell('../../', `${s.nom} · Azuweb`, s.resume, serviceMain(s, metiers[i], '../../', (c) => `../../projets/${c.slug}/`), `<script type="module" src="../../assets/js/scene.js"></script>\n<script src="../../assets/js/metier.js" defer></script>\n`, s.slug));
 });
 const vercorsMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
@@ -329,10 +396,10 @@ const modules = (root) => `<script type="module" src="${root}assets/js/scene.js"
 for (const [slug, title, desc, main] of [
   ['william', 'William Hutter · Azuweb', "William Hutter, design et développement chez Azuweb : des sites depuis l'époque des tableaux, des boutiques Shopify aujourd'hui.", williamMain],
   ['emilie', 'Emilie Dupré · Azuweb', 'Emilie Dupré, marketing et commerce international chez Azuweb : Amazon, publicité Meta, e-mails Klaviyo.', emilieMain],
-]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'))); }
+]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'), slug)); }
 
 fs.mkdirSync('vercors', { recursive: true });
-fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis Autrans, dans le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n'));
+fs.writeFileSync('vercors/index.html', shell('../', 'Le Vercors · Azuweb', "Azuweb travaille depuis Autrans, dans le Vercors. Un relief en 3D, dessiné point par point, et ce que ça change dans notre façon de travailler.", vercorsMain('../'), '<script type="module" src="../assets/js/vercors.js"></script>\n', 'vercors'));
 
 /* ---------- Thème Shopify ---------- */
 const out = 'theme';
@@ -379,7 +446,7 @@ const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<
 const liquid = (s) => s.replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
-const lNav = liquid(nav), lFoot = foot;
+const lNav = liquid(nav), lFoot = liquid(foot);
 section('azuweb-home.liquid', 'Azuweb · Accueil', liquid(body));
 section('azuweb-page.liquid', 'Azuweb · Page', `${lNav}\n<main class="section"><div class="wrap"><div class="prose"><h1 style="font-size:var(--t-h2)">{{ page.title | default: page_title }}</h1></div><div class="rte" style="margin-top:28px">{{ page.content }}</div></div></main>\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/index.json'), tpl('azuweb-home'));
@@ -394,14 +461,14 @@ for (const c of cas) {
 // Pages métier et Vercors : créer chaque page dans l'admin avec le modèle du même nom.
 const R = '{{ routes.root_url }}';
 A.services.forEach((s, i) => {
-  section(`azuweb-metier-${s.slug}.liquid`, `Métier · ${s.nom}`.slice(0, 25), `${lNav}\n${serviceMain(s, metiers[i], R, (c) => `${R}pages/${c.slug}`)}\n${lFoot}\n<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>`);
+  section(`azuweb-metier-${s.slug}.liquid`, `Métier · ${s.nom}`.slice(0, 25), `${lNav}\n${autolink(serviceMain(s, metiers[i], R, (c) => `${R}pages/${c.slug}`), R, s.slug)}\n${lFoot}\n<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>`);
   fs.writeFileSync(path.join(out, `templates/page.metier-${s.slug}.json`), tpl(`azuweb-metier-${s.slug}`));
 });
-section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${vercorsMain(R)}\n${lFoot}\n<script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>`);
+section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${autolink(vercorsMain(R), R, 'vercors')}\n${lFoot}\n<script type="module" src="{{ 'azuweb-vercors.js' | asset_url }}"></script>`);
 fs.writeFileSync(path.join(out, 'templates/page.vercors.json'), tpl('azuweb-vercors'));
-section('azuweb-william.liquid', 'Azuweb · William', `${lNav}\n${williamMain(R)}\n${lFoot}`);
+section('azuweb-william.liquid', 'Azuweb · William', `${lNav}\n${autolink(williamMain(R), R, 'william')}\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/page.william.json'), tpl('azuweb-william'));
-section('azuweb-emilie.liquid', 'Azuweb · Emilie', `${lNav}\n${emilieMain(R)}\n${lFoot}`);
+section('azuweb-emilie.liquid', 'Azuweb · Emilie', `${lNav}\n${autolink(emilieMain(R), R, 'emilie')}\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/page.emilie.json'), tpl('azuweb-emilie'));
 // La version texte pour les IA : créer une page « llms » dans l'admin avec le modèle « llms ».
 fs.writeFileSync(path.join(out, 'templates/page.llms.liquid'), `{% layout none %}<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Azuweb, version texte</title></head><body><pre style="white-space:pre-wrap;font:16px/1.5 ui-monospace,monospace;max-width:80ch;margin:2rem auto;padding:0 1rem">{% raw %}${esc(long)}{% endraw %}</pre></body></html>\n`);

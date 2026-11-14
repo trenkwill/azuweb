@@ -136,17 +136,20 @@ document.querySelectorAll('canvas[data-icon]').forEach((cv, n) => {
   if (!reduced) new IntersectionObserver((e) => { const was = on; on = e[0].isIntersecting; if (on && !was) requestAnimationFrame(loop); }).observe(cv);
 });
 
-/* ---------- La grande forme de l'accueil ---------- */
-const stage = document.getElementById('stage');
-const canvas = document.getElementById('scene');
-const label = document.getElementById('stage-label');
-let renderer;
-try {
-  if (canvas) renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
-} catch (e) { /* pas de WebGL : la page reste entièrement lisible sans la scène */ }
-if (!renderer && stage) stage.hidden = true;
+/* ---------- Les grandes formes en 3D ---------- */
+// Une scène par élément .dots-stage (ou #stage). Selon ses attributs, la forme :
+//  - enchaîne les six métiers toute seule (accueil) ;
+//  - reste sur un métier (data-shape) et se disperse au clic ;
+//  - suit le récit de la page (data-follow) : elle prend la forme du chapitre [data-chapter] en cours de lecture.
+function initStage(stage) {
+  const canvas = stage.querySelector('canvas');
+  const label = stage.querySelector('[data-stage-label]') || document.getElementById('stage-label');
+  let renderer;
+  try {
+    if (canvas) renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+  } catch (e) { /* pas de WebGL : la page reste entièrement lisible sans la scène */ }
+  if (!renderer) { stage.hidden = true; return; }
 
-if (renderer) {
   const COUNT = small.matches ? 7000 : 14000;
   const ORDER = ['bag', 'box', 'megaphone', 'envelope', 'bars', 'network'];
   const LABELS = { bag: 'une boutique', box: 'un colis Amazon', megaphone: 'une annonce', envelope: 'un e-mail', bars: 'des chiffres', network: 'des agents IA' };
@@ -167,7 +170,7 @@ if (renderer) {
 
   const uniforms = {
     uMix: { value: 1 }, uTime: { value: 0 }, uSize: { value: 20 }, uPointer: { value: new THREE.Vector3(99, 99, 0) },
-    uInk: { value: new THREE.Color(INK) }, uAzur: { value: new THREE.Color(AZUR) },
+    uInk: { value: new THREE.Color(stage.dataset.ink || INK) }, uAzur: { value: new THREE.Color(stage.dataset.accent || AZUR) },
   };
   const points = new THREE.Points(geo, new THREE.ShaderMaterial({
     uniforms, transparent: true, depthWrite: false, depthTest: false,
@@ -240,6 +243,12 @@ if (renderer) {
   }, { passive: true });
 
   // La forme change toute seule ; un clic passe à la suivante.
+  const chapters = stage.hasAttribute('data-follow') ? [...document.querySelectorAll('[data-chapter]')] : [];
+  function chapterShape() {
+    let name = FIRST; const mid = window.innerHeight * 0.6;
+    for (const el of chapters) if (el.getBoundingClientRect().top < mid) name = el.dataset.chapter;
+    return name;
+  }
   let index = 0, nextAt = 4.2, visible = false, force = false;
   stage.addEventListener('click', () => { force = true; });
   new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(stage);
@@ -250,7 +259,8 @@ if (renderer) {
     requestAnimationFrame(frame);
     if (!visible || document.hidden) return;
     const t = clock.getElapsedTime();
-    if (FIXED && force) { // un clic disperse les points, qui reviennent prendre leur forme
+    if (chapters.length) { morph(chapterShape(), t); force = false; }
+    else if (FIXED && force) { // un clic disperse les points, qui reviennent prendre leur forme
       force = false;
       for (let i = 0; i < COUNT * 3; i++) from[i] = to[i] + (R() - 0.5) * 5;
       geo.attributes.aFrom.needsUpdate = true; mixStart = t; uniforms.uMix.value = 0;
@@ -267,3 +277,4 @@ if (renderer) {
   }
   frame();
 }
+document.querySelectorAll('.dots-stage, #stage').forEach(initStage);

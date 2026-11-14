@@ -16,7 +16,7 @@
       <a class="back" href="{{ routes.root_url }}#nous">← L'atelier</a>
       <p class="kicker">Marketing et commerce international</p>
       <h1>Emilie Dupré.</h1>
-      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
+      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : <a href="{{ routes.root_url }}pages/amazon">Amazon</a>, publicité, e-mails, marges.</p>
     </div><img class="duo__photo" src="{{ 'william-emilie.webp' | asset_url }}" alt="William Hutter et Emilie Dupré, dos à dos" width="741" height="650"></div>
   </section>
   <section class="band">
@@ -47,14 +47,18 @@
   <section class="section">
     <div class="wrap"><div class="prose">
       <h2 class="h2--small">Vendre à l'étranger</h2>
-      <p>Ouvrir un marché, ce n'est pas traduire un site. Ce sont des prix, des taxes, des délais de livraison et une publicité à repenser pour chaque pays. Plusieurs de nos clients vendent aujourd'hui en Amérique du Nord, sur leur boutique ou sur Amazon.</p>
+      <p>Ouvrir un marché, ce n'est pas traduire un site. Ce sont des prix, des taxes, des délais de livraison et une publicité à repenser pour chaque pays. Plusieurs de nos clients vendent aujourd'hui en Amérique du Nord, sur leur boutique ou sur <a href="{{ routes.root_url }}pages/amazon">Amazon</a>.</p>
     </div></div>
   </section>
 </main>
 <footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Publicité Meta</a><a href="{{ routes.root_url }}pages/emails-klaviyo">E-mails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>L'atelier</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
   <div class="wrap foot__in">
     <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
-    <span>Shopify · Amazon · Publicité Meta · Klaviyo · Données · IA</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
   </div>
 </footer>
 {% schema %}

@@ -59,6 +59,52 @@
         "Votre boutique existe, mais votre équipe ne peut rien modifier sans développeur.",
         "Votre catalogue a grandi et les fiches produit ne suivent plus.",
         "Vous ouvrez un nouveau marché, une nouvelle langue ou la vente aux professionnels."
+      ],
+      "theme": "creme",
+      "formes": [
+        "bag",
+        "network",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Votre boutique tourne, mais chaque changement passe par un développeur. Une bannière à modifier, une fiche à compléter : il faut demander, attendre, relancer."
+        ],
+        [
+          "Ce qu'on construit",
+          "On reprend votre catalogue et on le range. Ce qui décrit un produit devient un champ, pas un bout de texte collé dans une description. Le thème lit ces champs et compose la fiche tout seul."
+        ],
+        [
+          "Ce que ça change",
+          "Votre équipe ajoute un produit, change une image ou ouvre un nouveau pays sans nous. Nous, on s'occupe de ce qui demande vraiment du code."
+        ]
+      ],
+      "mots": [
+        "Thème sur mesure",
+        "Horizon",
+        "Métaobjets",
+        "Guide des tailles",
+        "Multi-marchés",
+        "Traductions",
+        "B2B",
+        "Applications",
+        "Paiement",
+        "Maintenance"
+      ],
+      "questions": [
+        [
+          "Faut-il tout refaire ?",
+          "Non. On commence souvent par faire évoluer la boutique existante, et on ne propose une refonte que si le thème actuel bloque vraiment."
+        ],
+        [
+          "Qui met le site à jour ensuite ?",
+          "Vous. Chaque section se règle dans l'éditeur de Shopify. On reste là pour ce qui demande du code."
+        ],
+        [
+          "Travaillez-vous sur le site en ligne ?",
+          "Non, sur une copie. Vous testez avant tout le monde, et on met en ligne un jour choisi ensemble."
+        ]
       ]
     },
     {
@@ -71,6 +117,51 @@
         "Vous dépensez en Amazon Ads sans savoir ce qu'il vous reste.",
         "Vous préparez un lancement aux États-Unis ou un temps fort comme le Black Friday.",
         "Vous voulez un point clair chaque semaine, pas un tableau de bord de plus."
+      ],
+      "theme": "encre",
+      "formes": [
+        "box",
+        "megaphone",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Votre produit est sur Amazon, coincé entre dix concurrents. Le titre est une liste de mots-clés, les photos ne disent rien, et la publicité tourne sans que personne sache ce qu'elle rapporte."
+        ],
+        [
+          "Ce qu'on fait",
+          "On réécrit la fiche pour l'acheteur, on dessine les contenus A+ et la boutique de marque, puis on structure la publicité campagne par campagne."
+        ],
+        [
+          "Ce que ça change",
+          "Chaque semaine, vous recevez un compte de résultat : ce qui s'est vendu, ce que la publicité a coûté, ce qu'il reste. Vous décidez sur des chiffres, pas sur une impression."
+        ]
+      ],
+      "mots": [
+        "Fiches produit",
+        "Contenus A+",
+        "Brand Store",
+        "Amazon Ads",
+        "Termes de recherche",
+        "Black Friday",
+        "États-Unis",
+        "Europe",
+        "Compte de résultat"
+      ],
+      "questions": [
+        [
+          "Vendez-vous à notre place ?",
+          "Non. Le compte vendeur reste le vôtre. On le gère avec vous, et vous gardez la main sur les prix et le stock."
+        ],
+        [
+          "Travaillez-vous sur Amazon aux États-Unis ?",
+          "Oui. C'est ce qu'on fait en ce moment pour une marque française de beauté."
+        ],
+        [
+          "Faut-il déjà être sur Amazon ?",
+          "Non. On peut préparer un lancement : fiches, contenus et plan publicitaire."
+        ]
       ]
     },
     {
@@ -83,6 +174,50 @@
         "Vous ne savez pas quelles annonces vendent vraiment.",
         "Vous voulez faire grandir votre liste e-mail avant un lancement.",
         "Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon."
+      ],
+      "theme": "bleu",
+      "formes": [
+        "megaphone",
+        "envelope",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Vos campagnes tournent. Quelqu'un les a réglées il y a trois mois, et depuis personne ne les ouvre. Certaines annonces dépensent chaque jour sans rien vendre."
+        ],
+        [
+          "Ce qu'on fait",
+          "Chaque matin, on relève ce qui a été dépensé et ce qui a été acheté, annonce par annonce. On coupe, on renforce, on teste une nouvelle idée."
+        ],
+        [
+          "Ce que ça change",
+          "Le budget va là où ça marche. Et les visiteurs qui n'achètent pas tout de suite laissent leur adresse : la suite se joue par e-mail."
+        ]
+      ],
+      "mots": [
+        "Facebook",
+        "Instagram",
+        "Audiences",
+        "Annonces",
+        "Campagnes d'inscription",
+        "Relevé du matin",
+        "Budget",
+        "Tests"
+      ],
+      "questions": [
+        [
+          "Faites-vous aussi les visuels ?",
+          "Oui. Les annonces sont écrites et dessinées par nous, dans le même style que votre site."
+        ],
+        [
+          "Qui a accès au compte ?",
+          "Le compte publicitaire reste le vôtre. Vous nous donnez un accès, que vous pouvez retirer."
+        ],
+        [
+          "À quelle fréquence a-t-on des nouvelles ?",
+          "On regarde les comptes chaque matin, et on vous écrit dès qu'il y a une décision à prendre."
+        ]
       ]
     },
     {
@@ -95,6 +230,50 @@
         "Vos paniers abandonnés ne sont pas relancés.",
         "Vos e-mails ne ressemblent pas à votre site.",
         "Vous voulez savoir ce que chaque e-mail rapporte."
+      ],
+      "theme": "rose",
+      "formes": [
+        "envelope",
+        "network",
+        "bag"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Vous avez une liste d'adresses, et vous lui écrivez quand vous y pensez. Les paniers abandonnés restent abandonnés."
+        ],
+        [
+          "Ce qu'on fait",
+          "On écrit et on dessine les séquences qui partent toutes seules : bienvenue, panier, après l'achat. Puis les campagnes des temps forts."
+        ],
+        [
+          "Ce que ça change",
+          "Chaque e-mail a son chiffre : ce qu'il a rapporté. On garde ce qui marche, on réécrit le reste."
+        ]
+      ],
+      "mots": [
+        "Bienvenue",
+        "Panier abandonné",
+        "Après l'achat",
+        "Campagnes",
+        "Pop-ups",
+        "Quiz",
+        "Segments",
+        "Chiffre attribué"
+      ],
+      "questions": [
+        [
+          "Faut-il déjà utiliser Klaviyo ?",
+          "Non. On peut l'installer, y amener vos listes et le relier à votre boutique."
+        ],
+        [
+          "Qui écrit les e-mails ?",
+          "Nous, avec vos mots et vos produits. Vous relisez avant l'envoi."
+        ],
+        [
+          "Et nos contacts actuels ?",
+          "On les reprend et on synchronise vos listes avec vos autres outils."
+        ]
       ]
     },
     {
@@ -107,6 +286,51 @@
         "Vous passez votre lundi à recopier des tableaux.",
         "Vous voulez comparer une semaine à la précédente en un coup d'œil.",
         "Vous voulez voir où vous perdez vos visiteurs, de l'annonce à l'achat."
+      ],
+      "theme": "encre",
+      "formes": [
+        "megaphone",
+        "network",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Un outil annonce trente ventes, un autre dix-huit, et la boutique en compte cinquante-deux. Chacun compte à sa façon, et personne n'a tort."
+        ],
+        [
+          "Ce qu'on fait",
+          "On branche toutes les sources sur un seul tableau, dans l'admin Shopify. Mêmes périodes, mêmes définitions."
+        ],
+        [
+          "Ce que ça change",
+          "Le lundi, un écran suffit : ce qui a été dépensé, ce qui a été vendu, et l'écart avec la semaine d'avant."
+        ]
+      ],
+      "mots": [
+        "Meta",
+        "Google",
+        "Amazon",
+        "GA4",
+        "Klaviyo",
+        "Shopify",
+        "Coût par commande",
+        "Tunnels",
+        "7, 30 ou 90 jours"
+      ],
+      "questions": [
+        [
+          "Où se trouve le tableau de bord ?",
+          "Dans l'admin Shopify, là où vous travaillez déjà."
+        ],
+        [
+          "Est-ce un outil de plus à apprendre ?",
+          "Non. C'est une page de plus dans votre admin, avec les mêmes boutons que le reste."
+        ],
+        [
+          "Que faites-vous des écarts entre les outils ?",
+          "On les montre. Les commandes réelles de la boutique servent de référence, et chaque source est affichée à côté."
+        ]
       ]
     },
     {
@@ -119,6 +343,49 @@
         "Vos textes produit doivent respecter une réglementation.",
         "Votre équipe perd du temps sur des vérifications répétitives.",
         "Vous voulez utiliser l'IA sans lui confier les clés."
+      ],
+      "theme": "bleu",
+      "formes": [
+        "network",
+        "bag",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Une page cassée un samedi, un prix faux après une promotion, un texte qui promet trop : personne ne le voit avant un client."
+        ],
+        [
+          "Ce qu'on fait",
+          "Des agents IA passent sur votre boutique tous les jours. Ils vérifient, comparent, relisent, et nous remontent ce qui cloche."
+        ],
+        [
+          "Ce que ça change",
+          "L'un de nous deux lit chaque remontée, corrige ou vous écrit. L'IA regarde partout ; la décision reste humaine."
+        ]
+      ],
+      "mots": [
+        "Audit quotidien",
+        "Récap du matin",
+        "Relecture réglementaire",
+        "Veille",
+        "SEO",
+        "Agents sur mesure",
+        "Un humain à la signature"
+      ],
+      "questions": [
+        [
+          "L'IA modifie-t-elle notre site toute seule ?",
+          "Non. Elle prépare et elle signale. Rien ne part en ligne sans que l'un de nous deux l'ait relu."
+        ],
+        [
+          "Peut-on avoir ces agents chez nous ?",
+          "Oui. On installe les mêmes outils pour votre équipe, réglés sur votre boutique."
+        ],
+        [
+          "Sur quoi s'appuient-ils ?",
+          "Sur Claude, le modèle d'Anthropic, relié à vos outils : boutique, publicité, e-mails."
+        ]
       ]
     }
   ],
