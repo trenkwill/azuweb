@@ -621,3 +621,33 @@ mark {
 .review-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1.5px solid var(--ink); vertical-align: middle; }
 .review-tag--haute { background: var(--marker); }
 .review-tag--faible { border-style: dashed; color: var(--ink-2); }
+
+/* ---------- Réponses : une question, une réponse courte, nos chiffres ---------- */
+.answer { padding-block: clamp(40px, 8vh, 90px) clamp(64px, 11vh, 130px); }
+.answer .wrap { display: grid; gap: clamp(28px, 5vh, 48px); }
+.answer h1 { max-width: 22ch; font-size: var(--t-h2); }
+.answer__by { color: var(--ink-2); font-size: var(--t-sm); font-weight: 600; }
+.answer__short { max-width: 46rem; background: var(--card); border: 2px solid var(--ink); border-radius: 14px; box-shadow: 6px 6px 0 var(--rose); padding: clamp(20px, 3vw, 32px); font-size: var(--t-lg); line-height: 1.45; display: grid; gap: 8px; }
+.answer__short b { font-size: var(--t-sm); color: var(--azur); letter-spacing: 0; }
+.answer__table { max-width: 46rem; width: 100%; border-collapse: collapse; font-size: 1.05rem; }
+.answer__table caption { text-align: left; font-weight: 720; font-size: var(--t-lg); letter-spacing: -0.02em; padding-bottom: 10px; }
+.answer__table th, .answer__table td { border-top: 1px solid var(--rule); padding: 12px 0; text-align: left; vertical-align: top; font-weight: 500; }
+.answer__table td { text-align: right; font-weight: 720; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 16px; }
+.answer__table td i { font-weight: 500; color: var(--ink-2); }
+.answers { columns: 1; }
+.answers small { display: block; font-size: var(--t-sm); font-weight: 500; letter-spacing: 0; color: var(--ink-2); }
+.answers a { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+
+/* ---------- La voix : un enregistrement, des points qui se remplissent ---------- */
+.voice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; max-width: 46rem; background: var(--card); border: 2px solid var(--ink); border-radius: 14px; padding: 16px 18px; box-shadow: 6px 6px 0 var(--rose); margin-block: 8px; }
+.voice__btn { width: 56px; height: 56px; border-radius: 50%; border: 0; background: var(--bleu); cursor: pointer; display: grid; place-items: center; box-shadow: 3px 3px 0 var(--rose); }
+.voice__btn span { width: 0; height: 0; border-left: 16px solid #fff; border-block: 10px solid transparent; margin-left: 4px; }
+.voice.is-playing .voice__btn span { width: 16px; height: 18px; border: 0; border-inline: 5px solid #fff; margin: 0; }
+.voice figcaption { display: grid; gap: 8px; min-width: 0; }
+.voice figcaption b { font-weight: 720; letter-spacing: -0.02em; line-height: 1.2; }
+.voice__dots { display: flex; gap: 4px; align-items: center; height: 14px; cursor: pointer; overflow: hidden; }
+.voice__dots i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--rule); transition: background 0.2s, transform 0.2s; }
+.voice__dots i.is-on { background: var(--ink); }
+.voice__dots i.is-head { background: var(--bleu); transform: scale(1.6); }
+.voice__time { color: var(--ink-2); font-size: var(--t-sm); font-variant-numeric: tabular-nums; }
+.voice__text { grid-column: 1 / -1; font-size: 1rem; } .voice__text summary { cursor: pointer; font-weight: 600; color: var(--azur); } .voice__text p { margin-top: 8px; color: var(--ink-2); }

@@ -59,7 +59,7 @@ export const demos = {
 </section>`,
 
   'publicite-meta': `<section class="demo" data-demo="releve" aria-labelledby="demo-t">
-  <div class="prose"><h2 class="h2--small" id="demo-t">Le relevé du matin, en vrai.</h2>
+  <div class="prose"><h2 class="h2--small" id="demo-t">Le reporting du matin, en vrai.</h2>
   <p>Voilà à quoi ressemble ce qu'on regarde chaque matin. Deux annonces vendent, deux dépensent pour rien. Appuyez sur le bouton pour voir ce qu'on en fait.</p></div>
   <div class="demo__stage releve">
     <table>
@@ -77,10 +77,10 @@ export const demos = {
 </section>`,
 
   'emails-klaviyo': `<section class="demo" data-demo="flow" aria-labelledby="demo-t">
-  <div class="prose"><h2 class="h2--small" id="demo-t">Une séquence, e-mail par e-mail.</h2>
-  <p>Choisissez une séquence et regardez-la se dérouler. Chacune part toute seule, au bon moment, pour chaque client.</p></div>
+  <div class="prose"><h2 class="h2--small" id="demo-t">Un flow, email par email.</h2>
+  <p>Choisissez un flow et regardez-le se dérouler. Chacun part tout seul, au bon moment, pour chaque client.</p></div>
   <div class="demo__stage flow">
-    <div class="machine__tabs" role="group" aria-label="Choisir une séquence">
+    <div class="machine__tabs" role="group" aria-label="Choisir un flow">
       <button type="button" data-flow="bienvenue" aria-pressed="true">Bienvenue</button>
       <button type="button" data-flow="panier" aria-pressed="false">Panier abandonné</button>
       <button type="button" data-flow="apres" aria-pressed="false">Après l'achat</button>
@@ -92,7 +92,7 @@ export const demos = {
 
   donnees: `<section class="demo" data-demo="merge" aria-labelledby="demo-t">
   <div class="prose"><h2 class="h2--small" id="demo-t">Cinq onglets, puis un seul écran.</h2>
-  <p>Chaque outil a son tableau de bord, et aucun ne donne le même chiffre. Appuyez pour les réunir.</p></div>
+  <p>Chaque outil a son dashboard, et aucun ne donne le même chiffre. Appuyez pour les réunir.</p></div>
   <div class="demo__stage merge" id="merge">
     <div class="merge__cards">
       <div class="merge__card" style="--i:0"><b>Meta Ads</b><span>Achats : 31</span></div>
@@ -104,7 +104,7 @@ export const demos = {
     <div class="merge__board" aria-live="polite">
       <p class="merge__title">Cette semaine <span>dans l'admin Shopify</span></p>
       <dl><div><dt>Commandes</dt><dd>52</dd></div><div><dt>Dépense publicitaire</dt><dd>1 140 €</dd></div><div><dt>Coût par commande</dt><dd>21,90 €</dd></div><div><dt>Vs semaine précédente</dt><dd>+8 %</dd></div></dl>
-      <p class="merge__rows"><span style="--w:42%">Meta</span><span style="--w:24%">Google</span><span style="--w:20%">E-mail</span><span style="--w:14%">Direct</span></p>
+      <p class="merge__rows"><span style="--w:42%">Meta</span><span style="--w:24%">Google</span><span style="--w:20%">Email</span><span style="--w:14%">Direct</span></p>
     </div>
     <p class="releve__actions"><button class="btn" type="button" id="merge-btn">Tout réunir</button></p>
   </div>

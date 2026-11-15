@@ -1,0 +1,79 @@
+{
+  "_lisezmoi": "Les questions qu'on nous pose tout le temps, et que les gens posent maintenant à ChatGPT. Une page par question. À ÉCRIRE PAR VOUS, avec vos mots et vos chiffres : c'est ce qui fait qu'une IA vous cite. Une page n'est mise en ligne que si \"publie\" vaut true ET que \"reponse_courte\" est remplie. Les \"a_ecrire\" sont des pistes pour vous, jamais affichées en ligne. \"chiffres\" : des lignes [poste, fourchette]. \"sections\" : des blocs [titre, texte]. Puis node tools/build.mjs.",
+  "titre": "Nos réponses.",
+  "intro": "Les questions qu'on nous pose avant chaque projet, avec nos chiffres et notre avis. Signé, daté, tenu à jour.",
+  "questions": [
+    {
+      "slug": "prix-boutique-shopify",
+      "question": "Combien coûte une boutique Shopify en 2026 ?",
+      "signe": "William",
+      "metier": "shopify",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Thème du Theme Store, réglé par nous", ""], ["Thème sur mesure", ""], ["Migration depuis une autre plateforme", ""], ["Abonnement Shopify et apps, par mois", ""], ["Suivi après la mise en ligne, par mois", ""]],
+      "sections": [],
+      "a_ecrire": ["Votre fourchette réelle, du plus petit projet au plus gros que vous ayez fait.", "Ce qui fait monter la note (B2B, multi-pays, apps sur mesure) et ce qui ne change presque rien.", "Le projet type : combien, en combien de temps.", "Ce que vous refusez de chiffrer sans audit, et pourquoi.", "Le forfait mensuel : ce qu'il couvre, ce qu'il ne couvre pas."]
+    },
+    {
+      "slug": "amazon-en-plus-de-sa-boutique",
+      "question": "Faut-il vendre sur Amazon quand on a déjà sa boutique ?",
+      "signe": "Emilie",
+      "metier": "amazon",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Commissions et frais Amazon, en % du prix", ""], ["Budget Amazon Ads pour démarrer, par mois", ""], ["Temps avant les premières ventes régulières", ""]],
+      "sections": [],
+      "a_ecrire": ["Pour quelles marques c'est oui, pour lesquelles c'est non.", "Ce que ça coûte vraiment une fois tous les frais comptés.", "Est-ce que ça prend des ventes à la boutique ? Ce que vous avez observé.", "L'erreur que vous voyez le plus souvent sur un compte Seller Central."]
+    },
+    {
+      "slug": "budget-meta-ads",
+      "question": "Quel budget pour démarrer la Meta Ads ?",
+      "signe": "Emilie",
+      "metier": "publicite-meta",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Budget minimum pour apprendre quelque chose, par mois", ""], ["Durée du test avant de décider", ""], ["Nombre de créas à prévoir au départ", ""]],
+      "sections": [],
+      "a_ecrire": ["En dessous de quel budget vous déconseillez de se lancer.", "Ce qu'il faut avoir en place avant de dépenser un euro (site, tracking, emails).", "Comment vous décidez de couper ou de continuer.", "Ce qu'un ROAS veut dire et ne veut pas dire."]
+    },
+    {
+      "slug": "mailchimp-ou-klaviyo",
+      "question": "Mailchimp ou Klaviyo pour une boutique en ligne ?",
+      "signe": "Emilie",
+      "metier": "emails-klaviyo",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Prix de Klaviyo pour une liste type", ""], ["Durée d'une migration", ""], ["Part des ventes qui vient de l'email chez vos clients", ""]],
+      "sections": [],
+      "a_ecrire": ["Quand rester sur Mailchimp est le bon choix.", "Ce qui change concrètement le jour où on passe sur Klaviyo.", "Les trois flows à mettre en place en premier.", "Ce qu'une migration casse si on la fait mal."]
+    },
+    {
+      "slug": "refonte-ou-nouveau-theme",
+      "question": "Faut-il corriger son site actuel ou repartir de zéro ?",
+      "signe": "William",
+      "metier": "shopify",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Audit avant de décider", ""], ["Corriger l'existant, ordre de grandeur", ""], ["Repartir sur une base saine, ordre de grandeur", ""]],
+      "sections": [],
+      "a_ecrire": ["Les signes qu'un thème ne vaut plus la peine d'être réparé.", "Un exemple vécu, sans nommer le client.", "Ce qu'on garde toujours d'un ancien site.", "Pourquoi Horizon, ou pourquoi pas."]
+    },
+    {
+      "slug": "ia-dans-une-boutique",
+      "question": "À quoi sert vraiment l'IA dans une boutique en ligne ?",
+      "signe": "William",
+      "metier": "agents-ia",
+      "publie": false,
+      "date": "",
+      "reponse_courte": "",
+      "chiffres": [["Temps gagné par semaine chez vous", ""], ["Coût mensuel des outils", ""], ["Une formation d'équipe", ""]],
+      "sections": [],
+      "a_ecrire": ["Ce que vos agents font tous les jours, concrètement.", "Ce que vous ne confiez jamais à une IA.", "Par quoi une petite équipe devrait commencer.", "Ce qui a raté quand vous avez essayé."]
+    }
+  ]
+}

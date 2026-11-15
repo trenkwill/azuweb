@@ -17,12 +17,12 @@ const mail = `${A.contact.utilisateur}@${A.contact.domaine}`;
 // Dans le contenu, [texte](adresse) devient un lien ; `root` recale les adresses pour les pages des sous-dossiers.
 const rich = (s, root = '') => esc(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${root}${url}">${txt}</a>`);
 // Adresse d'une page interne selon l'endroit d'où on la lie (racine, sous-dossier, ou thème Shopify).
-const INTERNE = { shopify: 'services/shopify/', amazon: 'services/amazon/', 'publicite-meta': 'services/publicite-meta/', 'emails-klaviyo': 'services/emails-klaviyo/', donnees: 'services/donnees/', 'agents-ia': 'services/agents-ia/', vercors: 'vercors/', william: 'william/', emilie: 'emilie/', parcours: 'parcours/', philosophie: 'philosophie/' };
+const INTERNE = { shopify: 'services/shopify/', amazon: 'services/amazon/', 'publicite-meta': 'services/publicite-meta/', 'emails-klaviyo': 'services/emails-klaviyo/', donnees: 'services/donnees/', 'agents-ia': 'services/agents-ia/', vercors: 'vercors/', william: 'william/', emilie: 'emilie/', parcours: 'parcours/', philosophie: 'philosophie/', reponses: 'reponses/' };
 const adresse = (slug, root) => (root.startsWith('{{') ? `${root}pages/${slug}` : root + INTERNE[slug]);
 // Recale les liens internes de l'en-tête et du pied de page pour une page située dans un sous-dossier.
-const recale = (s, root) => s.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`).replace(/href="((?:services|projets)\/[\w-]+\/|vercors\/|william\/|emilie\/|parcours\/|philosophie\/|llms\.txt)"/g, `href="${root}$1"`);
+const recale = (s, root) => s.replaceAll('href="#', `href="${root}#`).replaceAll('src="assets/', `src="${root}assets/`).replace(/href="((?:services|projets)\/[\w-]+\/|vercors\/|william\/|emilie\/|parcours\/|philosophie\/|reponses\/(?:[\w-]+\/)?|llms\.txt)"/g, `href="${root}$1"`);
 // Liens automatiques : dans le texte courant, la première mention de chaque sujet par section mène à sa page.
-const TERMES = [['Amazon Seller Central', 'amazon'], ['publicité Meta', 'publicite-meta'], ['Meta Ads', 'publicite-meta'], ['e-mails Klaviyo', 'emails-klaviyo'], ['Klaviyo', 'emails-klaviyo'], ['tableau de bord', 'donnees'], ['agents IA', 'agents-ia'], ['boutiques Shopify', 'shopify'], ['boutique Shopify', 'shopify'], ['Shopify', 'shopify'], ['Amazon', 'amazon'], ['Vercors', 'vercors'], ['Autrans', 'vercors'], ['William', 'william'], ['Emilie', 'emilie']];
+const TERMES = [['Amazon Seller Central', 'amazon'], ['Meta Ads', 'publicite-meta'], ['emails Klaviyo', 'emails-klaviyo'], ['Klaviyo', 'emails-klaviyo'], ['dashboard', 'donnees'], ['agents IA', 'agents-ia'], ['boutiques Shopify', 'shopify'], ['boutique Shopify', 'shopify'], ['Shopify', 'shopify'], ['Amazon', 'amazon'], ['Vercors', 'vercors'], ['Autrans', 'vercors'], ['William', 'william'], ['Emilie', 'emilie']];
 const SANS_LIEN = new Set(['a', 'button', 'h1', 'h2', 'h3', 'script', 'style', 'svg', 'figure', 'table', 'select', 'label', 'dt', 'fieldset', 'code', 'nav', 'canvas', 'textarea', 'form']);
 const VIDES = new Set(['br', 'img', 'input', 'hr', 'meta', 'link', 'source', 'path', 'circle', 'rect', 'mpath']);
 function autolink(html, root, self) {
@@ -60,6 +60,10 @@ const rang = (c) => { const i = ORDRE.indexOf(c.slug); return i < 0 ? 999 : i; }
 const SANS_CAS = process.argv.includes('--sans-cas');
 // --relecture : affiche sur chaque étude le niveau de confiance et les points à confirmer. Jamais pour la mise en ligne.
 const RELECTURE = process.argv.includes('--relecture');
+// Les réponses : seules celles qui sont écrites et marquées « publie » partent en ligne. En relecture, on les voit toutes.
+const REP = JSON.parse(fs.readFileSync('content/reponses.json', 'utf8'));
+const REPONSES = REP.questions.filter((q) => RELECTURE || (q.publie && q.reponse_courte.trim()));
+const VOIX = JSON.parse(fs.readFileSync('content/voix.json', 'utf8')).voix;
 const cas = (fs.existsSync(casDir) && !SANS_CAS ? fs.readdirSync(casDir) : [])
   .filter((f) => f.endsWith('.json') && !f.startsWith('_'))
   .map((f) => JSON.parse(fs.readFileSync(path.join(casDir, f), 'utf8')))
@@ -113,6 +117,8 @@ ${A.methode.map((m, i) => `${i + 1}. ${m}`).join('\n')}
 ${JSON.parse(fs.readFileSync('content/philosophie.json', 'utf8')).idees.map(([a, b]) => `- ${a} : ${b}`).join('\n')}
 
 ## Questions fréquentes
+${REP.questions.filter((q) => q.publie && q.reponse_courte.trim()).map((q) => `### ${q.question}\n${plain(q.reponse_courte)} (${q.signe}) ${A.site}/reponses/${q.slug}/`).join('\n\n')}
+
 ${A.faq.map(([q, r]) => `### ${q}\n${plain(r)}`).join('\n\n')}
 
 ## Ce qu'en disent nos clients
@@ -141,6 +147,8 @@ function inject(html, name, content) {
 }
 let html = fs.readFileSync('index.html', 'utf8');
 const nav = html.match(/<header class="nav"[\s\S]*?<\/header>/)[0];
+html = html.replace('<a href="reponses/">Nos réponses</a>', '');
+if (REPONSES.length) html = html.replace('<a href="philosophie/">Notre façon de penser</a>', '<a href="philosophie/">Notre façon de penser</a><a href="reponses/">Nos réponses</a>');
 const foot = html.match(/<footer class="foot">[\s\S]*?<\/footer>/)[0];
 html = inject(html, 'fiche', fiche);
 html = inject(html, 'faq', faq);
@@ -154,7 +162,7 @@ fs.writeFileSync('index.html', html);
 fs.writeFileSync('llms.txt', court + (cas.length ? `\n## Pour aller plus loin\n- [Version complète avec les études de cas](${A.site}/llms-full.txt)\n` : ''));
 fs.writeFileSync('llms-full.txt', long);
 fs.writeFileSync('robots.txt', `# Tout le monde est bienvenu, robots d'IA compris : ce site est fait pour être lu et cité.\nUser-agent: *\nAllow: /\n\nSitemap: ${A.site}/sitemap.xml\n`);
-fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', 'philosophie/', 'parcours/', 'vercors/', 'william/', 'emilie/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', ...(REPONSES.length ? ['reponses/', ...REPONSES.map((q) => `reponses/${q.slug}/`)] : []), 'philosophie/', 'parcours/', 'vercors/', 'william/', 'emilie/', ...A.services.map((s) => `services/${s.slug}/`), ...cas.map((c) => `projets/${c.slug}/`)].map((u) => `  <url><loc>${A.site}/${u}</loc><lastmod>${A.mis_a_jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 
 /* ---------- Pages d'étude de cas ---------- */
 const casMain = (c, root, img) => {
@@ -288,7 +296,7 @@ const serviceMain = (s, m, root, casHref) => {
   <section class="mini__cta">
     <div class="wrap">
       <h2>On regarde votre cas ?</h2>
-      <p>Envoyez l'adresse de votre boutique et ce qui coince. On répond avec un premier avis.</p>
+      <p>Envoyez l'adresse de votre boutique et ce qui coince. On répond avec un premier feedback.</p>
       <p class="mini__actions"><a class="btn" href="${root}#contact">Nous écrire</a></p>
       <a class="mini__next" href="${page(next.slug)}"><span>Métier suivant</span><b>${esc(next.nom)} →</b></a>
     </div>
@@ -321,10 +329,11 @@ const vercorsMain = (root) => `<main>
   </div>
   <section class="section">
     <div class="wrap"><div class="prose">
+      ${voice(root, 'vercors')}
       <p>Ce relief est dessiné par le code, point par point. C'est une évocation, pas une carte : les vals, les crêtes et les villages sont à peu près à leur place, le reste est de mémoire.</p>
       <h2 class="h2--small">Pourquoi ça compte pour vous</h2>
-      <p>Travailler loin des grandes villes nous oblige à bien faire deux choses : écrire clairement, et tenir nos délais sans réunion inutile. Un message précis le matin, une visio quand il faut se parler, et le reste du temps on avance.</p>
-      <p>On n'a pas de bureau à vous faire visiter. On a un tableau partagé où vous voyez chaque tâche, et deux personnes qui répondent.</p>
+      <p>Travailler loin des grandes villes nous oblige à bien faire deux choses : écrire clairement, et tenir nos deadlines sans call inutile. Un message précis le matin, un call quand il faut se parler, et le reste du temps on avance.</p>
+      <p>On n'a pas de bureau à vous faire visiter. On a un board partagé où vous voyez chaque tâche, et deux personnes qui répondent.</p>
       <p><a class="btn" href="${root}#contact">Nous écrire</a></p>
     </div></div>
   </section>
@@ -336,13 +345,18 @@ const svc = (root, slug) => (root === '../' ? `../services/${slug}/` : `${root}p
 const icons = (root, list) => `<p class="person__icons">${list.map(([icon, slug, label]) => `<a href="${svc(root, slug)}"><canvas data-icon="${icon}" aria-hidden="true"></canvas>${label} →</a>`).join('')}</p>`;
 const pic = (root, file, alt, w, h, cls = '') => `<img${cls ? ` class="${cls}"` : ''} src="${root.startsWith('{{') ? `{{ '${file}' | asset_url }}` : `${root}assets/img/${file}`}" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy">`;
 const photo = (root) => `<img class="duo__photo" src="${root.startsWith('{{') ? "{{ 'william-emilie.webp' | asset_url }}" : `${root}assets/img/william-emilie.webp`}" alt="William Hutter et Emilie Dupré, dos à dos" width="741" height="650">`;
+// Une voix : le lecteur n'apparaît que si le fichier est dans assets/audio/. En relecture, on montre l'emplacement et le plan.
+const voice = (root, id) => { const v = VOIX.find((x) => x.id === id); const la = fs.existsSync(`assets/audio/${v.fichier}`);
+  if (!la) return RELECTURE ? `<aside class="review"><strong>Ici, la voix de ${esc(v.qui)}.</strong> Rien ne s'affiche en ligne tant que le fichier assets/audio/${esc(v.fichier)} n'existe pas. Pistes :<ul>${v.plan.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></aside>` : '';
+  const src = root.startsWith('{{') ? `{{ '${v.fichier}' | asset_url }}` : `${root}assets/audio/${v.fichier}`;
+  return `<figure class="voice" data-voice><button class="voice__btn" type="button" aria-label="Écouter"><span aria-hidden="true"></span></button><figcaption><b>${esc(v.titre)}</b><span class="voice__dots" aria-hidden="true"></span><small class="voice__time">Enregistré par ${esc(v.qui)}, sans montage</small></figcaption><audio preload="metadata" src="${src}"></audio>${v.transcription.trim() ? `<details class="voice__text"><summary>Lire la transcription</summary><p>${esc(v.transcription)}</p></details>` : ''}</figure>`; };
 const williamMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
     <div class="wrap person__head"><div class="prose">
-      <a class="back" href="${root}#nous">← L'atelier</a>
+      <a class="back" href="${root}#nous">← La mini-agence</a>
       <p class="kicker">Design et développement</p>
       <h1>William Hutter.</h1>
-      <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, applications sur mesure, tableaux de bord.</p>
+      <p class="case__lede">William fait des sites depuis l'époque où on les mettait en page avec des tableaux. Il dessine ce qu'il code et code ce qu'il dessine : thèmes Shopify, apps custom, dashboards.</p>
     </div>${pic(root, 'william-ski.jpg', 'William en ski de fond', 1100, 758, 'person__photo')}</div>
   </section>
   <section class="era-section" id="histoire">
@@ -351,6 +365,7 @@ const williamMain = (root) => `<main>
         <h2>Il a commencé quand les sites se mettaient en page avec des <span data-draw="underline">tableaux.</span></h2>
         <p>Des <code>&lt;table&gt;</code>, des images transparentes d'un pixel pour caler les colonnes, et un compteur de visites en bas de page. Depuis, il a refait le même métier avec chaque nouvelle façon de faire.</p>
         <p>Voici la même boutique en ligne, construite comme on la construisait à chaque époque. Essayez.</p>
+        ${voice(root, 'william-machine')}
       </div>
 ${machine}
       <div class="prose">
@@ -387,20 +402,21 @@ ${machine}
 const emilieMain = (root) => `<main>
   <section class="section" style="padding-bottom:clamp(28px,5vh,56px)">
     <div class="wrap person__head"><div class="prose">
-      <a class="back" href="${root}#nous">← L'atelier</a>
+      <a class="back" href="${root}#nous">← La mini-agence</a>
       <p class="kicker">Marketing et commerce international</p>
       <h1>Emilie Dupré.</h1>
-      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, e-mails, marges.</p>
+      <p class="case__lede">Emilie vient du commerce international, qu'elle a étudié en école, et du marketing en ligne. Elle suit ce que chaque euro dépensé rapporte : Amazon, publicité, emails, marges.</p>
     </div>${pic(root, 'emilie-rando.jpg', "Emilie en randonnée au bord d'un lac de montagne", 744, 932, 'person__photo')}</div>
+    ${voice(root, 'emilie-parcours') && `<div class="wrap" style="margin-top:28px">${voice(root, 'emilie-parcours')}</div>`}
   </section>
   <section class="band">
     <div class="wrap split">
       <div class="prose">
         <h2 class="h2--small">Ce dont elle s'occupe</h2>
-        ${icons(root, [['box', 'amazon', 'Amazon Seller Central'], ['megaphone', 'publicite-meta', 'Publicité Meta'], ['envelope', 'emails-klaviyo', 'E-mails Klaviyo']])}
-        <p>C'est à elle que vous parlez quand il s'agit de vendre : un compte Amazon à tenir, des campagnes à suivre, une liste e-mail à faire vivre.</p>
+        ${icons(root, [['box', 'amazon', 'Amazon Seller Central'], ['megaphone', 'publicite-meta', 'Meta Ads'], ['envelope', 'emails-klaviyo', 'Emails Klaviyo']])}
+        <p>C'est à elle que vous parlez quand il s'agit de vendre : un compte Amazon à tenir, des campagnes à suivre, une liste email à faire vivre.</p>
         <ul class="plain">
-          <li><strong>Chaque matin,</strong> le relevé des dépenses et des achats de la veille.</li>
+          <li><strong>Chaque matin,</strong> le reporting des dépenses et des achats de la veille.</li>
           <li><strong>Chaque semaine,</strong> un compte de résultat : ventes, publicité, marge.</li>
           <li><strong>Avant chaque temps fort,</strong> un plan jour par jour.</li>
         </ul>
@@ -413,7 +429,7 @@ const emilieMain = (root) => `<main>
     <div class="wrap split">
       <div class="prose">
         <h2 class="h2--small">Elle a écrit le livre</h2>
-        <p>« Klaviyo Email Marketing Automation » : plus de 90 pages sur les dix séquences d'e-mails qui comptent, de la bienvenue à la relance des clients endormis.</p>
+        <p>« Klaviyo Email Marketing Automation » : plus de 90 pages sur les dix flows d'emails qui comptent, de la bienvenue à la relance des clients endormis.</p>
         <p><a class="link more" href="https://www.amazon.fr/dp/B0D94VKS1K" rel="noopener">Le voir sur Amazon →</a></p>
         <h2 class="h2--small" style="margin-top:1em">Certifiée par Meta</h2>
         <p>Depuis mai 2024, Emilie est certifiée Media Buying Professional. Avant Azuweb, elle a accompagné des organisations comme Schneider Electric, Campus France ou le Conseil d'État.</p>
@@ -432,7 +448,7 @@ const emilieMain = (root) => `<main>
 const modules = (root) => `<script type="module" src="${root}assets/js/scene.js"></script>\n`;
 for (const [slug, title, desc, main] of [
   ['william', 'William Hutter · Azuweb', "William Hutter, design et développement chez Azuweb : des sites depuis l'époque des tableaux, des boutiques Shopify aujourd'hui.", williamMain],
-  ['emilie', 'Emilie Dupré · Azuweb', 'Emilie Dupré, marketing et commerce international chez Azuweb : Amazon, publicité Meta, e-mails Klaviyo.', emilieMain],
+  ['emilie', 'Emilie Dupré · Azuweb', 'Emilie Dupré, marketing et commerce international chez Azuweb : Amazon, Meta Ads, emails Klaviyo.', emilieMain],
 ]) { fs.mkdirSync(slug, { recursive: true }); fs.writeFileSync(`${slug}/index.html`, shell('../', title, desc, main('../'), modules('../'), slug)); }
 
 // Les parcours : les chemins qu'on voit souvent avant qu'une marque nous écrive.
@@ -459,7 +475,7 @@ const parcoursMain = (root) => `<main>
   <section class="section">
     <div class="wrap"><div class="prose">
       <h2>Vous vous reconnaissez ?</h2>
-      <p>Dites-nous où vous en êtes sur le chemin. On vous répond avec un premier avis.</p>
+      <p>Dites-nous où vous en êtes sur le chemin. On vous répond avec un premier feedback.</p>
       <p><a class="btn" href="${root}#contact">Nous écrire</a></p>
     </div></div>
   </section>
@@ -469,7 +485,7 @@ const num = (i) => String(i).padStart(2, '0');
 const philoMain = (root) => `<main class="creed">
   <div class="wrap">
     <div class="prose">
-      <a class="back" href="${root}#nous">← L'atelier</a>
+      <a class="back" href="${root}#nous">← La mini-agence</a>
       <h1>${esc(PHILO.titre)}</h1>
       <p class="case__lede">${esc(PHILO.intro)}</p>
     </div>
@@ -480,6 +496,39 @@ const philoMain = (root) => `<main class="creed">
     <div class="prose"><p><a class="btn" href="${root}#contact">On en parle ?</a></p></div>
   </div>
 </main>`;
+
+// Les réponses : une page par question, avec la réponse courte en tête (c'est elle que les IA reprennent).
+const repMain = (q, root) => { const ecrit = q.reponse_courte.trim(); const lignes = q.chiffres.filter(([, v]) => RELECTURE || v.trim()); const svc = A.services.find((s) => s.slug === q.metier); return `<main class="answer">
+  <div class="wrap">
+    <div class="prose">
+      <a class="back" href="${adresse('reponses', root)}">← Toutes nos réponses</a>
+      <h1>${esc(q.question)}</h1>
+      <p class="answer__by">Par ${esc(q.signe)}${q.date ? `, mis à jour en ${mois(q.date)}` : ''}</p>
+    </div>
+    ${ecrit ? `<p class="answer__short"><b>La réponse courte</b>${rich(q.reponse_courte, root)}</p>` : ''}
+    ${RELECTURE && (!ecrit || !q.publie) ? `<aside class="review"><strong>${ecrit ? 'Écrite, pas encore publiée.' : 'À écrire par ' + esc(q.signe) + '.'}</strong> Ce cadre n'apparaîtra pas en ligne, et la page non plus tant qu'elle n'est pas écrite et marquée « publie ». Pistes :<ul>${q.a_ecrire.map((t) => `<li>${esc(t)}</li>`).join('')}</ul><p>Fichier : content/reponses.json, entrée « ${esc(q.slug)} ».</p></aside>` : ''}
+    ${lignes.length ? `<table class="answer__table"><caption>Nos fourchettes</caption><tbody>${lignes.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${v.trim() ? esc(v) : '<i>votre chiffre</i>'}</td></tr>`).join('')}</tbody></table>` : ''}
+    <div class="creed__list">${q.sections.map(([t, x]) => `<article><h2>${esc(t)}</h2><p>${rich(x, root)}</p></article>`).join('')}</div>
+    <div class="prose">${svc ? `<p>Pour aller plus loin : <a href="${adresse(svc.slug, root)}">${esc(svc.nom)}</a>.</p>` : ''}<p><a class="btn" href="${root}#contact">Poser votre question</a></p></div>
+  </div>
+  ${ecrit ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: q.question, acceptedAnswer: { '@type': 'Answer', text: plain(q.reponse_courte) } }] })}</script>` : ''}
+</main>`; };
+const repIndex = (root) => `<main class="creed">
+  <div class="wrap">
+    <div class="prose">
+      <a class="back" href="${root}#top">← Accueil</a>
+      <h1>${esc(REP.titre)}</h1>
+      <p class="case__lede">${esc(REP.intro)}</p>
+    </div>
+    <ol class="creed__toc answers">${REPONSES.map((q) => `<li><a href="${root.startsWith('{{') ? `${root}pages/${q.slug}` : `${root}reponses/${q.slug}/`}">${esc(q.question)}<small>${esc(q.signe)}${RELECTURE && !(q.publie && q.reponse_courte.trim()) ? ' · à écrire' : ''}</small></a></li>`).join('')}</ol>
+  </div>
+</main>`;
+fs.rmSync('reponses', { recursive: true, force: true });
+if (REPONSES.length) {
+  fs.mkdirSync('reponses', { recursive: true });
+  fs.writeFileSync('reponses/index.html', shell('../', 'Nos réponses · Azuweb', REP.intro, repIndex('../'), '', 'reponses'));
+  for (const q of REPONSES) { fs.mkdirSync(`reponses/${q.slug}`, { recursive: true }); fs.writeFileSync(`reponses/${q.slug}/index.html`, shell('../../', `${q.question} · Azuweb`, plain(q.reponse_courte) || q.question, repMain(q, '../../'), '', 'reponses')); }
+}
 fs.mkdirSync('philosophie', { recursive: true });
 fs.writeFileSync('philosophie/index.html', shell('../', 'Notre façon de penser · Azuweb', PHILO.intro, philoMain('../'), '', 'philosophie'));
 fs.mkdirSync('parcours', { recursive: true });
@@ -499,6 +548,7 @@ copy('assets/js/site.js', 'azuweb-site.js');
 copy('assets/js/metier.js', 'azuweb-metier.js');
 fs.writeFileSync(path.join(out, 'assets/azuweb-vercors.js'), fs.readFileSync('assets/js/vercors.js', 'utf8').replace('../vendor/three.module.min.js', './three.module.min.js'));
 copy('favicon.svg', 'favicon.svg');
+for (const f of fs.readdirSync('assets/audio')) if (/\.(m4a|mp3)$/.test(f)) copy(`assets/audio/${f}`, f);
 for (const f of fs.readdirSync('assets/img')) if (fs.statSync(`assets/img/${f}`).isFile()) copy(`assets/img/${f}`, f);
 if (cas.length && fs.existsSync('assets/img/cas')) for (const f of fs.readdirSync('assets/img/cas')) copy(`assets/img/cas/${f}`, `cas-${f}`);
 fs.writeFileSync(path.join(out, 'assets/azuweb-site.css'), fs.readFileSync('assets/css/site.css', 'utf8').replaceAll('../fonts/', ''));
@@ -529,7 +579,7 @@ fs.writeFileSync(path.join(out, 'layout/theme.liquid'), `<!doctype html>
 </html>
 `);
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1].replace(/<script[\s\S]*?<\/script>\s*/g, '');
-const liquid = (s) => s.replace(/src="assets\/img\/([\w.-]+)"/g, `src="{{ '$1' | asset_url }}"`).replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"').replaceAll('href="parcours/"', 'href="{{ routes.root_url }}pages/parcours"').replaceAll('href="philosophie/"', 'href="{{ routes.root_url }}pages/philosophie"');
+const liquid = (s) => s.replace(/src="assets\/img\/([\w.-]+)"/g, `src="{{ '$1' | asset_url }}"`).replaceAll('src="assets/img/william-emilie.webp"', 'src="{{ \'william-emilie.webp\' | asset_url }}"').replaceAll('src="assets/img/logo.png"', 'src="{{ \'logo.png\' | asset_url }}"').replaceAll('href="#', 'href="{{ routes.root_url }}#').replaceAll('href="llms.txt"', 'href="{{ routes.root_url }}pages/llms"').replace(/href="projets\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replace(/href="services\/([\w-]+)\/"/g, 'href="{{ routes.root_url }}pages/$1"').replaceAll('href="vercors/"', 'href="{{ routes.root_url }}pages/vercors"').replaceAll('href="william/"', 'href="{{ routes.root_url }}pages/william"').replaceAll('href="emilie/"', 'href="{{ routes.root_url }}pages/emilie"').replaceAll('href="parcours/"', 'href="{{ routes.root_url }}pages/parcours"').replaceAll('href="philosophie/"', 'href="{{ routes.root_url }}pages/philosophie"').replaceAll('href="reponses/"', 'href="{{ routes.root_url }}pages/reponses"');
 const section = (file, name, content) => fs.writeFileSync(path.join(out, 'sections', file), `${content}\n{% schema %}\n{ "name": ${JSON.stringify(name)}, "settings": [] }\n{% endschema %}\n`);
 const tpl = (type) => JSON.stringify({ sections: { main: { type, settings: {} } }, order: ['main'] }, null, 2);
 const lNav = liquid(nav), lFoot = liquid(foot);
@@ -554,6 +604,11 @@ section('azuweb-vercors.liquid', 'Azuweb · Vercors', `${lNav}\n${autolink(verco
 fs.writeFileSync(path.join(out, 'templates/page.vercors.json'), tpl('azuweb-vercors'));
 section('azuweb-philosophie.liquid', 'Azuweb · Philosophie', `${lNav}\n${philoMain(R)}\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/page.philosophie.json'), tpl('azuweb-philosophie'));
+if (REPONSES.length) {
+  section('azuweb-reponses.liquid', 'Azuweb · Réponses', `${lNav}\n${repIndex(R)}\n${lFoot}`);
+  fs.writeFileSync(path.join(out, 'templates/page.reponses.json'), tpl('azuweb-reponses'));
+  for (const q of REPONSES) { section(`azuweb-rep-${q.slug}.liquid`, `Réponse · ${q.slug}`.slice(0, 25), `${lNav}\n${repMain(q, R)}\n${lFoot}`); fs.writeFileSync(path.join(out, `templates/page.rep-${q.slug}.json`), tpl(`azuweb-rep-${q.slug}`)); }
+}
 section('azuweb-parcours.liquid', 'Azuweb · Parcours', `${lNav}\n${autolink(parcoursMain(R), R, 'parcours')}\n${lFoot}`);
 fs.writeFileSync(path.join(out, 'templates/page.parcours.json'), tpl('azuweb-parcours'));
 section('azuweb-william.liquid', 'Azuweb · William', `${lNav}\n${autolink(williamMain(R), R, 'william')}\n${lFoot}`);

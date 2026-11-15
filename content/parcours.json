@@ -10,9 +10,9 @@
         ["Une agence pour le site", "Le site est beau. Pour le faire évoluer, il faut un devis."],
         ["Un freelance pour la publicité", "Les campagnes tournent, mais sans lien avec ce qui se passe sur le site."],
         ["Un autre pour Amazon", "Encore un interlocuteur, encore un rapport, encore des chiffres différents."],
-        ["Des réunions pour coordonner", "Vous passez plus de temps à faire parler les prestataires entre eux qu'à vendre."]
+        ["Des calls pour coordonner", "Vous passez plus de temps à faire parler les prestataires entre eux qu'à vendre."]
       ],
-      "arrivee": ["Un seul atelier", "Le site, Amazon, la publicité et les e-mails sont tenus par les deux mêmes personnes. Une seule conversation, un seul jeu de chiffres."],
+      "arrivee": ["Une seule agence", "Le site, Amazon, la publicité et les emails sont tenus par les deux mêmes personnes. Une seule conversation, un seul jeu de chiffres."],
       "lien": ["shopify", "Voir comment on construit une boutique"]
     },
     {
@@ -54,12 +54,12 @@
       "titre": "Le lundi passé dans les tableurs",
       "resume": "Les chiffres existent, mais éparpillés dans cinq outils qui ne sont pas d'accord entre eux.",
       "etapes": [
-        ["Un export par outil", "Publicité, e-mails, boutique : chacun a son tableau de bord."],
+        ["Un export par outil", "Publicité, emails, boutique : chacun a son dashboard."],
         ["Un tableur pour tout recoller", "Quelqu'un y passe sa matinée du lundi."],
         ["Des chiffres qui ne tombent pas juste", "Trois outils s'attribuent la même vente."]
       ],
       "arrivee": ["Un seul écran", "Tout est réuni dans l'admin Shopify, avec les mêmes périodes et les mêmes définitions."],
-      "lien": ["donnees", "Voir le tableau de bord"]
+      "lien": ["donnees", "Voir le dashboard"]
     }
   ]
 }

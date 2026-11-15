@@ -4,7 +4,7 @@
   "nom": "Azuweb",
   "site": "https://azuweb.net",
   "accroche": "On construit votre boutique. Puis on vous aide à la marketer.",
-  "en_bref": "Azuweb est un atelier e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, de la publicité Meta et des e-mails Klaviyo, pour des marques qui vendent des produits physiques.",
+  "en_bref": "Azuweb est une mini-agence e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, des Meta Ads et des emails Klaviyo, pour des marques qui vendent des produits physiques.",
   "lieu": "Vercors, France",
   "contact": {
     "utilisateur": "hello",
@@ -13,12 +13,12 @@
   "equipe": [
     {
       "nom": "Emilie Dupré",
-      "role": "Marketing en ligne : Klaviyo, Amazon, publicité Meta et Google",
-      "bio": "A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix séquences d'e-mails essentielles."
+      "role": "Marketing en ligne : Klaviyo, Amazon, Meta Ads et Google",
+      "bio": "A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix flows d'emails essentiels."
     },
     {
       "nom": "William Hutter",
-      "role": "Design et développement Shopify, applications sur mesure",
+      "role": "Design et développement Shopify, apps custom",
       "bio": "Plus de quinze ans de design et de développement web, depuis l'époque où on mettait les sites en page avec des tableaux. Shopify Select Partner. Prix du Meilleur Freelance en Marketing Digital en 2022."
     }
   ],
@@ -57,15 +57,15 @@
     ],
     [
       "Premier contact",
-      "Par e-mail, puis une visio pour regarder ensemble"
+      "Par email, puis un call pour regarder ensemble"
     ]
   ],
   "services": [
     {
       "nom": "Boutiques Shopify",
-      "texte": "Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, applications sur mesure (paiement, lots, B2B, prix, pop-ups), maintenance.",
+      "texte": "Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, apps custom (paiement, lots, B2B, prix, pop-ups), maintenance.",
       "slug": "shopify",
-      "resume": "On construit et on fait évoluer des boutiques Shopify, du thème aux applications sur mesure.",
+      "resume": "On construit et on fait évoluer des boutiques Shopify, du thème aux apps custom.",
       "pour_qui": [
         "Vous lancez une marque et il vous faut une boutique solide dès le premier jour.",
         "Votre boutique existe, mais votre équipe ne peut rien modifier sans développeur.",
@@ -128,7 +128,7 @@
         "Votre marque est sur Amazon mais les fiches ne lui ressemblent pas.",
         "Vous dépensez en Amazon Ads sans savoir ce qu'il vous reste.",
         "Vous préparez un lancement aux États-Unis ou un temps fort comme le Black Friday.",
-        "Vous voulez un point clair chaque semaine, pas un tableau de bord de plus."
+        "Vous voulez un point clair chaque semaine, pas un dashboard de plus."
       ],
       "theme": "encre",
       "formes": [
@@ -177,14 +177,14 @@
       ]
     },
     {
-      "nom": "Publicité Meta",
-      "texte": "Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, relevé quotidien des dépenses et des achats.",
+      "nom": "Meta Ads",
+      "texte": "Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, reporting quotidien des dépenses et des achats.",
       "slug": "publicite-meta",
-      "resume": "On gère vos campagnes Facebook et Instagram, avec un relevé chaque matin.",
+      "resume": "On gère vos campagnes Facebook et Instagram, avec un reporting chaque matin.",
       "pour_qui": [
         "Vos campagnes tournent mais personne ne les regarde tous les jours.",
         "Vous ne savez pas quelles annonces vendent vraiment.",
-        "Vous voulez faire grandir votre liste e-mail avant un lancement.",
+        "Vous voulez faire grandir votre liste email avant un lancement.",
         "Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon."
       ],
       "theme": "bleu",
@@ -204,7 +204,7 @@
         ],
         [
           "Ce que ça change",
-          "Le budget va là où ça marche. Et les visiteurs qui n'achètent pas tout de suite laissent leur adresse : la suite se joue par e-mail."
+          "Le budget va là où ça marche. Et les visiteurs qui n'achètent pas tout de suite laissent leur adresse : la suite se joue par email."
         ]
       ],
       "mots": [
@@ -213,7 +213,7 @@
         "Audiences",
         "Annonces",
         "Campagnes d'inscription",
-        "Relevé du matin",
+        "Reporting du matin",
         "Budget",
         "Tests"
       ],
@@ -233,15 +233,15 @@
       ]
     },
     {
-      "nom": "E-mails Klaviyo",
-      "texte": "Séquences automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué.",
+      "nom": "Emails Klaviyo",
+      "texte": "Flows automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué.",
       "slug": "emails-klaviyo",
-      "resume": "On met en place les e-mails automatiques et les campagnes qui font revenir vos clients.",
+      "resume": "On met en place les emails automatiques et les campagnes qui font revenir vos clients.",
       "pour_qui": [
         "Vous récoltez des adresses mais vous n'envoyez presque rien.",
         "Vos paniers abandonnés ne sont pas relancés.",
-        "Vos e-mails ne ressemblent pas à votre site.",
-        "Vous voulez savoir ce que chaque e-mail rapporte."
+        "Vos emails ne ressemblent pas à votre site.",
+        "Vous voulez savoir ce que chaque email rapporte."
       ],
       "theme": "rose",
       "formes": [
@@ -256,11 +256,11 @@
         ],
         [
           "Ce qu'on fait",
-          "On écrit et on dessine les séquences qui partent toutes seules : bienvenue, panier, après l'achat. Puis les campagnes des temps forts."
+          "On écrit et on dessine les flows qui partent tout seuls : bienvenue, panier, après l'achat. Puis les campagnes des temps forts."
         ],
         [
           "Ce que ça change",
-          "Chaque e-mail a son chiffre : ce qu'il a rapporté. On garde ce qui marche, on réécrit le reste."
+          "Chaque email a son chiffre : ce qu'il a rapporté. On garde ce qui marche, on réécrit le reste."
         ]
       ],
       "mots": [
@@ -279,7 +279,7 @@
           "Non. On peut l'installer, y amener vos listes et le relier à votre boutique."
         ],
         [
-          "Qui écrit les e-mails ?",
+          "Qui écrit les emails ?",
           "Nous, avec vos mots et vos produits. Vous relisez avant l'envoi."
         ],
         [
@@ -290,9 +290,9 @@
     },
     {
       "nom": "Données",
-      "texte": "Un tableau de bord dans l'admin Shopify qui réunit publicité Meta, Google et Amazon, trafic, e-mail et ventes.",
+      "texte": "Un dashboard dans l'admin Shopify qui réunit Meta Ads, Google et Amazon, trafic, email et ventes.",
       "slug": "donnees",
-      "resume": "On réunit vos chiffres de publicité, de trafic, d'e-mail et de ventes dans un seul écran.",
+      "resume": "On réunit vos chiffres de publicité, de trafic, d'email et de ventes dans un seul écran.",
       "pour_qui": [
         "Chaque outil vous donne un chiffre d'affaires différent.",
         "Vous passez votre lundi à recopier des tableaux.",
@@ -332,7 +332,7 @@
       ],
       "questions": [
         [
-          "Où se trouve le tableau de bord ?",
+          "Où se trouve le dashboard ?",
           "Dans l'admin Shopify, là où vous travaillez déjà."
         ],
         [
@@ -347,7 +347,7 @@
     },
     {
       "nom": "Agents IA",
-      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des applications sur mesure et forme leurs équipes.",
+      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des apps custom et forme leurs équipes.",
       "slug": "agents-ia",
       "resume": "On met des agents IA au travail sur votre boutique, avec un humain qui relit.",
       "pour_qui": [
@@ -382,9 +382,9 @@
         "Relecture réglementaire",
         "Veille",
         "SEO",
-        "Agents sur mesure",
+        "Agents custom",
         "Un humain à la signature",
-        "Applications sur mesure",
+        "Apps custom",
         "Formation des équipes"
       ],
       "questions": [
@@ -398,7 +398,7 @@
         ],
         [
           "Sur quoi s'appuient-ils ?",
-          "Sur Claude, le modèle d'Anthropic, relié à vos outils : boutique, publicité, e-mails."
+          "Sur Claude, le modèle d'Anthropic, relié à vos outils : boutique, publicité, emails."
         ],
         [
           "Formez-vous aussi nos équipes ?",
@@ -415,7 +415,7 @@
           ],
           [
             "Des applications faites pour vous",
-            "Un outil interne qui répond à votre façon de travailler, branché sur votre boutique, vos e-mails et vos chiffres. Pas un logiciel générique de plus."
+            "Un outil interne qui répond à votre façon de travailler, branché sur votre boutique, vos emails et vos chiffres. Pas un logiciel générique de plus."
           ],
           [
             "Former votre équipe",
@@ -429,14 +429,14 @@
     "On regarde : boutique, comptes, chiffres",
     "On cadre : périmètre écrit, prix, date",
     "On dessine : téléphone d'abord, avec les vrais textes",
-    "On développe : sur une copie de la boutique, suivi sur un tableau partagé",
+    "On développe : sur une copie de la boutique, suivi sur un board partagé",
     "On met en ligne : un jour choisi ensemble",
-    "On reste : maintenance, publicité, e-mails, mois après mois"
+    "On reste : maintenance, publicité, emails, mois après mois"
   ],
   "faq": [
     [
       "Que fait Azuweb, en une phrase ?",
-      "On construit des boutiques Shopify et on vous aide à les marketer : Amazon, publicité Meta, e-mails Klaviyo et suivi des chiffres."
+      "On construit des boutiques Shopify et on vous aide à les marketer : Amazon, Meta Ads, emails Klaviyo et suivi des chiffres."
     ],
     [
       "Qui sera mon interlocuteur ?",
@@ -452,7 +452,7 @@
     ],
     [
       "Faites-vous seulement le site, ou aussi le marketing ?",
-      "Les deux. Le même atelier s'occupe du thème, d'Amazon, de la publicité Meta et des e-mails, ce qui évite de coordonner plusieurs prestataires."
+      "Les deux. La même mini-agence s'occupe du thème, d'Amazon, des Meta Ads et des emails, ce qui évite de coordonner plusieurs prestataires."
     ],
     [
       "Utilisez-vous l'intelligence artificielle ?",
@@ -464,17 +464,17 @@
     ],
     [
       "Comment démarre-t-on ?",
-      "Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier avis, puis on se parle en visio."
+      "Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier feedback, puis on se parle en call."
     ]
   ],
   "en_ce_moment": [
     [
       "2026-11",
-      "Préparation du Black Friday : pages d'offre, pop-ups, e-mails et plan publicitaire Amazon jour par jour."
+      "Préparation du Black Friday : pages d'offre, pop-ups, emails et plan publicitaire Amazon jour par jour."
     ],
     [
       "2026-11",
-      "Un tableau de bord marketing dans l'admin Shopify, qui réunit publicité, trafic, e-mail et ventes."
+      "Un dashboard marketing dans l'admin Shopify, qui réunit publicité, trafic, email et ventes."
     ],
     [
       "2026-10",
@@ -489,7 +489,7 @@
     [
       "Nooance Paris",
       "Soin anti-âge et masques LED",
-      "Thème Shopify, applications sur mesure, compte Amazon aux États-Unis, e-mails et tableau de bord marketing."
+      "Thème Shopify, apps custom, compte Amazon aux États-Unis, emails et dashboard marketing."
     ],
     [
       "Lacroix",

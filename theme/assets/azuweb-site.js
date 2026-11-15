@@ -1,5 +1,5 @@
 // Comportements de page : navigation, machine à remonter le temps, tracés au stylo,
-// ligne de crête du Vercors, adresse e-mail et formulaire de contact.
+// ligne de crête du Vercors, adresse email et formulaire de contact.
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -287,7 +287,25 @@
   }
   var brief = document.getElementById('copy-brief'), briefText = document.getElementById('brief-text');
   if (brief && briefText) brief.addEventListener('click', function () {
-    copyText('Voici la fiche de l\'atelier e-commerce Azuweb. Réponds à mes questions à partir de ces informations.\n\n' + briefText.textContent, brief, 'Fiche copiée');
+    copyText('Voici la fiche de la mini-agence e-commerce Azuweb. Réponds à mes questions à partir de ces informations.\n\n' + briefText.textContent, brief, 'Fiche copiée');
+  });
+
+  /* ---------- La voix : lecture, et une ligne de points qui se remplit ---------- */
+  [].forEach.call(document.querySelectorAll('[data-voice]'), function (box) {
+    var audio = box.querySelector('audio'), btn = box.querySelector('.voice__btn'), dots = box.querySelector('.voice__dots'), time = box.querySelector('.voice__time');
+    var N = 48, i, label = time.textContent;
+    for (i = 0; i < N; i++) dots.appendChild(document.createElement('i'));
+    var fmt = function (t) { t = Math.floor(t || 0); return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); };
+    var paint = function () {
+      var d = audio.duration || 0, head = d ? Math.min(N - 1, Math.floor(audio.currentTime / d * N)) : -1;
+      [].forEach.call(dots.children, function (el, k) { el.className = k < head ? 'is-on' : k === head && audio.currentTime > 0 ? 'is-head' : ''; });
+      time.textContent = audio.currentTime > 0 && d ? fmt(audio.currentTime) + ' / ' + fmt(d) : d && isFinite(d) ? label + ' · ' + fmt(d) : label;
+    };
+    btn.addEventListener('click', function () { if (audio.paused) audio.play(); else audio.pause(); });
+    dots.addEventListener('click', function (e) { if (!audio.duration) return; var r = dots.getBoundingClientRect(); audio.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * audio.duration; paint(); });
+    audio.addEventListener('play', function () { box.classList.add('is-playing'); btn.setAttribute('aria-label', 'Pause'); });
+    audio.addEventListener('pause', function () { box.classList.remove('is-playing'); btn.setAttribute('aria-label', 'Écouter'); });
+    ['timeupdate', 'loadedmetadata', 'ended'].forEach(function (ev) { audio.addEventListener(ev, paint); });
   });
 
   var mailEl = document.getElementById('mail');
