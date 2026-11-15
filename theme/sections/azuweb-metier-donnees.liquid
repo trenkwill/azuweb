@@ -1,0 +1,89 @@
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="{{ routes.root_url }}#top"><img src="{{ 'logo.png' | asset_url }}" alt="Azuweb" width="720" height="157"></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}#metiers">Ce qu'on fait</a>
+      <a href="{{ routes.root_url }}#projets">Projets</a>
+      <a href="{{ routes.root_url }}#questions">Questions</a>
+      <a href="{{ routes.root_url }}#nous">Nous</a>
+      <a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+<main class="mini mini--encre">
+  <section class="mini__hero">
+    <div class="wrap mini__hero-in">
+      <div class="mini__text">
+        <a class="back" href="{{ routes.root_url }}#metiers">← Tous nos métiers</a>
+        <p class="kicker">Données</p>
+        <h1>Tous vos chiffres au même endroit, dans l'admin Shopify.</h1>
+        <p class="case__lede">Meta, Google, <a href="{{ routes.root_url }}pages/amazon">Amazon</a>, l'email et la boutique ont chacun leur dashboard, et aucun ne dit la même chose. On les réunit dans un seul écran, là où vous travaillez déjà.</p>
+        <p class="mini__actions"><a class="btn" href="{{ routes.root_url }}#contact">Parler de votre projet</a><a class="link" href="#demo">Voir la démonstration ↓</a></p>
+      </div>
+      <div class="dots-stage mini__stage" data-shape="bars" data-ink="#fffbf8" data-accent="#fdafbd" title="Cliquez pour disperser les points"><canvas aria-hidden="true"></canvas></div>
+    </div>
+  </section>
+  <nav class="mini__nav" aria-label="Dans cette page">
+    <div class="wrap"><b>Données</b><a href="#recit">Le récit</a><a href="#demo">Démonstration</a><a href="#livre">Ce qu'on livre</a><a href="#comment">Comment</a><a href="#faq">Questions</a></div>
+    <i class="mini__progress" aria-hidden="true"></i>
+  </nav>
+  <div class="marquee" aria-hidden="true"><div><span>Meta</span><span>Google</span><span>Amazon</span><span>GA4</span><span>Klaviyo</span><span>Shopify</span><span>Coût par commande</span><span>Tunnels</span><span>7, 30 ou 90 jours</span><span>Meta</span><span>Google</span><span>Amazon</span><span>GA4</span><span>Klaviyo</span><span>Shopify</span><span>Coût par commande</span><span>Tunnels</span><span>7, 30 ou 90 jours</span></div></div>
+  <section class="recit wrap" id="recit">
+    <div class="recit__chapters">
+      <article data-chapter="megaphone"><p class="recit__n">1 / 3</p><h2>Aujourd'hui</h2><p>Un outil annonce trente ventes, un autre dix-huit, et la boutique en compte cinquante-deux. Chacun compte à sa façon, et personne n'a tort.</p></article>
+      <article data-chapter="network"><p class="recit__n">2 / 3</p><h2>Ce qu'on fait</h2><p>On branche toutes les sources sur un seul tableau, dans l'admin <a href="{{ routes.root_url }}pages/shopify">Shopify</a>. Mêmes périodes, mêmes définitions.</p></article>
+      <article data-chapter="bars"><p class="recit__n">3 / 3</p><h2>Ce que ça change</h2><p>Le lundi, un écran suffit : ce qui a été dépensé, ce qui a été vendu, et l'écart avec la semaine d'avant.</p></article>
+    </div>
+    <div class="dots-stage recit__stage" data-follow data-shape="megaphone"><canvas aria-hidden="true"></canvas></div>
+  </section>
+  <div class="wrap mini__body">
+    <div id="demo"><section class="demo" data-demo="merge" aria-labelledby="demo-t">
+  <div class="prose"><h2 class="h2--small" id="demo-t">Cinq onglets, puis un seul écran.</h2>
+  <p>Chaque outil a son dashboard, et aucun ne donne le même chiffre. Appuyez pour les réunir.</p></div>
+  <div class="demo__stage merge" id="merge">
+    <div class="merge__cards">
+      <div class="merge__card" style="--i:0"><b>Meta Ads</b><span>Achats : 31</span></div>
+      <div class="merge__card" style="--i:1"><b>Google Ads</b><span>Conversions : 18</span></div>
+      <div class="merge__card" style="--i:2"><b>Amazon Ads</b><span>Commandes : 22</span></div>
+      <div class="merge__card" style="--i:3"><b>Klaviyo</b><span>Ventes : 14</span></div>
+      <div class="merge__card" style="--i:4"><b>Shopify</b><span>Commandes : 52</span></div>
+    </div>
+    <div class="merge__board" aria-live="polite">
+      <p class="merge__title">Cette semaine <span>dans l'admin Shopify</span></p>
+      <dl><div><dt>Commandes</dt><dd>52</dd></div><div><dt>Dépense publicitaire</dt><dd>1 140 €</dd></div><div><dt>Coût par commande</dt><dd>21,90 €</dd></div><div><dt>Vs semaine précédente</dt><dd>+8 %</dd></div></dl>
+      <p class="merge__rows"><span style="--w:42%">Meta</span><span style="--w:24%">Google</span><span style="--w:20%">Email</span><span style="--w:14%">Direct</span></p>
+    </div>
+    <p class="releve__actions"><button class="btn" type="button" id="merge-btn">Tout réunir</button></p>
+  </div>
+  <p class="demo__legend">Chiffres d'exemple.</p>
+</section></div>
+    <section id="livre"><div class="prose"><h2>Ce qu'on livre.</h2></div><ol class="cards"><li>Dépenses publicitaires par source et par campagne</li><li>Chiffre d'affaires, commandes, coût par commande</li><li>De l'annonce à l'inscription, de l'email à l'achat</li></ol></section>
+    
+    <section><div class="prose"><h2 class="h2--small">C'est pour vous si…</h2><ul class="checks"><li>Chaque outil vous donne un chiffre d'affaires différent.</li><li>Vous passez votre lundi à recopier des tableaux.</li><li>Vous voulez comparer une semaine à la précédente en un coup d'œil.</li><li>Vous voulez voir où vous perdez vos visiteurs, de l'annonce à l'achat.</li></ul></div></section>
+    <section id="comment"><div class="prose"><h2>Comment ça se passe.</h2><ol class="steps"><li><strong>On regarde.</strong> Boutique, comptes, chiffres.</li><li><strong>On cadre.</strong> Périmètre écrit, prix, date.</li><li><strong>On dessine.</strong> Téléphone d'abord, avec les vrais textes.</li><li><strong>On développe.</strong> Sur une copie de la boutique, suivi sur un board partagé.</li><li><strong>On met en ligne.</strong> Un jour choisi ensemble.</li><li><strong>On reste.</strong> Maintenance, publicité, emails, mois après mois.</li></ol></div></section>
+    
+    <section id="faq"><div class="prose"><h2>Les questions sur ce métier.</h2></div><dl class="faq"><div><dt>Où se trouve le dashboard ?</dt><dd>Dans l'admin <a href="{{ routes.root_url }}pages/shopify">Shopify</a>, là où vous travaillez déjà.</dd></div><div><dt>Est-ce un outil de plus à apprendre ?</dt><dd>Non. C'est une page de plus dans votre admin, avec les mêmes boutons que le reste.</dd></div><div><dt>Que faites-vous des écarts entre les outils ?</dt><dd>On les montre. Les commandes réelles de la boutique servent de référence, et chaque source est affichée à côté.</dd></div></dl></section>
+  </div>
+  <section class="mini__cta">
+    <div class="wrap">
+      <h2>On regarde votre cas ?</h2>
+      <p>Envoyez l'adresse de votre boutique et ce qui coince. On répond avec un premier feedback.</p>
+      <p class="mini__actions"><a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+      <a class="mini__next" href="{{ routes.root_url }}pages/agents-ia"><span>Métier suivant</span><b>Agents IA →</b></a>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Meta Ads</a><a href="{{ routes.root_url }}pages/emails-klaviyo">Emails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>La mini-agence</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}pages/parcours">Les chemins qui mènent à nous</a><a href="{{ routes.root_url }}pages/philosophie">Notre façon de penser</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
+  </div>
+</footer>
+<script src="{{ 'azuweb-metier.js' | asset_url }}" defer></script>
+{% schema %}
+{ "name": "Métier · Données", "settings": [] }
+{% endschema %}

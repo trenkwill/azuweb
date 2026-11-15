@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-vercors",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

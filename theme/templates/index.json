@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

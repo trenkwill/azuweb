@@ -1,0 +1,119 @@
+<!-- La machine à remonter le temps : la même boutique en ligne à quatre époques. Incluse dans la page de William par tools/build.mjs. -->
+      <div class="machine" id="machine" data-era="tables">
+        <div class="machine__tabs" role="tablist" aria-label="Choisir une époque">
+          <button role="tab" id="tab-tables" aria-controls="era-view" aria-selected="true" data-era="tables">Les tableaux</button>
+          <button role="tab" id="tab-web2" aria-controls="era-view" aria-selected="false" data-era="web2" tabindex="-1">Le Web 2.0</button>
+          <button role="tab" id="tab-flat" aria-controls="era-view" aria-selected="false" data-era="flat" tabindex="-1">Le design à plat</button>
+          <button role="tab" id="tab-now" aria-controls="era-view" aria-selected="false" data-era="now" tabindex="-1">Aujourd'hui</button>
+        </div>
+        <div class="machine__window">
+          <div class="machine__bar" aria-hidden="true">
+            <span class="machine__dots"><i></i><i></i><i></i></span>
+            <span class="machine__url">http://www.azuweb.net/</span>
+          </div>
+          <div class="machine__view" id="era-view" role="tabpanel" aria-labelledby="tab-tables">
+
+            <!-- La même boutique à quatre époques. Fin des années 90 : une vraie mise en page en tableaux. -->
+            <div class="era era--tables" data-era="tables">
+              <table width="100%" cellpadding="5" cellspacing="0" border="1">
+                <tr><td colspan="3" class="t-head"><b>*** La Boutique du Sac en Toile ***</b><br><small>Vente par correspondance depuis 1987 · maintenant sur Internet !</small></td></tr>
+                <tr>
+                  <td width="120" valign="top" class="t-nav">
+                    <b>Nos rayons</b><br>
+                    <u>Sacs en toile</u><br><u>Cabas</u><br><u>Trousses</u><br><u>Promotions</u><br><br>
+                    <b>Services</b><br>
+                    <u>Bon de commande</u><br><u>Livre d'or</u><br><u>Nous écrire</u>
+                  </td>
+                  <td valign="top">
+                    <span class="t-new">NOUVEAU !</span> Commandez <b>par Internet</b> !<br><br>
+                    <table cellpadding="3" cellspacing="0" border="1" class="t-inner" width="100%">
+                      <tr><td><b>Réf.</b></td><td><b>Article</b></td><td><b>Prix</b></td><td>&nbsp;</td></tr>
+                      <tr><td>001</td><td>Sac en toile écru</td><td>59 F</td><td><u>Ajouter au caddie</u></td></tr>
+                      <tr><td>002</td><td>Sac en toile bleu marine</td><td>59 F</td><td><u>Ajouter au caddie</u></td></tr>
+                      <tr><td>014</td><td>Grand cabas rayé</td><td>89 F</td><td><u>Ajouter au caddie</u></td></tr>
+                      <tr><td>027</td><td>Trousse assortie <font color="red"><b>PROMO</b></font></td><td><s>35 F</s> 29 F</td><td><u>Ajouter au caddie</u></td></tr>
+                    </table>
+                    <p class="t-scroll"><span>*** Franco de port à partir de 300 F *** Livraison sous 10 jours *** Catalogue papier gratuit sur simple demande ***</span></p>
+                  </td>
+                  <td width="130" valign="top" class="t-side">
+                    <b>Votre caddie</b><br>0 article<br>Total : 0 F<br><br>
+                    <b>Paiement</b><br>Chèque<br>Mandat postal<br>Contre-remboursement
+                  </td>
+                </tr>
+                <tr><td colspan="3" class="t-foot">Vous êtes le visiteur n° <span class="t-count">001337</span> · Site optimisé pour un écran 800×600</td></tr>
+              </table>
+            </div>
+
+            <div class="era era--web2" data-era="web2" hidden>
+              <div class="w-head"><span class="w-logo">sacentoile</span><span class="w-beta">bêta</span><span class="w-search">Rechercher un sac…</span><span class="w-menu">Mon compte &nbsp;|&nbsp; <b>Panier (0)</b></span></div>
+              <div class="w-body">
+                <div class="w-side">
+                  <div class="w-panel"><b>Catégories</b><span>Sacs en toile</span><span>Cabas</span><span>Trousses</span><span>Idées cadeaux</span><span class="w-hot">Soldes -30 %</span></div>
+                  <div class="w-panel"><b>Newsletter</b><span class="w-input">votre e-mail</span><span class="w-ok">OK</span></div>
+                </div>
+                <div class="w-main">
+                  <div class="w-box">
+                    <div class="w-photo"><span class="bag" aria-hidden="true"></span></div>
+                    <div class="w-info">
+                      <p class="w-title">Le sac en toile</p>
+                      <p>★★★★☆ <span class="w-small">12 avis clients</span></p>
+                      <p class="w-price">19,00 € <span class="w-small">TTC · en stock</span></p>
+                      <span class="w-btn">Ajouter au panier »</span>
+                    </div>
+                    <div class="w-seal">Satisfait<br>ou<br>remboursé</div>
+                  </div>
+                  <div class="w-grid">
+                    <div><span class="bag" style="color:#3b6ea5" aria-hidden="true"></span><b>Sac bleu</b><i>19,00 €</i></div>
+                    <div><span class="bag" style="color:#b94a48" aria-hidden="true"></span><b>Cabas rayé</b><i>29,00 €</i></div>
+                    <div><span class="bag" style="color:#6c8f3d" aria-hidden="true"></span><b>Trousse</b><i>9,90 €</i></div>
+                  </div>
+                  <div class="w-tags"><span>sacs</span> <span>toile</span> <span>cadeaux</span> <span>promo</span> <span>bio</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="era era--flat" data-era="flat" hidden>
+              <div class="f-nav"><i></i><span>SAC EN TOILE</span><b>PANIER (0)</b></div>
+              <div class="f-hero">
+                <p class="f-title">Nouvelle collection</p>
+                <span class="f-btn">DÉCOUVRIR</span>
+              </div>
+              <p class="f-head">NOS BEST-SELLERS</p>
+              <div class="f-row">
+                <div><span><span class="bag" aria-hidden="true"></span></span>LE CLASSIQUE<br>19 €</div>
+                <div><span><span class="bag" aria-hidden="true"></span></span>LE CABAS<br>29 €</div>
+                <div><span><span class="bag" aria-hidden="true"></span></span>LE MINI<br>14 €</div>
+                <div><span><span class="bag" aria-hidden="true"></span></span>LA TROUSSE<br>9 €</div>
+              </div>
+              <div class="f-perks"><span>LIVRAISON GRATUITE</span><span>RETOURS 30 JOURS</span><span>PAIEMENT SÉCURISÉ</span></div>
+            </div>
+
+            <!-- Aujourd'hui : une fiche produit de marque vendue en direct, sur téléphone comme sur ordinateur. -->
+            <div class="era era--now" data-era="now" hidden>
+              <p class="n-bar">Livraison offerte dès 50 € · Retours gratuits sous 30 jours</p>
+              <div class="n-head"><span class="n-menu">Boutique &nbsp; Notre atelier &nbsp; Journal</span><span class="n-logo">sac &amp; toile</span><span class="n-icons">Rechercher &nbsp; Compte &nbsp; <b>Panier · 1</b></span></div>
+              <div class="n-product">
+                <div class="n-gallery">
+                  <div class="n-photo"><span class="bag" aria-hidden="true"></span><span class="n-badge">Nouveau</span></div>
+                  <div class="n-thumbs"><span><span class="bag" aria-hidden="true"></span></span><span><span class="bag" style="color:#2f4a3a" aria-hidden="true"></span></span><span><span class="bag" style="color:#b5651d" aria-hidden="true"></span></span><span><span class="bag" style="color:#26334d" aria-hidden="true"></span></span></div>
+                </div>
+                <div class="n-info">
+                  <p class="n-crumb">Accueil / Cabas / Le Cabas n° 1</p>
+                  <p class="n-title">Le Cabas n° 1</p>
+                  <p class="n-rating">★★★★★ <span>4,8 · 312 avis</span></p>
+                  <p class="n-price">39 € <span>ou 3 × 13 € sans frais</span></p>
+                  <p class="n-label">Couleur : <b>Écru</b></p>
+                  <p class="n-swatches"><i style="background:#d9c7a3" class="is-on"></i><i style="background:#2f4a3a"></i><i style="background:#b5651d"></i><i style="background:#26334d"></i></p>
+                  <span class="n-btn">Ajouter au panier</span>
+                  <span class="n-express">Acheter maintenant</span>
+                  <ul class="n-perks"><li>Expédié sous 24 h</li><li>Fabriqué en France</li><li>Garanti 10 ans</li></ul>
+                  <p class="n-acc"><span>Description</span><span>+</span></p>
+                  <p class="n-acc"><span>Entretien</span><span>+</span></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <p class="machine__caption" id="era-caption" aria-live="polite">Fin des années 90. Un tableau pour le catalogue, un bon de commande à imprimer, et un chèque par la poste.</p>
+      </div>

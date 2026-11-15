@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-metier-emails-klaviyo",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

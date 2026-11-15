@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-emilie",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

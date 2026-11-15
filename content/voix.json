@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Vos voix sur le site. Enregistrez avec le dictaphone du téléphone, exportez en .m4a ou .mp3, déposez le fichier dans assets/audio/ sous le nom indiqué, puis lancez node tools/build.mjs. Tant que le fichier n'existe pas, rien ne s'affiche en ligne. \"transcription\" : le texte de ce que vous dites, pour les malentendants et pour les IA. \"plan\" : des pistes pour vous, jamais affichées en ligne.",
+  "voix": [
+    {
+      "id": "william-machine",
+      "qui": "William",
+      "titre": "William raconte : des tableaux au thème Shopify",
+      "fichier": "william-machine.m4a",
+      "transcription": "",
+      "plan": ["Votre tout premier site : pour qui, avec quoi.", "Un souvenir précis de l'époque des tableaux.", "Le jour où vous êtes passé à Shopify, et pourquoi.", "Ce qui n'a pas changé en vingt ans.", "Deux minutes, pas plus."]
+    },
+    {
+      "id": "emilie-parcours",
+      "qui": "Emilie",
+      "titre": "Emilie raconte : du commerce international aux emails",
+      "fichier": "emilie-parcours.m4a",
+      "transcription": "",
+      "plan": ["Ce que l'école de commerce international vous a vraiment appris.", "Votre premier client, ou votre première campagne.", "Ce que vous regardez en premier dans un compte.", "Deux minutes, pas plus."]
+    },
+    {
+      "id": "vercors",
+      "qui": "Emilie et William",
+      "titre": "Pourquoi on travaille depuis Autrans",
+      "fichier": "vercors.m4a",
+      "transcription": "",
+      "plan": ["Comment vous êtes arrivés là, et le Canada avant.", "Une journée type, entre le travail et dehors.", "Ce que les clients en pensent.", "À deux voix si possible."]
+    }
+  ]
+}

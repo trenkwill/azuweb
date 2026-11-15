@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ page_title }}{% unless page_title contains shop.name %} · {{ shop.name }}{% endunless %}</title>
+<meta name="description" content="{{ page_description | default: "Azuweb, c'est Emilie et William. On conçoit des boutiques Shopify, on gère des comptes Amazon Seller Central, des Meta Ads et des emails Klaviyo, depuis le Vercors." | escape }}">
+<meta name="theme-color" content="#fffbf8">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="icon" href="{{ 'favicon.svg' | asset_url }}" type="image/svg+xml">
+<link rel="preload" href="{{ 'inter.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+{{ 'azuweb-site.css' | asset_url | stylesheet_tag }}
+{% if template.name == 'index' %}{% raw %}
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://azuweb.net/#azuweb","name":"Azuweb","url":"https://azuweb.net","slogan":"On construit votre boutique. Puis on vous aide à la marketer.","description":"Azuweb est une mini-agence e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, des Meta Ads et des emails Klaviyo, pour des marques qui vendent des produits physiques.","email":"hello@azuweb.net","areaServed":["FR","EU","US","CA"],"knowsLanguage":"fr","address":{"@type":"PostalAddress","addressRegion":"Vercors","addressCountry":"FR"},"founder":[{"@type":"Person","name":"Emilie Dupré","jobTitle":"Marketing en ligne : Klaviyo, Amazon, Meta Ads et Google","description":"A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix flows d'emails essentiels.","worksFor":{"@id":"https://azuweb.net/#azuweb"}},{"@type":"Person","name":"William Hutter","jobTitle":"Design et développement Shopify, apps custom","description":"Plus de quinze ans de design et de développement web, depuis l'époque où on mettait les sites en page avec des tableaux. Shopify Select Partner. Prix du Meilleur Freelance en Marketing Digital en 2022.","worksFor":{"@id":"https://azuweb.net/#azuweb"}}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Ce que fait Azuweb","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boutiques Shopify","description":"Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, apps custom (paiement, lots, B2B, prix, pop-ups), maintenance."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Amazon Seller Central","description":"Gestion du compte vendeur : fiches produit, contenus A+, Brand Store, Amazon Ads, compte de résultat hebdomadaire."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Meta Ads","description":"Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, reporting quotidien des dépenses et des achats."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Emails Klaviyo","description":"Flows automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Données","description":"Un dashboard dans l'admin Shopify qui réunit Meta Ads, Google et Amazon, trafic, email et ventes."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agents IA","description":"Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des apps custom et forme leurs équipes."}}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Que fait Azuweb, en une phrase ?","acceptedAnswer":{"@type":"Answer","text":"On construit des boutiques Shopify et on vous aide à les marketer : Amazon, Meta Ads, emails Klaviyo et suivi des chiffres."}},{"@type":"Question","name":"Qui sera mon interlocuteur ?","acceptedAnswer":{"@type":"Answer","text":"Emilie ou William, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire."}},{"@type":"Question","name":"Pouvez-vous reprendre une boutique Shopify existante ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire."}},{"@type":"Question","name":"Travaillez-vous avec des marques qui vendent à l'étranger ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur Amazon aux États-Unis."}},{"@type":"Question","name":"Faites-vous seulement le site, ou aussi le marketing ?","acceptedAnswer":{"@type":"Answer","text":"Les deux. La même mini-agence s'occupe du thème, d'Amazon, des Meta Ads et des emails, ce qui évite de coordonner plusieurs prestataires."}},{"@type":"Question","name":"Utilisez-vous l'intelligence artificielle ?","acceptedAnswer":{"@type":"Answer","text":"Oui, tous les jours. Nos agents IA préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu."}},{"@type":"Question","name":"Combien coûte un projet ?","acceptedAnswer":{"@type":"Answer","text":"Notre tarif est de 100 € HT de l'heure, soit 700 € HT la journée. Chaque projet est chiffré poste par poste après un premier regard sur votre boutique, avec une fourchette. On facture le temps réellement passé, et vous pouvez consulter les heures."}},{"@type":"Question","name":"Comment démarre-t-on ?","acceptedAnswer":{"@type":"Answer","text":"Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier feedback, puis on se parle en call."}}]}]}</script>
+<script type="text/plain" id="brief-text"># Azuweb
+
+&gt; Azuweb est une mini-agence e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, des Meta Ads et des emails Klaviyo, pour des marques qui vendent des produits physiques.
+
+Mis à jour le 2026-11-15. Contact : hello@azuweb.net
+
+## En bref
+- Depuis : Plus de dix ans
+- Taille : Deux personnes, par choix, épaulées par des agents IA maison
+- Où : Autrans, dans le Vercors. Travail à distance, en français
+- Pour qui : Des marques qui vendent des produits physiques en ligne
+- Plateformes : Shopify, Amazon Seller Central, Meta Ads, Klaviyo, Webflow
+- Marchés : France, Europe et Amérique du Nord
+- Tarifs : 100 € HT de l'heure, soit 700 € HT la journée. Heures notées et consultables
+- Reconnaissances : Shopify Select Partner, certification Meta Media Buying Professional
+- Premier contact : Par email, puis un call pour regarder ensemble
+
+## Ce qu'on fait
+- Boutiques Shopify : Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, apps custom (paiement, lots, B2B, prix, pop-ups), maintenance. Page : https://azuweb.net/services/shopify/
+- Amazon Seller Central : Gestion du compte vendeur : fiches produit, contenus A+, Brand Store, Amazon Ads, compte de résultat hebdomadaire. Page : https://azuweb.net/services/amazon/
+- Meta Ads : Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, reporting quotidien des dépenses et des achats. Page : https://azuweb.net/services/publicite-meta/
+- Emails Klaviyo : Flows automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué. Page : https://azuweb.net/services/emails-klaviyo/
+- Données : Un dashboard dans l'admin Shopify qui réunit Meta Ads, Google et Amazon, trafic, email et ventes. Page : https://azuweb.net/services/donnees/
+- Agents IA : Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des apps custom et forme leurs équipes. Page : https://azuweb.net/services/agents-ia/
+
+## Qui
+- Emilie Dupré — Marketing en ligne : Klaviyo, Amazon, Meta Ads et Google. A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix flows d'emails essentiels.
+- William Hutter — Design et développement Shopify, apps custom. Plus de quinze ans de design et de développement web, depuis l'époque où on mettait les sites en page avec des tableaux. Shopify Select Partner. Prix du Meilleur Freelance en Marketing Digital en 2022.
+
+## Comment on travaille
+1. On regarde : boutique, comptes, chiffres
+2. On cadre : périmètre écrit, prix, date
+3. On dessine : téléphone d'abord, avec les vrais textes
+4. On développe : sur une copie de la boutique, suivi sur un board partagé
+5. On met en ligne : un jour choisi ensemble
+6. On reste : maintenance, publicité, emails, mois après mois
+
+## Notre façon de penser
+- Commencer ici : On est deux, on travaille depuis le Vercors, et on fait ce métier depuis plus de dix ans. Voici ce qu'on a appris en route. Si vous êtes d'accord avec la moitié, on devrait bien s'entendre.
+- Repartir d'une base saine : Déboguer un sur-mesure que personne ne connaît coûte plus cher que repartir propre. On préfère ce que la plateforme sait déjà faire à ce qu'il faudrait réinventer.
+- L'outil gratuit tant qu'il suffit : Si une application gratuite fait le travail, on vous le dit. On ne recommande la version payante que lorsque votre volume la rend rentable.
+- Des fourchettes, pas des promesses : On chiffre poste par poste, avec une fourchette volontairement large, et on facture le temps réellement passé. Les heures sont notées, vous pouvez les consulter.
+- Commencer petit : Un audit d'abord, pour chiffrer sur des bases sûres plutôt que sur des hypothèses. Puis un test sur quelques produits. Le reste vient après.
+- Dire qu'une deadline ne tient pas : Quand une deadline est irréaliste, on le dit, même si ça nous coûte le projet. Mieux vaut perdre un contrat qu'une mise en ligne.
+- Vous devez pouvoir vous passer de nous : On règle les choses pour que vous puissiez les ajuster seuls ensuite. On vous montre comment, souvent avec une courte vidéo.
+- Un chiffre à recalculer est un mauvais chiffre : Si le client doit sortir sa calculatrice pour comprendre une offre, l'offre est mal écrite. Les règles s'affichent noir sur blanc.
+- Moins de texte, et plus gros : On coupe, on résume, on agrandit. Ce qui reste se lit.
+- Le téléphone d'abord : C'est là que sont vos visiteurs. On dessine cet écran en premier, et l'ordinateur s'adapte.
+- Une seule source de vérité : La fiche produit de votre site fait foi. Amazon, les emails et les annonces en repartent, avec les mêmes noms et les mêmes chiffres.
+- Ne pas laisser l'acheteur dans le flou : On affiche l'option qu'on recommande plutôt que de le laisser choisir à l'aveugle. Et on estompe ce qui n'aide pas à décider.
+- Ne pas montrer ce que le produit ne fait pas : Une belle animation qui promet un effet que le produit n'a pas, c'est non. Même si elle est très belle.
+- Un call finit par une to-do : Qui fait quoi, et pour quand. Sans cette to-do, le call n'a pas eu lieu.
+- Un seul endroit pour vos demandes : Pas dans trois boîtes mail et deux messageries. Vous déposez vos demandes au même endroit, et vous voyez où chacune en est.
+- L'IA exécute, nous décidons : Nos agents IA préparent, vérifient et surveillent. Rien ne part chez un client ni en ligne sans que l'un de nous deux l'ait relu.
+- Quand on a tardé, on le dit : Sans détour. Puis on répare tout de suite, et on propose un point régulier pour que ça ne se reproduise pas.
+- De vraies vacances, annoncées : On prévient à l'avance, on reste joignables en cas d'urgence, et on revient avec les idées claires.
+- Deux, exprès : On pourrait embaucher. On préfère rester ceux qui font le travail, et vous répondre nous-mêmes.
+
+## Questions fréquentes
+
+
+### Que fait Azuweb, en une phrase ?
+On construit des boutiques Shopify et on vous aide à les marketer : Amazon, Meta Ads, emails Klaviyo et suivi des chiffres.
+
+### Qui sera mon interlocuteur ?
+Emilie ou William, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire.
+
+### Pouvez-vous reprendre une boutique Shopify existante ?
+Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire.
+
+### Travaillez-vous avec des marques qui vendent à l'étranger ?
+Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur Amazon aux États-Unis.
+
+### Faites-vous seulement le site, ou aussi le marketing ?
+Les deux. La même mini-agence s'occupe du thème, d'Amazon, des Meta Ads et des emails, ce qui évite de coordonner plusieurs prestataires.
+
+### Utilisez-vous l'intelligence artificielle ?
+Oui, tous les jours. Nos agents IA préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu.
+
+### Combien coûte un projet ?
+Notre tarif est de 100 € HT de l'heure, soit 700 € HT la journée. Chaque projet est chiffré poste par poste après un premier regard sur votre boutique, avec une fourchette. On facture le temps réellement passé, et vous pouvez consulter les heures.
+
+### Comment démarre-t-on ?
+Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier feedback, puis on se parle en call.
+
+## Ce qu'en disent nos clients
+- « Professionnel et pédagogue, c'est un plaisir de travailler avec Azuweb depuis presque 2 ans. La réalisation à leur côté de notre site internet a été un succès auprès de notre clientèle. Ils sont à l'écoute, réactifs et toujours de bon conseil pour vous aider à développer votre business. » (Charlotte C., Les Merveilles de Babellou)
+- « L'équipe Azuweb est une équipe d'expérience qui a su nous accompagner avec efficacité de la définition des personas à l'ensemble de la conception UI et UX du projet. Ayant pour notre part déjà plus de 13 ans d'expérience dans le e-commerce, nous avons apprécié la qualité des échanges avec l'équipe. Ça réfléchit très bien, très vite, avec des solutions adaptées. » (Black Idol)
+- « Nous sommes très satisfaits de notre collaboration avec Emilie ! Elle a su nous donner beaucoup d'idées et de conseils, elle a été très investie dans le projet et très disponible. Mise en place de tous nos flows de marketing automation : stratégie et intégration Klaviyo. » (Emilie, YAY Paris)
+- « Une expérience très enrichissante avec Emilie, pleine de bons conseils et très sympathique. Nous sommes ravies d'avoir pu passer de Mailchimp à Klaviyo et d'avoir été accompagnées pour cette migration. » (Marion, Takk Paris)
+- « Nous travaillons avec Emilie depuis un moment maintenant et en sommes très satisfaites. Emilie est disponible et nous pousse à mettre en avant notre marque au travers des réseaux sociaux sans devoir exploser notre budget communication ! » (Fanny et Delphine, Oh Oui !)
+
+## En ce moment
+- novembre 2026 : Préparation du Black Friday : pages d'offre, pop-ups, emails et plan publicitaire Amazon jour par jour.
+- novembre 2026 : Un dashboard marketing dans l'admin Shopify, qui réunit publicité, trafic, email et ventes.
+- octobre 2026 : Deux refontes de boutiques sur Horizon, la nouvelle base de thème de Shopify.
+- octobre 2026 : Nos agents IA font maintenant un audit du site chaque jour et un récapitulatif des comptes publicitaires chaque matin.
+</script>
+{% endraw %}{% endif %}
+{{ content_for_header }}
+</head>
+<body>
+{{ content_for_layout }}
+<script type="module" src="{{ 'azuweb-scene.js' | asset_url }}"></script>
+<script src="{{ 'azuweb-site.js' | asset_url }}" defer></script>
+</body>
+</html>

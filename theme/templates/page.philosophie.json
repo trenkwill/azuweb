@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "azuweb-philosophie",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

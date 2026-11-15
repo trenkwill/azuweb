@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Notre façon de penser, une idée par entrée. Chaque idée vient d'une situation vécue avec un client. Ajoutez, retirez ou réécrivez librement, puis lancez node tools/build.mjs.",
+  "titre": "Notre façon de penser.",
+  "intro": "Rien de théorique ici. Chaque idée vient d'un projet, d'un email ou d'une erreur qu'on ne veut pas refaire.",
+  "idees": [
+    ["Commencer ici", "On est deux, on travaille depuis le Vercors, et on fait ce métier depuis plus de dix ans. Voici ce qu'on a appris en route. Si vous êtes d'accord avec la moitié, on devrait bien s'entendre."],
+    ["Repartir d'une base saine", "Déboguer un sur-mesure que personne ne connaît coûte plus cher que repartir propre. On préfère ce que la plateforme sait déjà faire à ce qu'il faudrait réinventer."],
+    ["L'outil gratuit tant qu'il suffit", "Si une application gratuite fait le travail, on vous le dit. On ne recommande la version payante que lorsque votre volume la rend rentable."],
+    ["Des fourchettes, pas des promesses", "On chiffre poste par poste, avec une fourchette volontairement large, et on facture le temps réellement passé. Les heures sont notées, vous pouvez les consulter."],
+    ["Commencer petit", "Un audit d'abord, pour chiffrer sur des bases sûres plutôt que sur des hypothèses. Puis un test sur quelques produits. Le reste vient après."],
+    ["Dire qu'une deadline ne tient pas", "Quand une deadline est irréaliste, on le dit, même si ça nous coûte le projet. Mieux vaut perdre un contrat qu'une mise en ligne."],
+    ["Vous devez pouvoir vous passer de nous", "On règle les choses pour que vous puissiez les ajuster seuls ensuite. On vous montre comment, souvent avec une courte vidéo."],
+    ["Un chiffre à recalculer est un mauvais chiffre", "Si le client doit sortir sa calculatrice pour comprendre une offre, l'offre est mal écrite. Les règles s'affichent noir sur blanc."],
+    ["Moins de texte, et plus gros", "On coupe, on résume, on agrandit. Ce qui reste se lit."],
+    ["Le téléphone d'abord", "C'est là que sont vos visiteurs. On dessine cet écran en premier, et l'ordinateur s'adapte."],
+    ["Une seule source de vérité", "La fiche produit de votre site fait foi. Amazon, les emails et les annonces en repartent, avec les mêmes noms et les mêmes chiffres."],
+    ["Ne pas laisser l'acheteur dans le flou", "On affiche l'option qu'on recommande plutôt que de le laisser choisir à l'aveugle. Et on estompe ce qui n'aide pas à décider."],
+    ["Ne pas montrer ce que le produit ne fait pas", "Une belle animation qui promet un effet que le produit n'a pas, c'est non. Même si elle est très belle."],
+    ["Un call finit par une to-do", "Qui fait quoi, et pour quand. Sans cette to-do, le call n'a pas eu lieu."],
+    ["Un seul endroit pour vos demandes", "Pas dans trois boîtes mail et deux messageries. Vous déposez vos demandes au même endroit, et vous voyez où chacune en est."],
+    ["L'IA exécute, nous décidons", "Nos agents IA préparent, vérifient et surveillent. Rien ne part chez un client ni en ligne sans que l'un de nous deux l'ait relu."],
+    ["Quand on a tardé, on le dit", "Sans détour. Puis on répare tout de suite, et on propose un point régulier pour que ça ne se reproduise pas."],
+    ["De vraies vacances, annoncées", "On prévient à l'avance, on reste joignables en cas d'urgence, et on revient avec les idées claires."],
+    ["Deux, exprès", "On pourrait embaucher. On préfère rester ceux qui font le travail, et vous répondre nous-mêmes."]
+  ]
+}

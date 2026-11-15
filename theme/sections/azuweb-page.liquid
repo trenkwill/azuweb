@@ -1,0 +1,26 @@
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="logo" href="{{ routes.root_url }}#top"><img src="{{ 'logo.png' | asset_url }}" alt="Azuweb" width="720" height="157"></a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}#metiers">Ce qu'on fait</a>
+      <a href="{{ routes.root_url }}#projets">Projets</a>
+      <a href="{{ routes.root_url }}#questions">Questions</a>
+      <a href="{{ routes.root_url }}#nous">Nous</a>
+      <a class="btn" href="{{ routes.root_url }}#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+<main class="section"><div class="wrap"><div class="prose"><h1 style="font-size:var(--t-h2)">{{ page.title | default: page_title }}</h1></div><div class="rte" style="margin-top:28px">{{ page.content }}</div></div></main>
+<footer class="foot">
+  <div class="wrap foot__map">
+    <p><b>Nos métiers</b><a href="{{ routes.root_url }}pages/shopify">Boutiques Shopify</a><a href="{{ routes.root_url }}pages/amazon">Amazon Seller Central</a><a href="{{ routes.root_url }}pages/publicite-meta">Meta Ads</a><a href="{{ routes.root_url }}pages/emails-klaviyo">Emails Klaviyo</a><a href="{{ routes.root_url }}pages/donnees">Données</a><a href="{{ routes.root_url }}pages/agents-ia">Agents IA</a></p>
+    <p><b>La mini-agence</b><a href="{{ routes.root_url }}pages/emilie">Emilie Dupré</a><a href="{{ routes.root_url }}pages/william">William Hutter</a><a href="{{ routes.root_url }}pages/vercors">Le Vercors</a><a href="{{ routes.root_url }}pages/parcours">Les chemins qui mènent à nous</a><a href="{{ routes.root_url }}pages/philosophie">Notre façon de penser</a><a href="{{ routes.root_url }}#projets">Projets</a><a href="{{ routes.root_url }}#questions">Questions</a><a href="{{ routes.root_url }}#contact">Nous écrire</a></p>
+  </div>
+  <div class="wrap foot__in">
+    <span>© <span id="year">2026</span> Azuweb · Fait à la main dans le Vercors</span>
+    <a href="{{ routes.root_url }}pages/llms">Version texte pour les IA</a>
+  </div>
+</footer>
+{% schema %}
+{ "name": "Azuweb · Page", "settings": [] }
+{% endschema %}

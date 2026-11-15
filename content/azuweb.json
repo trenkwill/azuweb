@@ -1,0 +1,562 @@
+{
+  "_lisezmoi": "Source unique des informations sur Azuweb. Modifiez ce fichier puis lancez `node tools/build.mjs` : la page, llms.txt, les données structurées et le thème Shopify sont régénérés.",
+  "mis_a_jour": "2026-11-15",
+  "nom": "Azuweb",
+  "site": "https://azuweb.net",
+  "accroche": "On construit votre boutique. Puis on vous aide à la marketer.",
+  "en_bref": "Azuweb est une mini-agence e-commerce de deux personnes, Emilie Dupré et William Hutter, installé à Autrans, dans le Vercors, depuis plus de dix ans. On conçoit et développe des boutiques Shopify, on gère des comptes Amazon Seller Central, des Meta Ads et des emails Klaviyo, pour des marques qui vendent des produits physiques.",
+  "lieu": "Vercors, France",
+  "contact": {
+    "utilisateur": "hello",
+    "domaine": "azuweb.net"
+  },
+  "equipe": [
+    {
+      "nom": "Emilie Dupré",
+      "role": "Marketing en ligne : Klaviyo, Amazon, Meta Ads et Google",
+      "bio": "A étudié le commerce international en école. Certifiée Meta Media Buying Professional (mai 2024). Auteure du livre « Klaviyo Email Marketing Automation », sur les dix flows d'emails essentiels."
+    },
+    {
+      "nom": "William Hutter",
+      "role": "Design et développement Shopify, apps custom",
+      "bio": "Plus de quinze ans de design et de développement web, depuis l'époque où on mettait les sites en page avec des tableaux. Shopify Select Partner. Prix du Meilleur Freelance en Marketing Digital en 2022."
+    }
+  ],
+  "faits": [
+    [
+      "Depuis",
+      "Plus de dix ans"
+    ],
+    [
+      "Taille",
+      "Deux personnes, par choix, épaulées par des agents IA maison"
+    ],
+    [
+      "Où",
+      "[Autrans, dans le Vercors](vercors/). Travail à distance, en français"
+    ],
+    [
+      "Pour qui",
+      "Des marques qui vendent des produits physiques en ligne"
+    ],
+    [
+      "Plateformes",
+      "[Shopify](services/shopify/), [Amazon Seller Central](services/amazon/), [Meta Ads](services/publicite-meta/), [Klaviyo](services/emails-klaviyo/), Webflow"
+    ],
+    [
+      "Marchés",
+      "France, Europe et Amérique du Nord"
+    ],
+    [
+      "Tarifs",
+      "100 € HT de l'heure, soit 700 € HT la journée. Heures notées et consultables"
+    ],
+    [
+      "Reconnaissances",
+      "Shopify Select Partner, certification Meta Media Buying Professional"
+    ],
+    [
+      "Premier contact",
+      "Par email, puis un call pour regarder ensemble"
+    ]
+  ],
+  "services": [
+    {
+      "nom": "Boutiques Shopify",
+      "texte": "Refonte ou évolution d'une boutique : thèmes sur mesure ou sur la base Horizon, fiches produit pilotées par métaobjets, plusieurs marchés et langues, apps custom (paiement, lots, B2B, prix, pop-ups), maintenance.",
+      "slug": "shopify",
+      "resume": "On construit et on fait évoluer des boutiques Shopify, du thème aux apps custom.",
+      "pour_qui": [
+        "Vous lancez une marque et il vous faut une boutique solide dès le premier jour.",
+        "Votre boutique existe, mais votre équipe ne peut rien modifier sans développeur.",
+        "Votre catalogue a grandi et les fiches produit ne suivent plus.",
+        "Vous ouvrez un nouveau marché, une nouvelle langue ou la vente aux professionnels."
+      ],
+      "theme": "creme",
+      "formes": [
+        "bag",
+        "network",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Votre boutique tourne, mais chaque changement passe par un développeur. Une bannière à modifier, une fiche à compléter : il faut demander, attendre, relancer."
+        ],
+        [
+          "Ce qu'on construit",
+          "On reprend votre catalogue et on le range. Ce qui décrit un produit devient un champ, pas un bout de texte collé dans une description. Le thème lit ces champs et compose la fiche tout seul."
+        ],
+        [
+          "Ce que ça change",
+          "Votre équipe ajoute un produit, change une image ou ouvre un nouveau pays sans nous. Nous, on s'occupe de ce qui demande vraiment du code."
+        ]
+      ],
+      "mots": [
+        "Thème sur mesure",
+        "Horizon",
+        "Métaobjets",
+        "Guide des tailles",
+        "Multi-marchés",
+        "Traductions",
+        "B2B",
+        "Applications",
+        "Paiement",
+        "Maintenance"
+      ],
+      "questions": [
+        [
+          "Faut-il tout refaire ?",
+          "Non. On commence souvent par faire évoluer la boutique existante, et on ne propose une refonte que si le thème actuel bloque vraiment."
+        ],
+        [
+          "Qui met le site à jour ensuite ?",
+          "Vous. Chaque section se règle dans l'éditeur de Shopify. On reste là pour ce qui demande du code."
+        ],
+        [
+          "Travaillez-vous sur le site en ligne ?",
+          "Non, sur une copie. Vous testez avant tout le monde, et on met en ligne un jour choisi ensemble."
+        ]
+      ]
+    },
+    {
+      "nom": "Amazon Seller Central",
+      "texte": "Gestion du compte vendeur : fiches produit, contenus A+, Brand Store, Amazon Ads, compte de résultat hebdomadaire.",
+      "slug": "amazon",
+      "resume": "On tient votre compte vendeur Amazon comme une vraie boutique : contenus, publicité et rentabilité.",
+      "pour_qui": [
+        "Votre marque est sur Amazon mais les fiches ne lui ressemblent pas.",
+        "Vous dépensez en Amazon Ads sans savoir ce qu'il vous reste.",
+        "Vous préparez un lancement aux États-Unis ou un temps fort comme le Black Friday.",
+        "Vous voulez un point clair chaque semaine, pas un dashboard de plus."
+      ],
+      "theme": "encre",
+      "formes": [
+        "box",
+        "megaphone",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Votre produit est sur Amazon, coincé entre dix concurrents. Le titre est une liste de mots-clés, les photos ne disent rien, et la publicité tourne sans que personne sache ce qu'elle rapporte."
+        ],
+        [
+          "Ce qu'on fait",
+          "On réécrit la fiche pour l'acheteur, on dessine les contenus A+ et la boutique de marque, puis on structure la publicité campagne par campagne."
+        ],
+        [
+          "Ce que ça change",
+          "Chaque semaine, vous recevez un compte de résultat : ce qui s'est vendu, ce que la publicité a coûté, ce qu'il reste. Vous décidez sur des chiffres, pas sur une impression."
+        ]
+      ],
+      "mots": [
+        "Fiches produit",
+        "Contenus A+",
+        "Brand Store",
+        "Amazon Ads",
+        "Termes de recherche",
+        "Black Friday",
+        "États-Unis",
+        "Europe",
+        "Compte de résultat"
+      ],
+      "questions": [
+        [
+          "Vendez-vous à notre place ?",
+          "Non. Le compte vendeur reste le vôtre. On le gère avec vous, et vous gardez la main sur les prix et le stock."
+        ],
+        [
+          "Travaillez-vous sur Amazon aux États-Unis ?",
+          "Oui. C'est ce qu'on fait en ce moment pour une marque française de beauté."
+        ],
+        [
+          "Faut-il déjà être sur Amazon ?",
+          "Non. On peut préparer un lancement : fiches, contenus et plan publicitaire."
+        ]
+      ]
+    },
+    {
+      "nom": "Meta Ads",
+      "texte": "Campagnes Facebook et Instagram : structure du compte, annonces, campagnes d'inscription, reporting quotidien des dépenses et des achats.",
+      "slug": "publicite-meta",
+      "resume": "On gère vos campagnes Facebook et Instagram, avec un reporting chaque matin.",
+      "pour_qui": [
+        "Vos campagnes tournent mais personne ne les regarde tous les jours.",
+        "Vous ne savez pas quelles annonces vendent vraiment.",
+        "Vous voulez faire grandir votre liste email avant un lancement.",
+        "Vous hésitez entre envoyer le trafic vers votre site ou vers Amazon."
+      ],
+      "theme": "bleu",
+      "formes": [
+        "megaphone",
+        "envelope",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Vos campagnes tournent. Quelqu'un les a réglées il y a trois mois, et depuis personne ne les ouvre. Certaines annonces dépensent chaque jour sans rien vendre."
+        ],
+        [
+          "Ce qu'on fait",
+          "Chaque matin, on relève ce qui a été dépensé et ce qui a été acheté, annonce par annonce. On coupe, on renforce, on teste une nouvelle idée."
+        ],
+        [
+          "Ce que ça change",
+          "Le budget va là où ça marche. Et les visiteurs qui n'achètent pas tout de suite laissent leur adresse : la suite se joue par email."
+        ]
+      ],
+      "mots": [
+        "Facebook",
+        "Instagram",
+        "Audiences",
+        "Annonces",
+        "Campagnes d'inscription",
+        "Reporting du matin",
+        "Budget",
+        "Tests"
+      ],
+      "questions": [
+        [
+          "Faites-vous aussi les visuels ?",
+          "Oui. Les annonces sont écrites et dessinées par nous, dans le même style que votre site."
+        ],
+        [
+          "Qui a accès au compte ?",
+          "Le compte publicitaire reste le vôtre. Vous nous donnez un accès, que vous pouvez retirer."
+        ],
+        [
+          "À quelle fréquence a-t-on des nouvelles ?",
+          "On regarde les comptes chaque matin, et on vous écrit dès qu'il y a une décision à prendre."
+        ]
+      ]
+    },
+    {
+      "nom": "Emails Klaviyo",
+      "texte": "Flows automatiques (bienvenue, panier abandonné, paiement abandonné, après l'achat), campagnes, formulaires et pop-ups, chiffre d'affaires attribué.",
+      "slug": "emails-klaviyo",
+      "resume": "On met en place les emails automatiques et les campagnes qui font revenir vos clients.",
+      "pour_qui": [
+        "Vous récoltez des adresses mais vous n'envoyez presque rien.",
+        "Vos paniers abandonnés ne sont pas relancés.",
+        "Vos emails ne ressemblent pas à votre site.",
+        "Vous voulez savoir ce que chaque email rapporte."
+      ],
+      "theme": "rose",
+      "formes": [
+        "envelope",
+        "network",
+        "bag"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Vous avez une liste d'adresses, et vous lui écrivez quand vous y pensez. Les paniers abandonnés restent abandonnés."
+        ],
+        [
+          "Ce qu'on fait",
+          "On écrit et on dessine les flows qui partent tout seuls : bienvenue, panier, après l'achat. Puis les campagnes des temps forts."
+        ],
+        [
+          "Ce que ça change",
+          "Chaque email a son chiffre : ce qu'il a rapporté. On garde ce qui marche, on réécrit le reste."
+        ]
+      ],
+      "mots": [
+        "Bienvenue",
+        "Panier abandonné",
+        "Après l'achat",
+        "Campagnes",
+        "Pop-ups",
+        "Quiz",
+        "Segments",
+        "Chiffre attribué"
+      ],
+      "questions": [
+        [
+          "Faut-il déjà utiliser Klaviyo ?",
+          "Non. On peut l'installer, y amener vos listes et le relier à votre boutique."
+        ],
+        [
+          "Qui écrit les emails ?",
+          "Nous, avec vos mots et vos produits. Vous relisez avant l'envoi."
+        ],
+        [
+          "Et nos contacts actuels ?",
+          "On les reprend et on synchronise vos listes avec vos autres outils."
+        ]
+      ]
+    },
+    {
+      "nom": "Données",
+      "texte": "Un dashboard dans l'admin Shopify qui réunit Meta Ads, Google et Amazon, trafic, email et ventes.",
+      "slug": "donnees",
+      "resume": "On réunit vos chiffres de publicité, de trafic, d'email et de ventes dans un seul écran.",
+      "pour_qui": [
+        "Chaque outil vous donne un chiffre d'affaires différent.",
+        "Vous passez votre lundi à recopier des tableaux.",
+        "Vous voulez comparer une semaine à la précédente en un coup d'œil.",
+        "Vous voulez voir où vous perdez vos visiteurs, de l'annonce à l'achat."
+      ],
+      "theme": "encre",
+      "formes": [
+        "megaphone",
+        "network",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Un outil annonce trente ventes, un autre dix-huit, et la boutique en compte cinquante-deux. Chacun compte à sa façon, et personne n'a tort."
+        ],
+        [
+          "Ce qu'on fait",
+          "On branche toutes les sources sur un seul tableau, dans l'admin Shopify. Mêmes périodes, mêmes définitions."
+        ],
+        [
+          "Ce que ça change",
+          "Le lundi, un écran suffit : ce qui a été dépensé, ce qui a été vendu, et l'écart avec la semaine d'avant."
+        ]
+      ],
+      "mots": [
+        "Meta",
+        "Google",
+        "Amazon",
+        "GA4",
+        "Klaviyo",
+        "Shopify",
+        "Coût par commande",
+        "Tunnels",
+        "7, 30 ou 90 jours"
+      ],
+      "questions": [
+        [
+          "Où se trouve le dashboard ?",
+          "Dans l'admin Shopify, là où vous travaillez déjà."
+        ],
+        [
+          "Est-ce un outil de plus à apprendre ?",
+          "Non. C'est une page de plus dans votre admin, avec les mêmes boutons que le reste."
+        ],
+        [
+          "Que faites-vous des écarts entre les outils ?",
+          "On les montre. Les commandes réelles de la boutique servent de référence, et chaque source est affichée à côté."
+        ]
+      ]
+    },
+    {
+      "nom": "Agents IA",
+      "texte": "Agents IA mis en place par Azuweb : audit quotidien du site, récapitulatif matinal des comptes publicitaires, relecture réglementaire des textes produit. Un humain relit tout ce qui part en ligne. Azuweb aide aussi les entreprises à intégrer l'IA dans leur fonctionnement, leur construit des apps custom et forme leurs équipes.",
+      "slug": "agents-ia",
+      "resume": "On met des agents IA au travail sur votre boutique, avec un humain qui relit.",
+      "pour_qui": [
+        "Une page cassée ou un prix faux reste en ligne des jours avant qu'on le voie.",
+        "Vos textes produit doivent respecter une réglementation.",
+        "Votre équipe perd du temps sur des vérifications répétitives.",
+        "Vous voulez utiliser l'IA sans lui confier les clés."
+      ],
+      "theme": "bleu",
+      "formes": [
+        "network",
+        "bag",
+        "bars"
+      ],
+      "recit": [
+        [
+          "Aujourd'hui",
+          "Une page cassée un samedi, un prix faux après une promotion, un texte qui promet trop : personne ne le voit avant un client."
+        ],
+        [
+          "Ce qu'on fait",
+          "Des agents IA passent sur votre boutique tous les jours. Ils vérifient, comparent, relisent, et nous remontent ce qui cloche."
+        ],
+        [
+          "Ce que ça change",
+          "L'un de nous deux lit chaque remontée, corrige ou vous écrit. L'IA regarde partout ; la décision reste humaine."
+        ]
+      ],
+      "mots": [
+        "Audit quotidien",
+        "Récap du matin",
+        "Relecture réglementaire",
+        "Veille",
+        "SEO",
+        "Agents custom",
+        "Un humain à la signature",
+        "Apps custom",
+        "Formation des équipes"
+      ],
+      "questions": [
+        [
+          "L'IA modifie-t-elle notre site toute seule ?",
+          "Non. Elle prépare et elle signale. Rien ne part en ligne sans que l'un de nous deux l'ait relu."
+        ],
+        [
+          "Peut-on avoir ces agents chez nous ?",
+          "Oui. On installe les mêmes outils pour votre équipe, réglés sur votre boutique."
+        ],
+        [
+          "Sur quoi s'appuient-ils ?",
+          "Sur Claude, le modèle d'Anthropic, relié à vos outils : boutique, publicité, emails."
+        ],
+        [
+          "Formez-vous aussi nos équipes ?",
+          "Oui. On part de vos outils et de vos dossiers, pour que chacun reparte avec des gestes utiles dès le lendemain."
+        ]
+      ],
+      "plus": {
+        "titre": "Et dans votre entreprise ?",
+        "intro": "Ce qu'on a mis en place chez nous, on peut le construire chez vous. C'est un métier plus récent pour nous, et on l'aborde comme les autres : petit d'abord, utile tout de suite.",
+        "cartes": [
+          [
+            "Intégrer l'IA dans votre fonctionnement",
+            "On regarde vos tâches répétitives, une par une, et on voit lesquelles un agent peut préparer ou vérifier. On commence par une seule."
+          ],
+          [
+            "Des applications faites pour vous",
+            "Un outil interne qui répond à votre façon de travailler, branché sur votre boutique, vos emails et vos chiffres. Pas un logiciel générique de plus."
+          ],
+          [
+            "Former votre équipe",
+            "On montre à vos collaborateurs comment s'en servir au quotidien : rédiger, vérifier, analyser. Avec leurs vrais dossiers, pas des exemples d'école."
+          ]
+        ]
+      }
+    }
+  ],
+  "methode": [
+    "On regarde : boutique, comptes, chiffres",
+    "On cadre : périmètre écrit, prix, date",
+    "On dessine : téléphone d'abord, avec les vrais textes",
+    "On développe : sur une copie de la boutique, suivi sur un board partagé",
+    "On met en ligne : un jour choisi ensemble",
+    "On reste : maintenance, publicité, emails, mois après mois"
+  ],
+  "faq": [
+    [
+      "Que fait Azuweb, en une phrase ?",
+      "On construit des boutiques Shopify et on vous aide à les marketer : Amazon, Meta Ads, emails Klaviyo et suivi des chiffres."
+    ],
+    [
+      "Qui sera mon interlocuteur ?",
+      "Emilie ou William, c'est-à-dire les personnes qui font le travail. Il n'y a ni commercial ni chef de projet intermédiaire."
+    ],
+    [
+      "Pouvez-vous reprendre une boutique Shopify existante ?",
+      "Oui. Une bonne partie de notre travail consiste à maintenir et faire évoluer des boutiques déjà en ligne, sans tout refaire."
+    ],
+    [
+      "Travaillez-vous avec des marques qui vendent à l'étranger ?",
+      "Oui. Plusieurs de nos clients ont une boutique en France et une aux États-Unis, ou vendent sur [Amazon](services/amazon/) aux États-Unis."
+    ],
+    [
+      "Faites-vous seulement le site, ou aussi le marketing ?",
+      "Les deux. La même mini-agence s'occupe du thème, d'Amazon, des Meta Ads et des emails, ce qui évite de coordonner plusieurs prestataires."
+    ],
+    [
+      "Utilisez-vous l'intelligence artificielle ?",
+      "Oui, tous les jours. Nos [agents IA](services/agents-ia/) préparent, vérifient et surveillent. Rien ne part en ligne sans que l'un de nous deux l'ait relu."
+    ],
+    [
+      "Combien coûte un projet ?",
+      "Notre tarif est de 100 € HT de l'heure, soit 700 € HT la journée. Chaque projet est chiffré poste par poste après un premier regard sur votre boutique, avec une fourchette. On facture le temps réellement passé, et vous pouvez consulter les heures."
+    ],
+    [
+      "Comment démarre-t-on ?",
+      "Vous nous écrivez avec l'adresse de votre boutique, ce que vous voulez améliorer et votre échéance. On répond avec un premier feedback, puis on se parle en call."
+    ]
+  ],
+  "en_ce_moment": [
+    [
+      "2026-11",
+      "Préparation du Black Friday : pages d'offre, pop-ups, emails et plan publicitaire Amazon jour par jour."
+    ],
+    [
+      "2026-11",
+      "Un dashboard marketing dans l'admin Shopify, qui réunit publicité, trafic, email et ventes."
+    ],
+    [
+      "2026-10",
+      "Deux refontes de boutiques sur Horizon, la nouvelle base de thème de Shopify."
+    ],
+    [
+      "2026-10",
+      "Nos agents IA font maintenant un audit du site chaque jour et un récapitulatif des comptes publicitaires chaque matin."
+    ]
+  ],
+  "projets": [
+    [
+      "Nooance Paris",
+      "Soin anti-âge et masques LED",
+      "Thème Shopify, apps custom, compte Amazon aux États-Unis, emails et dashboard marketing."
+    ],
+    [
+      "Lacroix",
+      "Skis et textile technique",
+      "Boutique Shopify en France et aux États-Unis, fiches produit sur métaobjets, guide des tailles."
+    ],
+    [
+      "Miller",
+      "Joaillerie ancienne, Paris",
+      "Maintenance et évolutions de la boutique Shopify."
+    ],
+    [
+      "Olloïs",
+      "Homéopathie en ligne",
+      "Deux boutiques Shopify, dont le lancement d'une gamme pour chiens et chats."
+    ],
+    [
+      "Oh Oui",
+      "Desserts",
+      "Site Webflow et boutique Shopify, en français et en anglais."
+    ],
+    [
+      "Les Merveilles de Babellou",
+      "Mode vintage de grandes maisons",
+      "Refonte de la boutique Shopify, pages de marque, traduction."
+    ],
+    [
+      "Solyluna",
+      "Matériel de micro-macramé",
+      "Refonte Shopify et outils sur mesure pour les formations et les commandes."
+    ],
+    [
+      "Morgane Rospars",
+      "Ex-libris et tampons personnalisés",
+      "Refonte de la boutique Shopify et campagnes Meta."
+    ],
+    [
+      "Anny Blatt",
+      "Laines et fils à tricoter",
+      "Catalogue et filtres de la boutique Shopify."
+    ]
+  ],
+  "avis": [
+    [
+      "Professionnel et pédagogue, c'est un plaisir de travailler avec Azuweb depuis presque 2 ans. La réalisation à leur côté de notre site internet a été un succès auprès de notre clientèle. Ils sont à l'écoute, réactifs et toujours de bon conseil pour vous aider à développer votre business.",
+      "Charlotte C.",
+      "Les Merveilles de Babellou"
+    ],
+    [
+      "L'équipe Azuweb est une équipe d'expérience qui a su nous accompagner avec efficacité de la définition des personas à l'ensemble de la conception UI et UX du projet. Ayant pour notre part déjà plus de 13 ans d'expérience dans le e-commerce, nous avons apprécié la qualité des échanges avec l'équipe. Ça réfléchit très bien, très vite, avec des solutions adaptées.",
+      "",
+      "Black Idol"
+    ],
+    [
+      "Nous sommes très satisfaits de notre collaboration avec Emilie ! Elle a su nous donner beaucoup d'idées et de conseils, elle a été très investie dans le projet et très disponible. Mise en place de tous nos flows de marketing automation : stratégie et intégration Klaviyo.",
+      "Emilie",
+      "YAY Paris"
+    ],
+    [
+      "Une expérience très enrichissante avec Emilie, pleine de bons conseils et très sympathique. Nous sommes ravies d'avoir pu passer de Mailchimp à Klaviyo et d'avoir été accompagnées pour cette migration.",
+      "Marion",
+      "Takk Paris"
+    ],
+    [
+      "Nous travaillons avec Emilie depuis un moment maintenant et en sommes très satisfaites. Emilie est disponible et nous pousse à mettre en avant notre marque au travers des réseaux sociaux sans devoir exploser notre budget communication !",
+      "Fanny et Delphine",
+      "Oh Oui !"
+    ]
+  ]
+}
